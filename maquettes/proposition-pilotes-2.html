@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — scène pilotes : trois clôtures</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+.pil { position: relative; overflow: hidden; padding: 4.5rem clamp(24px, 6vw, 80px) 4.5rem; }
+.promesses2 { margin: 2.2rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .8rem 2.2rem; }
+.promesses2 li { font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em; color: var(--encre-400); }
+.promesses2 li::before { content: "· "; color: var(--accent); font-weight: 700; }
+
+/* ---------- AS · La bande d'appel (accent pleine largeur) ---------- */
+.pil-as { background: linear-gradient(160deg, var(--accent), var(--accent-700)); color: #fff; }
+.pil-as .deux { display: grid; gap: 2.2rem; align-items: center; }
+@media (min-width: 980px) { .pil-as .deux { grid-template-columns: minmax(0, 1fr) auto; gap: 4rem; } }
+.pil-as h2 { margin: 0 0 .8rem; font: 700 clamp(1.9rem, 4.6vw, 3rem)/1.05 var(--titrage); letter-spacing: -0.03em; color: #fff; max-width: 16ch; }
+.pil-as p { margin: 0; max-width: 32rem; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; color: #dbe7ff; }
+.bouton-blanc {
+  display: inline-block; background: #fff; color: var(--accent-700);
+  border-radius: 99px; padding: 1rem 1.8rem;
+  font: 650 1.05rem/1 var(--titrage); text-decoration: none;
+  white-space: nowrap;
+}
+.pil-as .promesses2 li { color: #c7dbff; }
+.pil-as .promesses2 li::before { color: #fff; }
+
+/* ---------- AT · Le final centré ---------- */
+.pil-at { text-align: center; }
+.pil-at .etiquette { justify-content: center; }
+.pil-at h2 { margin: 0 auto .9rem; font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--titrage); letter-spacing: -0.03em; color: var(--encre); max-width: 15ch; }
+.pil-at p { margin: 0 auto; max-width: 30rem; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; color: var(--encre-500); }
+.pil-at .actions2 { margin-top: 2rem; }
+.pil-at .bouton { font-size: 1.05rem; }
+.pil-at .promesses2 { justify-content: center; }
+
+/* ---------- AU · Le formulaire direct ---------- */
+.pil-au .deux { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 980px) { .pil-au .deux { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); gap: 5rem; } }
+.pil-au h2 { margin: 0 0 .9rem; font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--titrage); letter-spacing: -0.03em; color: var(--encre); max-width: 14ch; }
+.pil-au .chapo2 { margin: 0; max-width: 26rem; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; color: var(--encre-500); }
+.formulaire { display: grid; gap: .9rem; max-width: 30rem; }
+.formulaire label { font: 700 .78rem/1.4 var(--mono); letter-spacing: .02em; color: var(--encre-400); }
+.form-rang { display: flex; gap: .7rem; flex-wrap: wrap; }
+.form-rang input {
+  flex: 1; min-width: 14rem;
+  padding: .95rem 1.2rem; border-radius: 99px;
+  border: 1.5px solid var(--bleu-200); background: #fff;
+  font: 500 1rem/1 var(--sans); color: var(--encre);
+}
+.form-rang input::placeholder { color: #9aa7c4; }
+.form-note { font-size: .85rem; color: var(--encre-400); }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">La scène pilotes, sans photo : trois clôtures qui ne ressemblent pas au héros</p>
+
+<p class="titre-variante">AS · La bande d'appel (le seul bloc accent de la page, impossible à confondre)</p>
+<section class="pil pil-as" id="pil-as">
+  <div class="deux">
+    <div>
+      <h2>Votre prochain live, sans cahier.</h2>
+      <p>Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés, cette semaine.</p>
+      <ul class="promesses2">
+        <li>gratuit pendant le pilote</li>
+        <li>vous gardez la main</li>
+        <li>installé avec vous, avant votre live</li>
+      </ul>
+    </div>
+    <a class="bouton-blanc" href="#">Proposer mon live</a>
+  </div>
+</section>
+
+<p class="titre-variante">AT · Le final centré (sobre, tout sur l'axe)</p>
+<section class="pil pil-at" id="pil-at">
+  <p class="etiquette">Vendeuses pilotes</p>
+  <h2>Votre prochain live, sans cahier.</h2>
+  <p>Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés, cette semaine.</p>
+  <div class="actions2"><a class="bouton" href="#">Proposer mon live</a></div>
+  <ul class="promesses2">
+    <li>gratuit pendant le pilote</li>
+    <li>vous gardez la main</li>
+    <li>installé avec vous, avant votre live</li>
+  </ul>
+</section>
+
+<p class="titre-variante">AU · Le formulaire direct (l'action remplace le discours)</p>
+<section class="pil pil-au" id="pil-au">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Vendeuses pilotes</p>
+      <h2>Votre prochain live, sans cahier.</h2>
+      <p class="chapo2">Premiers lives accompagnés à Antananarivo, cette semaine. Laissez votre page, on s'occupe du reste.</p>
+    </div>
+    <div class="formulaire">
+      <label for="page">votre page Facebook ou votre numéro WhatsApp</label>
+      <div class="form-rang">
+        <input id="page" type="text" placeholder="facebook.com/votre-boutique">
+        <a class="bouton" href="#">Proposer mon live</a>
+      </div>
+      <p class="form-note">Gratuit pendant le pilote. Vous gardez la main, Livreo ne publie jamais à votre place.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

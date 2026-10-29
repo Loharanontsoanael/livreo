@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — engagements : trois nouvelles pistes</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la section sur la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 70% 30%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 70% 30%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 14ch; }
+.eng .meta-tech {
+  margin: 3rem 0 0; max-width: 44rem;
+  font-size: .95rem; line-height: 1.75; color: #aab8d8;
+}
+
+/* Les trois garanties, en repères discrets sous le titre. */
+.garanties { margin: 2.4rem 0 0; padding: 0; list-style: none; display: grid; gap: 1rem; }
+.garanties li { display: flex; align-items: baseline; gap: .9rem; font: 600 1.1rem/1.3 var(--titrage); color: #d7e2f7; }
+.garanties li b { font: 250 1.9rem/1 var(--sans); color: #fff; font-variant-numeric: tabular-nums; }
+
+/* ---------- M · L'app comme preuve ---------- */
+.eng-m .deux { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 980px) { .eng-m .deux { grid-template-columns: minmax(0, 1fr) auto; gap: 5rem; } }
+
+.tel.c-produit {
+  width: min(330px, 86vw); justify-self: center;
+  background: #fff; color: var(--encre);
+  border-radius: 30px; padding: 1.15rem 1.15rem 1.3rem;
+  box-shadow: 0 34px 70px rgb(3 8 25 / .55);
+}
+.tel-entete { display: flex; justify-content: space-between; align-items: center; }
+.tel-entete b { font: 650 .98rem/1.2 var(--titrage); letter-spacing: -0.01em; }
+.badge-direct {
+  font: 700 .6rem/1 var(--mono); letter-spacing: .05em;
+  color: #fff; background: var(--direct); border-radius: 99px; padding: .34rem .55rem;
+}
+.tel-article { margin-top: 1.1rem; }
+.tel-article small { display: block; font: 700 .62rem/1.4 var(--mono); letter-spacing: .03em; color: var(--encre-400); }
+.tel-article b { font: 650 1.08rem/1.25 var(--titrage); letter-spacing: -0.01em; }
+.tel-gagnant { margin-top: .9rem; border-radius: 16px; background: var(--bleu-pale); padding: .85rem .95rem; }
+.tel-gagnant .rang1 { display: flex; justify-content: space-between; align-items: center; }
+.tel-gagnant .rang1 b { font: 650 .95rem/1.2 var(--titrage); }
+.chip-paye {
+  font: 700 .6rem/1 var(--mono); letter-spacing: .03em;
+  background: var(--or-doux); color: var(--or-encre); border-radius: 99px; padding: .34rem .55rem;
+}
+.tel-gagnant small { display: block; margin-top: .45rem; font: 700 .66rem/1.5 var(--mono); color: var(--encre-400); }
+.tel-attente { margin: .9rem 0 0; padding: 0 .15rem; list-style: none; display: grid; gap: .5rem; }
+.tel-attente li { font: 700 .7rem/1.4 var(--mono); color: var(--encre-400); }
+.tel-bouton {
+  display: block; margin-top: 1.1rem; text-align: center;
+  background: var(--accent); color: #fff; border-radius: 99px;
+  padding: .75rem 1rem; font: 650 .92rem/1 var(--titrage); text-decoration: none;
+}
+
+/* ---------- N · Le journal du live ---------- */
+.eng-n .deux { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 980px) { .eng-n .deux { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); gap: 5rem; } }
+.journal { display: grid; gap: 1rem; }
+.journal p { margin: 0; display: flex; gap: 1.1rem; font: 600 .84rem/1.6 var(--mono); }
+.journal time { color: #7f9ad1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.journal span { color: #e6eeff; }
+.journal .ok { color: #9cc0ff; }
+.journal .ko { color: #f0a9b8; }
+
+/* ---------- O · La bande resserrée ---------- */
+.eng-o { padding: 3.4rem clamp(24px, 6vw, 80px) 3.8rem; }
+.eng-o .ligne { margin: 2.6rem 0 0; display: grid; gap: 1.6rem; }
+@media (min-width: 980px) { .eng-o .ligne { grid-template-columns: repeat(3, auto); justify-content: start; column-gap: 5rem; } }
+.eng-o .duo { display: flex; align-items: baseline; gap: .9rem; margin: 0; }
+.eng-o .duo b { font: 250 3.1rem/1 var(--sans); color: #fff; font-variant-numeric: tabular-nums; }
+.eng-o .duo span { font: 600 1.02rem/1.3 var(--titrage); color: #c9d8f5; }
+.eng-o .meta-tech { margin-top: 2.4rem; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Engagements : trois nouvelles pistes, avec du concret cette fois</p>
+
+<p class="titre-variante">M · L'app comme preuve (l'écran de la vendeuse pendant le live)</p>
+<section class="eng eng-m" id="eng-m">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Nos engagements</p>
+      <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+      <ul class="garanties">
+        <li><b>0</b> commentaire perdu</li>
+        <li><b>0</b> article attribué deux fois</li>
+        <li><b>0</b> « payé » sans preuve</li>
+      </ul>
+      <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+    </div>
+    <div class="tel c-produit" aria-label="L'écran de la vendeuse pendant le live">
+      <div class="tel-entete">
+        <b>Live du soir</b>
+        <span class="badge-direct">EN DIRECT</span>
+      </div>
+      <div class="tel-article">
+        <small>article en cours</small>
+        <b>Robe bleue wax · 45 000 Ar</b>
+      </div>
+      <div class="tel-gagnant">
+        <p class="rang1"><b>Faniry R.</b> <span class="chip-paye">payé</span></p>
+        <small>jp à 21:42:03 · capture MVola lue</small>
+      </div>
+      <ul class="tel-attente">
+        <li>2 · Hanta R. · jp à 21:42:04</li>
+        <li>3 · Mialy A. · jp à 21:42:09</li>
+      </ul>
+      <a class="tel-bouton" href="#">Article suivant</a>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">N · Le journal du live (le direct, seconde par seconde)</p>
+<section class="eng eng-n" id="eng-n">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Nos engagements</p>
+      <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+      <ul class="garanties">
+        <li><b>0</b> commentaire perdu</li>
+        <li><b>0</b> article attribué deux fois</li>
+        <li><b>0</b> « payé » sans preuve</li>
+      </ul>
+      <p class="meta-tech">Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+    </div>
+    <div class="journal" aria-label="Le journal d'un live, seconde par seconde">
+      <p><time>21:42:03</time> <span>« jp » de Faniry, robe bleue réservée</span></p>
+      <p><time>21:42:05</time> <span>récap envoyé sur Messenger</span></p>
+      <p><time>21:44:12</time> <span class="ok">capture MVola lue, payé</span></p>
+      <p><time>21:49:00</time> <span class="ko">délai dépassé, au suivant</span></p>
+      <p><time>21:49:01</time> <span>Hanta prévenue, robe bleue réservée</span></p>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">O · La bande resserrée (la section devient courte, la boucle reste la star)</p>
+<section class="eng eng-o" id="eng-o">
+  <p class="etiquette">Nos engagements</p>
+  <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+  <div class="ligne">
+    <p class="duo"><b>0</b> <span>commentaire perdu</span></p>
+    <p class="duo"><b>0</b> <span>article attribué deux fois</span></p>
+    <p class="duo"><b>0</b> <span>« payé » sans preuve</span></p>
+  </div>
+  <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+</section>
+
+</body>
+</html>

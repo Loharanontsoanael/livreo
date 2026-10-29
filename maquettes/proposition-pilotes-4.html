@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — scène pilotes : deux clôtures concrètes</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+.pil { position: relative; overflow: hidden; padding: 4.5rem clamp(24px, 6vw, 80px); }
+.pil h2 { margin: 0 0 .9rem; font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--titrage); letter-spacing: -0.03em; color: var(--encre); max-width: 14ch; }
+.pil .chapo2 { margin: 0 0 2rem; max-width: 26rem; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; color: var(--encre-500); }
+.pil .deux { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 980px) { .pil .deux { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 5rem; } }
+.note-mono2 { margin: 1.6rem 0 0; font: 700 .78rem/1.8 var(--mono); letter-spacing: .02em; color: var(--encre-400); max-width: 28rem; }
+
+/* ---------- AY · Madagascar en points ---------- */
+.ile {
+  position: relative; justify-self: center;
+  width: min(21rem, 64vw); aspect-ratio: 100 / 180;
+  background-image: radial-gradient(#a9c5fa 1.4px, transparent 1.8px);
+  background-size: 12px 12px;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 180'><path d='M62 4 C70 10 73 22 74 34 C76 50 72 68 68 86 C64 104 58 124 52 142 C48 156 46 166 42 174 C38 170 33 158 30 146 C27 132 26 118 27 104 C28 90 26 76 28 62 C30 48 34 36 42 24 C48 14 55 7 62 4 Z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 180'><path d='M62 4 C70 10 73 22 74 34 C76 50 72 68 68 86 C64 104 58 124 52 142 C48 156 46 166 42 174 C38 170 33 158 30 146 C27 132 26 118 27 104 C28 90 26 76 28 62 C30 48 34 36 42 24 C48 14 55 7 62 4 Z'/></svg>") center / contain no-repeat;
+}
+.ile-point {
+  position: absolute; left: 50%; top: 52%;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 7px rgb(8 102 255 / .15), 0 0 26px rgb(8 102 255 / .55);
+}
+.ile-cadre { position: relative; justify-self: center; }
+.ile-label {
+  position: absolute; left: 58%; top: 49.5%; margin: 0; white-space: nowrap;
+  font: 700 .8rem/1.4 var(--mono); letter-spacing: .02em; color: var(--accent-700);
+}
+.ile-label small { display: block; font-size: .68rem; color: var(--encre-400); letter-spacing: .02em; }
+
+/* ---------- AZ · La conversation d'inscription ---------- */
+.insc.c-produit {
+  justify-self: center; width: min(26rem, 90vw);
+  background: #fff; border: 1.5px solid var(--bleu-200); border-radius: 22px;
+  padding: 1.2rem 1.2rem 1.3rem;
+  box-shadow: 0 24px 50px rgb(11 20 48 / .1);
+  display: grid; gap: .8rem;
+}
+.insc-entete { display: flex; align-items: center; gap: .6rem; padding-bottom: .4rem; }
+.insc-entete .rond {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff; font: 700 .85rem/1 var(--titrage);
+}
+.insc-entete b { font: 650 .95rem/1.2 var(--titrage); color: var(--encre); }
+.insc-entete small { display: block; font: 700 .64rem/1.3 var(--mono); color: var(--encre-400); }
+.insc .bulle2 {
+  margin: 0; max-width: 85%;
+  font: 500 .92rem/1.45 var(--sans);
+  padding: .65rem .9rem; border-radius: 16px;
+}
+.insc .de-vendeuse { justify-self: end; background: var(--accent); color: #fff; border-bottom-right-radius: 5px; }
+.insc .de-livreo { justify-self: start; background: var(--bleu-pale); color: var(--encre); border-bottom-left-radius: 5px; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">La scène pilotes : deux clôtures concrètes</p>
+
+<p class="titre-variante">AY · Madagascar en points (les premiers lives partent d'Antananarivo)</p>
+<section class="pil pil-ay" id="pil-ay">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Vendeuses pilotes</p>
+      <h2>Votre prochain live, sans cahier.</h2>
+      <p class="chapo2">Les premiers lives accompagnés partent d'Antananarivo, cette semaine. Le reste de l'île suit.</p>
+      <a class="bouton" href="#">Proposer mon live</a>
+      <p class="note-mono2">gratuit pendant le pilote · vous gardez la main · installé avec vous, avant votre live</p>
+    </div>
+    <div class="ile-cadre">
+      <div class="ile" aria-hidden="true"></div>
+      <span class="ile-point" aria-hidden="true" style="left:49%; top:51%"></span>
+      <p class="ile-label">Antananarivo<small>les premiers lives, cette semaine</small></p>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">AZ · La conversation d'inscription (ce qui se passe quand vous cliquez)</p>
+<section class="pil pil-az" id="pil-az">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Vendeuses pilotes</p>
+      <h2>Votre prochain live, sans cahier.</h2>
+      <p class="chapo2">Proposer votre live, c'est une conversation : pas de dossier, pas de rendez-vous.</p>
+      <a class="bouton" href="#">Proposer mon live</a>
+      <p class="note-mono2">gratuit pendant le pilote · vous gardez la main</p>
+    </div>
+    <div class="insc c-produit" aria-hidden="true">
+      <div class="insc-entete">
+        <span class="rond">L</span>
+        <div><b>Livreo</b><small>répond le jour même</small></div>
+      </div>
+      <p class="bulle2 de-vendeuse">Salama ! Je fais un live samedi à 19 h, je veux essayer.</p>
+      <p class="bulle2 de-livreo">Parfait. On passe vendredi installer Livreo avec vous, c'est gratuit pendant le pilote.</p>
+      <p class="bulle2 de-vendeuse">Misaotra !</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

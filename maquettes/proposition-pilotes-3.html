@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — scène pilotes : trois autres clôtures</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+.pil { position: relative; overflow: hidden; padding: 4.5rem clamp(24px, 6vw, 80px); }
+
+/* ---------- AV · L'affiche finale (typo géante) ---------- */
+.pil-av h2 {
+  margin: 0 0 2.2rem;
+  font: 700 clamp(2.6rem, 7.2vw, 5.6rem)/1 var(--titrage);
+  letter-spacing: -0.035em; color: var(--encre);
+  text-wrap: balance;
+}
+.pil-av .rang-final { display: flex; align-items: center; gap: 2.4rem; flex-wrap: wrap; }
+.pil-av .note-mono { margin: 0; font: 700 .78rem/1.6 var(--mono); letter-spacing: .02em; color: var(--encre-400); }
+.pil-av .note-mono b { color: var(--accent); font-weight: 700; }
+
+/* ---------- AW · Les places de la semaine ---------- */
+.pil-aw .deux { display: grid; gap: 2.8rem; align-items: center; }
+@media (min-width: 980px) { .pil-aw .deux { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 5rem; } }
+.pil-aw h2 { margin: 0 0 .9rem; font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--titrage); letter-spacing: -0.03em; color: var(--encre); max-width: 14ch; }
+.pil-aw .chapo2 { margin: 0; max-width: 26rem; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; color: var(--encre-500); }
+.creneaux { margin: 0 0 1.8rem; padding: 0; list-style: none; display: grid; gap: 1.1rem; max-width: 30rem; }
+.creneaux li {
+  display: flex; align-items: baseline; gap: 1rem;
+  font: 700 .9rem/1.5 var(--mono); letter-spacing: .02em;
+}
+.creneaux li::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  align-self: center; flex: none;
+}
+.creneau-pris { color: #9aa7c4; }
+.creneau-pris::before { background: #c9d4ea; }
+.creneau-libre { color: var(--encre); }
+.creneau-libre::before { background: var(--accent); }
+.creneaux .etat { margin-left: auto; }
+.creneau-libre .etat { color: var(--accent); }
+
+/* ---------- AX · Sur Messenger, comme vos clientes ---------- */
+.pil-ax .deux { display: grid; gap: 2.8rem; align-items: center; }
+@media (min-width: 980px) { .pil-ax .deux { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 5rem; } }
+.pil-ax h2 { margin: 0 0 .9rem; font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--titrage); letter-spacing: -0.03em; color: var(--encre); max-width: 14ch; }
+.pil-ax .chapo2 { margin: 0; max-width: 26rem; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.55; color: var(--encre-500); }
+.contact-ms { display: grid; gap: .8rem; justify-items: start; }
+.contact-ms small { font: 700 .78rem/1.4 var(--mono); letter-spacing: .02em; color: var(--encre-400); }
+.lien-ms {
+  display: flex; align-items: center; gap: .9rem;
+  font: 700 clamp(1.8rem, 4vw, 2.8rem)/1.1 var(--titrage); letter-spacing: -0.025em;
+  color: var(--accent); text-decoration: none;
+}
+.lien-ms svg { width: .95em; height: .95em; flex: none; }
+.contact-ms .note2 { margin: .4rem 0 0; font-size: .95rem; color: var(--encre-500); max-width: 26rem; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-ms9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0695ff"/><stop offset="1" stop-color="#a334fa"/>
+    </linearGradient>
+    <symbol id="i-ms9" viewBox="0 0 24 24">
+      <path fill="url(#g-ms9)" d="M.001 11.639C.001 4.949 5.241 0 12.001 0S24 4.95 24 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 00-.64.05l-2.39 1.05a.96.96 0 01-1.35-.85l-.07-2.14a.97.97 0 00-.32-.68A11.39 11.389 0 01.002 11.64zm8.32-2.19l-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 00-2.61.48z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<p class="maq-bandeau">La scène pilotes : trois autres clôtures</p>
+
+<p class="titre-variante">AV · L'affiche finale (la typo géante ferme la page)</p>
+<section class="pil pil-av" id="pil-av">
+  <p class="etiquette">Vendeuses pilotes</p>
+  <h2>Votre prochain live, sans cahier.</h2>
+  <div class="rang-final">
+    <a class="bouton" href="#">Proposer mon live</a>
+    <p class="note-mono"><b>Antananarivo · cette semaine</b> · gratuit pendant le pilote · installé avec vous</p>
+  </div>
+</section>
+
+<p class="titre-variante">AW · Les places de la semaine (l'agenda réel des lives accompagnés)</p>
+<section class="pil pil-aw" id="pil-aw">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Vendeuses pilotes</p>
+      <h2>Votre prochain live, sans cahier.</h2>
+      <p class="chapo2">Trois lives accompagnés cette semaine à Antananarivo, installés avec vous, gratuits pendant le pilote.</p>
+    </div>
+    <div>
+      <ul class="creneaux">
+        <li class="creneau-pris">live du vendredi 31 octobre <span class="etat">complet</span></li>
+        <li class="creneau-libre">live du samedi 1er novembre <span class="etat">1 place</span></li>
+        <li class="creneau-libre">live du dimanche 2 novembre <span class="etat">2 places</span></li>
+      </ul>
+      <a class="bouton" href="#">Prendre une place</a>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">AX · Sur Messenger, comme vos clientes (le contact est le produit)</p>
+<section class="pil pil-ax" id="pil-ax">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Vendeuses pilotes</p>
+      <h2>Votre prochain live, sans cahier.</h2>
+      <p class="chapo2">Pas de dossier, pas de rendez-vous : tout se passe là où vous vendez déjà.</p>
+    </div>
+    <div class="contact-ms">
+      <small>écrivez-nous sur Messenger</small>
+      <a class="lien-ms" href="#">
+        <svg aria-hidden="true"><use href="#i-ms9"/></svg>
+        m.me/livreo
+      </a>
+      <p class="note2">Réponse le jour même. On installe tout avec vous, avant votre live, gratuitement pendant le pilote.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

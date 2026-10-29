@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — photo de la boucle + designs du fil</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* La section boucle avec la nouvelle photo. */
+.vif2 { position: relative; background: var(--nuit); overflow: hidden; min-height: 88vh; display: grid; align-items: center; }
+.vif2-photo { position: absolute; inset: 0 auto 0 0; width: 66%; height: 100%; }
+.vif2-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 30%; }
+.vif2-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgb(11 20 48 / .35), rgb(11 20 48 / .05) 40%, var(--nuit) 97%),
+    linear-gradient(180deg, rgb(11 20 48 / .25), transparent 35%, transparent 72%, var(--nuit) 100%);
+}
+.vif2-contenu { position: relative; z-index: 2; justify-self: end; max-width: 38rem; padding: 4.5rem clamp(32px, 6vw, 88px) 4.5rem 0; display: grid; gap: 2.5rem; }
+.vif2 .etiquette { color: #9cc0ff; }
+.vif2 h2 { color: #fff; }
+.vif2 .chapo { color: #d7e2f7; margin: 0; }
+
+/* Les trois designs de fil, comparés sur fond nuit. */
+.fils { background: var(--nuit); color: #fff; display: grid; gap: 3rem; padding: 3.5rem clamp(24px, 6vw, 80px); }
+@media (min-width: 1100px) { .fils { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fils h3 { margin: 0 0 1.4rem; font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: #9cc0ff; }
+
+/* 1 · Anneaux numérotés */
+.fil-a { display: grid; gap: 2rem; position: relative; padding-left: 2.6rem; }
+.fil-a::before { content: ""; position: absolute; left: 13px; top: .8rem; bottom: .8rem; width: 2px; background: rgb(255 255 255 / .18); }
+.fil-a p { position: relative; margin: 0; font: 600 1.35rem/1.25 var(--titrage); }
+.fil-a p::before {
+  content: attr(data-n); position: absolute; left: -2.6rem; top: 0;
+  width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1.5px solid rgb(255 255 255 / .45); background: var(--nuit);
+  font: 300 .85rem/1 var(--sans); color: #fff; font-variant-numeric: tabular-nums;
+}
+.fil-a p.actif::before { border-color: #3b82ff; color: #9cc0ff; }
+
+/* 2 · Minimal : petits points, trait fin */
+.fil-b { display: grid; gap: 2rem; position: relative; padding-left: 1.6rem; }
+.fil-b::before { content: ""; position: absolute; left: 2px; top: .7rem; bottom: .7rem; width: 1px; background: rgb(255 255 255 / .22); }
+.fil-b p { position: relative; margin: 0; font: 600 1.35rem/1.25 var(--titrage); }
+.fil-b p::before {
+  content: ""; position: absolute; left: -1.6rem; top: .5rem;
+  width: 6px; height: 6px; border-radius: 50%; background: #ffffff;
+}
+
+/* 3 · Signal live : point + anneau d'onde */
+.fil-c { display: grid; gap: 2rem; position: relative; padding-left: 2.2rem; }
+.fil-c::before { content: ""; position: absolute; left: 8px; top: .8rem; bottom: .8rem; width: 2px; background: rgb(255 255 255 / .18); }
+.fil-c p { position: relative; margin: 0; font: 600 1.35rem/1.25 var(--titrage); }
+.fil-c p::before {
+  content: ""; position: absolute; left: -2.2rem; top: .35rem;
+  width: 8px; height: 8px; border-radius: 50%; background: #ffffff; margin: 5px;
+}
+.fil-c p::after {
+  content: ""; position: absolute; left: -2.2rem; top: .35rem;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid rgb(59 130 255 / .8);
+}
+.fil-c p:nth-child(3)::after { border-color: rgb(255 255 255 / .25); }
+.fil-c p:nth-child(4)::after, .fil-c p:nth-child(5)::after { border-color: rgb(255 255 255 / .25); }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Boucle : nouvelle photo + trois designs de fil — à valider avant d'entrer dans le site</p>
+
+<p class="titre-variante">P · La nouvelle photo (vendeuse en plein argumentaire, cadrage paysage)</p>
+<section class="vif2">
+  <div class="vif2-photo" aria-hidden="true"><img src="assets/candidat-8.jpg" alt=""></div>
+  <div class="vif2-contenu">
+    <div>
+      <p class="etiquette">La boucle Livreo</p>
+      <h2 class="titre titre-2">Pendant qu'elle vend, Livreo encaisse.</h2>
+      <p class="chapo">Quatre étapes automatiques, à la seconde près, pendant que le live continue.</p>
+    </div>
+    <div class="fil-etapes">
+      <p class="etape-f"><b>Réservé à la seconde.</b></p>
+      <p class="etape-f"><b>Le récap part tout seul.</b></p>
+      <p class="etape-f"><b>La capture est lue. <span class="paye">Payé.</span></b></p>
+      <p class="etape-f"><b><span class="rouge">Délai dépassé.</span> Au suivant.</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="fils">
+  <div>
+    <h3>1 · anneaux numérotés</h3>
+    <div class="fil-a">
+      <p data-n="1" class="actif">Réservé à la seconde.</p>
+      <p data-n="2" class="actif">Le récap part tout seul.</p>
+      <p data-n="3">La capture est lue. <span class="paye">Payé.</span></p>
+      <p data-n="4"><span class="rouge">Délai dépassé.</span> Au suivant.</p>
+    </div>
+  </div>
+  <div>
+    <h3>2 · minimal, trait fin</h3>
+    <div class="fil-b">
+      <p>Réservé à la seconde.</p>
+      <p>Le récap part tout seul.</p>
+      <p>La capture est lue. <span class="paye">Payé.</span></p>
+      <p><span class="rouge">Délai dépassé.</span> Au suivant.</p>
+    </div>
+  </div>
+  <div>
+    <h3>3 · signal live (onde autour du point)</h3>
+    <div class="fil-c">
+      <p>Réservé à la seconde.</p>
+      <p>Le récap part tout seul.</p>
+      <p>La capture est lue. <span class="paye">Payé.</span></p>
+      <p><span class="rouge">Délai dépassé.</span> Au suivant.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

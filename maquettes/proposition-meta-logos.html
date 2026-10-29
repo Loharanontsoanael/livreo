@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — « Construit avec Meta » : avec les logos</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 17ch; }
+.eng .chapo-nuit { margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+
+/* ---------- Y · Le voyage du commentaire ---------- */
+.voyage { margin: 4.2rem 0 0; display: flex; align-items: center; gap: 1.4rem; padding-bottom: 5rem; }
+.chip { margin: 0; font: 600 .9rem/1.3 var(--mono); color: #fff; white-space: nowrap; }
+.chip-sortie { color: #9cc0ff; }
+.relais { flex: 1; min-width: 1.5rem; border-top: 2px dotted rgb(156 192 255 / .4); }
+.station { position: relative; display: grid; justify-items: center; }
+.station svg { width: 60px; height: 60px; display: block; }
+.station .nom { position: absolute; top: calc(100% + .9rem); display: grid; gap: .3rem; justify-items: center; width: max-content; text-align: center; }
+.station .nom b { font: 650 1.05rem/1.2 var(--titrage); letter-spacing: -0.01em; color: #fff; }
+.station .nom small { font: 700 .64rem/1.4 var(--mono); letter-spacing: .03em; color: #7f9ad1; }
+.st-fb svg { filter: drop-shadow(0 0 20px rgb(59 139 255 / .4)); }
+.st-meta svg { filter: drop-shadow(0 0 20px rgb(0 130 251 / .45)); }
+.st-ms svg { filter: drop-shadow(0 0 20px rgb(122 84 250 / .45)); }
+
+/* ---------- Z · Les trois lunes ---------- */
+.eng-z .deux { display: grid; gap: 3rem; }
+@media (min-width: 980px) { .eng-z .deux { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); gap: 4rem; align-items: center; } }
+.lunes { position: relative; min-height: 460px; }
+.lune { position: absolute; display: grid; justify-items: center; gap: 1.1rem; text-align: center; width: max-content; }
+.lune svg { width: 88px; height: 88px; display: block; }
+.lune b { font: 650 1.15rem/1.2 var(--titrage); letter-spacing: -0.01em; color: #fff; }
+.lune small { display: block; margin-top: .35rem; font: 700 .66rem/1.5 var(--mono); letter-spacing: .03em; color: #7f9ad1; max-width: 16rem; white-space: normal; }
+.lune-1 { left: 4%; top: 6%; }
+.lune-2 { left: 44%; top: 44%; }
+.lune-3 { left: 2%; top: 64%; }
+.lune-1 svg { filter: drop-shadow(0 0 26px rgb(59 139 255 / .45)); }
+.lune-2 svg { filter: drop-shadow(0 0 26px rgb(0 130 251 / .5)); }
+.lune-3 svg { filter: drop-shadow(0 0 26px rgb(122 84 250 / .5)); }
+
+/* ---------- AA · L'emblème ---------- */
+.eng-aa .deux { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 980px) { .eng-aa .deux { grid-template-columns: minmax(0, 1fr) auto; gap: 4rem; } }
+.embleme { justify-self: center; }
+.embleme svg { width: min(30rem, 38vw); height: auto; display: block; filter: drop-shadow(0 0 60px rgb(0 130 251 / .35)); }
+.produits { margin: 2.8rem 0 0; display: grid; gap: 1.8rem; }
+.produit { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 1.1rem; align-items: start; }
+.produit svg { width: 26px; height: 26px; margin-top: .2rem; }
+.produit b { display: block; font: 650 1.2rem/1.25 var(--titrage); letter-spacing: -0.01em; color: #fff; }
+.produit span { font-size: .95rem; line-height: 1.6; color: #b9c7e6; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-fb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5ea2ff"/><stop offset="1" stop-color="#0866ff"/>
+    </linearGradient>
+    <linearGradient id="g-meta" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#62c3ff"/><stop offset="1" stop-color="#0082fb"/>
+    </linearGradient>
+    <linearGradient id="g-ms" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0695ff"/><stop offset="1" stop-color="#a334fa"/>
+    </linearGradient>
+    <symbol id="i-facebook" viewBox="0 0 24 24">
+      <path fill="url(#g-fb)" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+    </symbol>
+    <symbol id="i-meta" viewBox="0 0 24 24">
+      <path fill="url(#g-meta)" d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/>
+    </symbol>
+    <symbol id="i-messenger" viewBox="0 0 24 24">
+      <path fill="url(#g-ms)" d="M.001 11.639C.001 4.949 5.241 0 12.001 0S24 4.95 24 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 00-.64.05l-2.39 1.05a.96.96 0 01-1.35-.85l-.07-2.14a.97.97 0 00-.32-.68A11.39 11.389 0 01.002 11.64zm8.32-2.19l-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 00-2.61.48z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<p class="maq-bandeau">« Construit avec Meta » : trois idées avec les logos officiels (pour le hackathon, retirables ensuite)</p>
+
+<p class="titre-variante">Y · Le voyage du commentaire (le « jp » traverse les trois logos et ressort payé)</p>
+<section class="eng eng-y" id="eng-y">
+  <p class="etiquette">Sous le capot</p>
+  <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+  <div class="voyage">
+    <p class="chip">« izaho koa jp »</p>
+    <div class="relais" aria-hidden="true"></div>
+    <div class="station st-fb">
+      <svg aria-hidden="true"><use href="#i-facebook"/></svg>
+      <div class="nom"><b>Graph API</b><small>capte le commentaire</small></div>
+    </div>
+    <div class="relais" aria-hidden="true"></div>
+    <div class="station st-meta">
+      <svg aria-hidden="true"><use href="#i-meta"/></svg>
+      <div class="nom"><b>Muse Spark</b><small>comprend et vérifie</small></div>
+    </div>
+    <div class="relais" aria-hidden="true"></div>
+    <div class="station st-ms">
+      <svg aria-hidden="true"><use href="#i-messenger"/></svg>
+      <div class="nom"><b>Messenger</b><small>récap et confirmation</small></div>
+    </div>
+    <div class="relais" aria-hidden="true"></div>
+    <p class="chip chip-sortie">payé · 45 000 Ar</p>
+  </div>
+</section>
+
+<p class="titre-variante">Z · Les trois lunes (les logos flottent dans la nuit, comme des astres)</p>
+<section class="eng eng-z" id="eng-z">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Sous le capot</p>
+      <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+      <p class="chapo-nuit">Trois briques Meta portent tout le direct : la capture des commentaires, l'intelligence qui comprend, la conversation qui encaisse.</p>
+    </div>
+    <div class="lunes">
+      <div class="lune lune-1">
+        <svg aria-hidden="true"><use href="#i-facebook"/></svg>
+        <div><b>Graph API</b><small>capte chaque commentaire du direct, à la seconde</small></div>
+      </div>
+      <div class="lune lune-2">
+        <svg aria-hidden="true"><use href="#i-meta"/></svg>
+        <div><b>Muse Spark</b><small>comprend « jp », le malgache, lit les captures MVola</small></div>
+      </div>
+      <div class="lune lune-3">
+        <svg aria-hidden="true"><use href="#i-messenger"/></svg>
+        <div><b>Messenger Platform</b><small>envoie le récap, reçoit la confirmation d'un tap</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">AA · L'emblème (le logo Meta en grand, les trois briques en liste)</p>
+<section class="eng eng-aa" id="eng-aa">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Sous le capot</p>
+      <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+      <div class="produits">
+        <div class="produit">
+          <svg aria-hidden="true"><use href="#i-facebook"/></svg>
+          <div><b>Graph API</b><span>Capte chaque commentaire du direct, à la seconde où il est posté.</span></div>
+        </div>
+        <div class="produit">
+          <svg aria-hidden="true"><use href="#i-meta"/></svg>
+          <div><b>Muse Spark</b><span>Comprend « jp », le malgache du direct, et lit les captures MVola.</span></div>
+        </div>
+        <div class="produit">
+          <svg aria-hidden="true"><use href="#i-messenger"/></svg>
+          <div><b>Messenger Platform</b><span>Envoie le récapitulatif et reçoit la confirmation, sans quitter Facebook.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="embleme" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><use href="#i-meta"/></svg>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

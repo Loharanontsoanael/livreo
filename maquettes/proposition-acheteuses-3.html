@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — côté acheteuses : deux concepts</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 30% 40%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 30% 40%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 15ch; }
+.eng .chapo-nuit { margin: 0; max-width: 30rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+.kicker { margin: 2.8rem 0 0; font: 650 1.15rem/1.4 var(--titrage); letter-spacing: -0.01em; color: #9cc0ff; max-width: 28rem; }
+
+/* ---------- AG · Le téléphone de points ---------- */
+.eng-ag .deux { display: grid; gap: 3.5rem; }
+@media (min-width: 980px) { .eng-ag .deux { grid-template-columns: minmax(0, 1fr) auto; gap: 6rem; align-items: center; } }
+.tel-points {
+  position: relative; width: 294px; height: 560px; justify-self: center;
+  border-radius: 46px;
+  border: 1.5px solid rgb(156 192 255 / .42);
+  background-image: radial-gradient(rgb(156 192 255 / .55) 1.2px, transparent 1.7px);
+  background-size: 12px 12px;
+  box-shadow: 0 0 80px rgb(8 102 255 / .18), inset 0 0 60px rgb(11 20 48 / .6);
+}
+.tel-points::before {
+  content: ""; position: absolute; top: 18px; left: 50%; translate: -50% 0;
+  width: 56px; height: 5px; border-radius: 99px;
+  background: rgb(156 192 255 / .45);
+}
+.tel-heure {
+  position: absolute; top: 3.2rem; left: 0; right: 0; margin: 0;
+  text-align: center; font: 600 2.1rem/1 var(--mono); color: #e6eeff;
+}
+.tel-heure small { display: block; margin-top: .5rem; font: 700 .64rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+.tel-apps { position: absolute; left: 1.3rem; right: 1.3rem; bottom: 1.5rem; margin: 0; display: grid; gap: .65rem; }
+.tel-app {
+  display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: .9rem; align-items: center;
+  background: var(--nuit); padding: .55rem .4rem;
+}
+.tel-app svg { width: 34px; height: 34px; display: block; }
+.tel-app .rond-ar {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1.5px solid #9cc0ff; color: #9cc0ff;
+  font: 700 .78rem/1 var(--titrage);
+}
+.tel-app b { display: block; font: 650 .98rem/1.25 var(--titrage); color: #fff; }
+.tel-app span { display: block; font: 700 .62rem/1.5 var(--mono); letter-spacing: .02em; color: #7f9ad1; }
+
+/* ---------- AH · L'orbite du « jp » ---------- */
+.eng-ah .deux { display: grid; gap: 3.5rem; }
+@media (min-width: 980px) { .eng-ah .deux { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 4rem; align-items: center; } }
+.orbites { position: relative; width: min(620px, 92vw); aspect-ratio: 10 / 9; justify-self: center; }
+.cercle { position: absolute; border-radius: 50%; border: 1px solid rgb(156 192 255 / .17); }
+.cercle-1 { inset: 0 2% 2% 0; }
+.cercle-2 { inset: 16% 18% 18% 16%; }
+.jp-centre {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; margin: 0;
+  font: 650 2.3rem/1 var(--mono); color: #fff; text-align: center;
+  text-shadow: 0 0 34px rgb(8 102 255 / .8);
+}
+.jp-centre small { display: block; margin-top: .7rem; font: 700 .66rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+.satellite { position: absolute; margin: 0; display: grid; justify-items: center; gap: .6rem; text-align: center; width: max-content; max-width: 15rem; }
+.satellite svg { width: 44px; height: 44px; display: block; }
+.satellite .rond-ar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1.5px solid #9cc0ff; color: #9cc0ff;
+  font: 700 .92rem/1 var(--titrage);
+  background: var(--nuit);
+}
+.satellite b { font: 650 1.05rem/1.25 var(--titrage); color: #fff; }
+.satellite small { display: block; margin-top: .25rem; font: 700 .64rem/1.5 var(--mono); letter-spacing: .02em; color: #7f9ad1; white-space: normal; }
+.sat-fb { left: 12%; top: -4%; }
+.sat-ms { right: -2%; top: 38%; }
+.sat-ar { left: 18%; bottom: -2%; }
+.sat-fb svg, .sat-ms svg { background: var(--nuit); border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-ms4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0695ff"/><stop offset="1" stop-color="#a334fa"/>
+    </linearGradient>
+    <symbol id="i-fb4" viewBox="0 0 24 24">
+      <path fill="#0866ff" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+    </symbol>
+    <symbol id="i-ms4" viewBox="0 0 24 24">
+      <path fill="url(#g-ms4)" d="M.001 11.639C.001 4.949 5.241 0 12.001 0S24 4.95 24 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 00-.64.05l-2.39 1.05a.96.96 0 01-1.35-.85l-.07-2.14a.97.97 0 00-.32-.68A11.39 11.389 0 01.002 11.64zm8.32-2.19l-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 00-2.61.48z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<p class="maq-bandeau">Côté acheteuses : deux concepts visuels (le contenu « Vos clientes ont déjà tout », sans MVola)</p>
+
+<p class="titre-variante">AG · Le téléphone de points (son téléphone, dessiné par les étoiles de la nuit)</p>
+<section class="eng eng-ag" id="eng-ag">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+      <p class="chapo-nuit">Tout est déjà dans leur poche : Facebook pour commenter, Messenger pour le récap, le Mobile Money pour payer. Acheter sur votre live ne leur demande rien de nouveau.</p>
+      <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+    </div>
+    <div class="tel-points" aria-hidden="true">
+      <p class="tel-heure">21:42<small>pendant votre live</small></p>
+      <div class="tel-apps">
+        <div class="tel-app">
+          <svg><use href="#i-fb4"/></svg>
+          <div><b>Elle commente « jp »</b><span>sur votre live, comme toujours</span></div>
+        </div>
+        <div class="tel-app">
+          <svg><use href="#i-ms4"/></svg>
+          <div><b>Son récap arrive</b><span>l'article, le prix, le délai</span></div>
+        </div>
+        <div class="tel-app">
+          <p class="rond-ar" style="margin:0">Ar</p>
+          <div><b>Elle paie comme d'habitude</b><span>capture lue, confirmée</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">AH · L'orbite du « jp » (un seul commentaire au centre, tout l'écosystème autour)</p>
+<section class="eng eng-ah" id="eng-ah">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Un seul geste : « jp ».</h2>
+      <p class="chapo-nuit">Vos clientes n'apprennent rien de nouveau. Autour de leur commentaire, les outils qu'elles utilisent déjà tous les jours font le reste.</p>
+      <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+    </div>
+    <div class="orbites" aria-hidden="true">
+      <div class="cercle cercle-1"></div>
+      <div class="cercle cercle-2"></div>
+      <p class="jp-centre">« jp »<small>son seul geste</small></p>
+      <p class="satellite sat-fb">
+        <svg><use href="#i-fb4"/></svg>
+        <b>Elle est déjà sur votre live</b>
+        <small>aucun site, aucun compte</small>
+      </p>
+      <p class="satellite sat-ms">
+        <svg><use href="#i-ms4"/></svg>
+        <b>Le récap arrive sur Messenger</b>
+        <small>l'article, le prix, le délai</small>
+      </p>
+      <p class="satellite sat-ar">
+        <span class="rond-ar">Ar</span>
+        <b>Elle paie comme d'habitude</b>
+        <small>capture lue, confirmée</small>
+      </p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

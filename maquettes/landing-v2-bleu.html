@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — maquette landing v2 (bleu Meta)</title>
+<style>
+/*
+ * Maquette statique de la landing Livreo — v2, accent bleu adapté à Meta.
+ * Style repris de la lib « couches » (agenda-toilettage) : une scène = un
+ * message, grande typographie, pas de carte / pilule / filet, cadre et ombre
+ * réservés aux écrans du produit.
+ * Le rouge ne sert plus qu'au direct (badge EN DIRECT) et aux urgences.
+ */
+@font-face {
+  font-family: "DM Sans";
+  src: url("fonts/dm-sans-latin-wght.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("fonts/caveat-latin-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/jetbrains-mono-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  /* Livreo v2 : bleu Meta adapté, encre bleu nuit, rouge réservé au direct. */
+  --encre: #121a2e;
+  --encre-500: #49536b;
+  --encre-400: #67738f;
+  --nuit: #0b1430;
+  --accent: #0866ff;
+  --accent-700: #0a4fc4;
+  --direct: #c2183a;
+  --direct-700: #9c1230;
+  --bleu-pale: #eef3fe;
+  --bleu-200: #d2e0fb;
+  --bleu-mot: #e2ecfe;
+  --or: #e8a63d;
+  --or-doux: #fdf0d8;
+  --or-encre: #6b4300;
+  --sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --main: "Caveat", cursive;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --ombre-ecran: 0 2px 4px rgb(11 20 48 / .08), 0 24px 60px -24px rgb(11 20 48 / .35);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: #ffffff; color: var(--encre);
+  font: 400 1rem/1.5 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Le fond du site, comme sur agendatoilettage.onrender.com : une grande
+   nappe de points (c-nuage-points) qui s'estompe sur les bords, en bleu. */
+.nuage {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: min(var(--taille, 58rem), 150vw); aspect-ratio: 1;
+  background: radial-gradient(circle, #a9c5fa 0 1.4px, transparent 1.9px) 0 0 / 11px 11px;
+  -webkit-mask: radial-gradient(closest-side, #000 15%, transparent);
+  mask: radial-gradient(closest-side, #000 15%, transparent);
+  opacity: .65;
+}
+.nuage-accueil { left: 50%; top: 58%; translate: -50% -50%; --taille: 44rem; }
+@media (min-width: 980px) {
+  .nuage-accueil { left: auto; right: -4rem; top: 38%; translate: 0 -50%; --taille: 46rem; }
+}
+.nuage-paiement { --taille: 40rem; right: -7rem; top: 50%; translate: 0 -50%; }
+.nuage-fin { --taille: 42rem; right: -12rem; top: 50%; translate: 0 -50%; }
+
+/* Bandeau de maquette : à retirer dans la vraie page. */
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700);
+  font-weight: 700; font-size: .9rem;
+}
+
+/* Note de maquette : décrit l'animation prévue, en écriture à la main. */
+.maq-note {
+  margin: 1.5rem 0 0; max-width: 30rem;
+  font: 600 1.2rem/1.25 var(--main); color: var(--encre-400);
+}
+.maq-note::before { content: "note maquette : "; color: var(--direct); }
+.fond-nuit .maq-note { color: #8294bd; }
+.fond-nuit .maq-note::before { color: #9cc0ff; }
+.fond-fort .maq-note { color: #cfe0ff; }
+.fond-fort .maq-note::before { color: #ffd9a1; }
+
+/* ---------- Scènes ---------- */
+
+.scene {
+  position: relative; overflow: hidden;
+  display: grid; align-content: center; gap: 2rem;
+  min-height: 100svh; padding: 4.5rem 20px;
+}
+/* Fonds de scène, même logique que la lib couches :
+   blanc ; dégradé pâle vers blanc ; dégradé fort (texte blanc) ; nuit. */
+.fond-bleu { background: #ffffff; }
+.fond-fort { background: linear-gradient(160deg, var(--accent), var(--accent-700)); color: #ffffff; }
+.fond-nuit { background: var(--nuit); color: #eef2fb; }
+
+.texte { position: relative; z-index: 2; max-width: 34rem; }
+.objet { position: relative; z-index: 1; display: grid; justify-items: center; }
+
+@media (min-width: 980px) {
+  .scene {
+    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
+    align-items: center; gap: 4rem;
+    padding: 5rem clamp(32px, 7vw, 96px);
+  }
+  .scene > .maq-note { grid-column: 1 / -1; margin-top: 0; }
+}
+
+/* Repère de scène : en mono, comme l'eyebrow de l'agenda, jamais en capitales. */
+.etiquette {
+  margin: 0 0 1rem; font: 700 .8rem/1.4 var(--mono);
+  letter-spacing: .04em; color: var(--accent);
+}
+.fond-nuit .etiquette, .fond-fort .etiquette { color: #c7dbff; }
+
+.titre {
+  margin: 0 0 1.2rem;
+  font-size: clamp(2.4rem, 7vw, 4.4rem); font-weight: 800;
+  line-height: 1.02; letter-spacing: -0.035em;
+}
+.titre-2 { font-size: clamp(2rem, 5.5vw, 3.4rem); }
+
+.chapo {
+  margin: 0 0 2rem; max-width: 30rem;
+  font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.5; color: var(--encre-500);
+}
+.fond-nuit .chapo { color: #b9c7e6; }
+.fond-fort .chapo { color: #dbe7ff; }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.actions .bouton, .actions .lien { height: 52px; padding: 0 1.4rem; font-size: 1rem; }
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 56px; padding: 0 1.9rem; border-radius: 999px;
+  background: var(--accent); color: #ffffff;
+  font: 700 1.05rem/1 var(--sans); text-decoration: none; white-space: nowrap;
+}
+/* Le second geste : une pilule au trait, comme dans l'en-tête de l'agenda. */
+.lien {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 56px; padding: 0 1.6rem; border: 1.5px solid var(--bleu-200); border-radius: 999px;
+  color: var(--encre); font-weight: 700; text-decoration: none;
+}
+
+/* Les preuves : pleine largeur, une à gauche, une au centre, une à droite.
+   Grands chiffres fins comme les heures de l'agenda, l'unité en bleu. */
+.preuves {
+  margin: 1.5rem 0 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(3, auto);
+  justify-content: space-between; gap: 1.5rem;
+}
+.preuves li { font-size: .95rem; color: var(--encre-500); }
+.preuves li:nth-child(2) { text-align: center; }
+.preuves li:nth-child(3) { text-align: right; }
+.preuves b {
+  display: block; white-space: nowrap; margin-bottom: .3rem;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 275;
+  line-height: 1.05; letter-spacing: -0.025em; color: var(--encre);
+  font-variant-numeric: tabular-nums;
+}
+.preuves b i { font-style: normal; color: var(--accent); }
+.preuves li span {
+  display: block;
+  font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em;
+  color: var(--encre-400);
+}
+@media (min-width: 980px) {
+  .preuves { grid-column: 1 / -1; }
+  /* Uniforme : chaque libellé tient sur une seule ligne. */
+  .preuves li span { white-space: nowrap; }
+}
+
+/* Le mot géant très pâle derrière l'objet (c-mot). */
+.mot {
+  position: absolute; z-index: 0; right: -1rem; top: 46%;
+  transform: translateY(-50%) rotate(4deg);
+  margin: 0; font-weight: 900; font-size: clamp(11rem, 30vw, 24rem);
+  line-height: 1; letter-spacing: -0.06em; color: var(--bleu-mot);
+  user-select: none; pointer-events: none;
+}
+.fond-bleu .mot { color: #ffffff; }
+.fond-fort .mot { color: rgb(10 60 160 / .45); }
+
+.horodatage { font: 700 .8rem/1.2 var(--mono); color: var(--encre-400); }
+
+/* Le sujet du héros : la vendeuse détourée, qui flotte sur la nappe de
+   points — une vraie asset, pas un rectangle. Les infos du live se posent
+   dessus, légèrement inclinées, comme des éléments d'interface vivants. */
+.sujet-live { position: relative; margin: 0; width: min(430px, 82vw); }
+.sujet-live img {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 32px 44px rgb(11 20 48 / .24));
+  /* La coupe du bas de la photo se fond dans la page. */
+  -webkit-mask: linear-gradient(180deg, #000 84%, transparent 99%);
+  mask: linear-gradient(180deg, #000 84%, transparent 99%);
+}
+
+/* ---------- Écrans du produit (seuls blocs avec cadre + ombre) ---------- */
+
+.telephone {
+  width: min(330px, 86vw); border-radius: 44px; overflow: hidden;
+  border: 10px solid #0d1426; background: #0d1426;
+  box-shadow: var(--ombre-ecran);
+}
+.live { position: relative; background: #16254a; aspect-ratio: 9 / 16.6; display: grid; grid-template-rows: auto 1fr auto; }
+.live-haut { display: flex; justify-content: space-between; align-items: center; padding: .9rem .9rem 0; }
+.badge-direct {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .28rem .7rem; border-radius: 6px;
+  background: var(--direct); color: #ffffff; font: 800 .72rem/1 var(--sans); letter-spacing: .06em;
+}
+.badge-direct i { width: 7px; height: 7px; border-radius: 50%; background: #ffffff; }
+.spectateurs { color: #c3d2f0; font-size: .78rem; font-weight: 600; }
+.live-centre { display: grid; place-items: center; }
+.live-centre span { font: 600 1.5rem/1.3 var(--main); color: #93a9d6; text-align: center; }
+.live-coms { display: grid; gap: .45rem; padding: .9rem; }
+.com { display: flex; gap: .45rem; align-items: baseline; font-size: .82rem; color: #e8eefc; }
+.com b { color: #ffffff; }
+.com .horodatage { color: #8fa5cf; font-size: .68rem; }
+.com-jp b, .com-jp span:not(.horodatage) { color: #ffd9a1; font-weight: 800; }
+.com-reserve {
+  margin-top: .2rem; padding: .55rem .7rem; border-radius: 12px;
+  background: var(--or-doux); color: var(--or-encre); font-size: .78rem; font-weight: 700;
+}
+.com-reserve .horodatage { color: var(--or-encre); }
+
+.ecran {
+  width: min(400px, 92vw); border-radius: 26px; background: #ffffff;
+  border: 1.5px solid var(--bleu-200); box-shadow: var(--ombre-ecran);
+  padding: 1.3rem 1.4rem;
+}
+.fond-fort .ecran { border-color: rgb(255 255 255 / .35); background: transparent; box-shadow: none; }
+.ecran-titre { margin: 0 0 1rem; font-size: .95rem; font-weight: 800; }
+.ecran-titre small { display: block; font-weight: 600; color: var(--encre-400); }
+.gagnante { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-weight: 800; font-size: 1.15rem; }
+.gagnante .horodatage { color: var(--accent); }
+.attente { margin: .8rem 0 0; padding: 0; list-style: none; display: grid; gap: .45rem; color: var(--encre-500); }
+.attente li { display: flex; justify-content: space-between; gap: 1rem; }
+.ecran .bouton { width: 100%; margin-top: 1.3rem; height: 52px; }
+.ecran-aide { margin: .6rem 0 0; text-align: center; font-size: .82rem; color: var(--encre-400); }
+
+/* Messenger : la conversation. */
+.bulle { max-width: 85%; padding: .8rem 1rem; border-radius: 20px 20px 20px 6px; background: var(--bleu-pale); font-size: .92rem; }
+.bulle + .bulle { margin-top: .6rem; }
+.bulle-droite { margin-left: auto; border-radius: 20px 20px 6px 20px; background: var(--accent); color: #ffffff; }
+.bulle-droite .capture {
+  margin-top: .5rem; display: grid; place-items: center; height: 72px; border-radius: 10px;
+  background: var(--accent-700); color: #cfe0ff; font: 600 1.1rem var(--main);
+}
+.bulle b { display: block; }
+.bulle .delai { margin-top: .4rem; font-weight: 800; color: var(--direct-700); }
+/* Sur le fond fort, la conversation passe en blanc / nuit. */
+.fond-fort .bulle { background: #ffffff; color: var(--encre); }
+.fond-fort .bulle-droite { background: var(--nuit); color: #ffffff; }
+.fond-fort .bulle-droite .capture { background: #243457; color: #9fb4dd; }
+.bulle-droite .capture { font: 600 .85rem var(--sans); letter-spacing: .02em; }
+
+/* Paiement : ce que Muse Spark a lu. */
+.lecture { margin: 0; display: grid; gap: .55rem; }
+.lecture div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.lecture dt { color: var(--encre-400); font-size: .9rem; }
+.lecture dd { margin: 0; font-weight: 800; font-variant-numeric: tabular-nums; }
+.lecture .ok { color: var(--or-encre); font-size: .78rem; font-weight: 700; }
+.bouton-or { background: var(--or-encre); }
+
+/* Passage au suivant. */
+.passage { display: grid; gap: .5rem; }
+.passage .quand { font: 700 1rem var(--mono); color: var(--direct); }
+.passage p { margin: 0; font-size: 1.05rem; }
+.passage b { font-size: 1.2rem; }
+
+/* ---------- Le problème : la vendeuse qui vérifie, trois points en colonnes ---------- */
+.sujet-probleme { position: relative; margin: 0; width: min(290px, 65vw); }
+.sujet-probleme img {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 28px 40px rgb(11 20 48 / .22));
+  -webkit-mask: linear-gradient(180deg, #000 82%, transparent 99%);
+  mask: linear-gradient(180deg, #000 82%, transparent 99%);
+}
+.problemes { margin: 1.5rem 0 0; display: grid; gap: 2rem; }
+.probleme-cle {
+  display: block; margin-bottom: .45rem;
+  font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: var(--accent);
+}
+.problemes p { margin: 0; font-size: 1rem; line-height: 1.55; color: var(--encre-500); }
+.problemes b { color: var(--encre); font-weight: 700; }
+@media (min-width: 980px) {
+  .problemes { grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
+}
+
+/* ---------- Bande nuit : les engagements ---------- */
+
+.chiffres { display: grid; gap: 2.5rem; margin: 3rem 0 0; }
+.chiffre strong {
+  display: block; font-size: clamp(5rem, 12vw, 8.5rem); font-weight: 200;
+  line-height: .95; letter-spacing: -0.04em; color: #ffffff;
+}
+.chiffre span {
+  display: block; margin-top: .5rem;
+  font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em; color: #b9c7e6;
+}
+@media (min-width: 980px) {
+  .scene-nuit { display: block; }
+  .chiffres { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+}
+.meta-tech { margin: 3rem 0 0; max-width: 44rem; color: #8fa3cc; font-size: .95rem; }
+
+/* ---------- Pied ---------- */
+
+.fin { min-height: 70svh; }
+.pied {
+  padding: 0 20px 3rem; text-align: center; color: var(--encre-400); font-size: .9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Maquette v2, accent bleu Meta · landing Livreo · à valider avec l'équipe avant de coder</p>
+
+<!-- Scène 1 : le message principal -->
+<section class="scene">
+  <div class="nuage nuage-accueil" aria-hidden="true"></div>
+  <div class="texte">
+    <p class="etiquette">L'assistant de vente des lives Facebook à Madagascar</p>
+    <h1 class="titre">Transformez vos lives en ventes&nbsp;payées.</h1>
+    <p class="chapo">Livreo capte les commentaires de votre live Facebook, réserve chaque article au premier acheteur, envoie le récapitulatif sur Messenger et vérifie chaque paiement. Vous animez, Livreo encaisse.</p>
+    <div class="actions">
+      <a class="bouton" href="#">Essayer sur mon live</a>
+      <a class="lien" href="#">Comment ça marche</a>
+    </div>
+  </div>
+  <div class="objet">
+    <figure class="sujet-live">
+      <img src="assets/vendeuse-detouree.png" alt="Une vendeuse présente une robe bleue pendant son live" width="672" height="744">
+    </figure>
+  </div>
+  <ul class="preuves">
+    <li>
+      <b>3 <i>s</i></b>
+      <span>du commentaire à la réservation</span>
+    </li>
+    <li>
+      <b>100 <i>%</i></b>
+      <span>des commentaires captés</span>
+    </li>
+    <li>
+      <b>0</b>
+      <span>paiement validé sans preuve</span>
+    </li>
+  </ul>
+  <p class="maq-note">photo Pexels gratuite, sujet détouré (à remplacer par une vraie vendeuse pilote si on a le droit à l'image) ; les commentaires « JP » tombent autour d'elle et traversent vers la scène suivante (flux).</p>
+</section>
+
+<!-- Scène 2 : le problème, le cahier -->
+<section class="scene fond-bleu">
+  <div class="texte">
+    <p class="etiquette">Le problème</p>
+    <h2 class="titre titre-2">Après le live, des heures de travail.</h2>
+    <p class="chapo">Aujourd'hui, tout se fait à la main. Chaque étape prend du temps, et chaque étape fait perdre des ventes.</p>
+  </div>
+  <div class="objet">
+    <figure class="sujet-probleme">
+      <img src="assets/gerante-carnet.png" alt="Une gérante de boutique note une commande au téléphone, carnet en main" width="851" height="2124">
+    </figure>
+  </div>
+  <div class="problemes">
+    <div>
+      <span class="probleme-cle">recopier</span>
+      <p>Chaque commentaire du live est <b>recopié à la main</b> dans un cahier, un par un, souvent tard dans la nuit.</p>
+    </div>
+    <div>
+      <span class="probleme-cle">vérifier</span>
+      <p>Chaque capture MVola ou Orange Money est <b>contrôlée à l'œil</b>. Les fausses passent, et elles coûtent cher.</p>
+    </div>
+    <div>
+      <span class="probleme-cle">relancer</span>
+      <p>Les acheteurs qui ne paient jamais <b>bloquent les articles</b>&nbsp;: les « JP fantômes » font perdre des ventes à chaque live.</p>
+    </div>
+  </div>
+  <p class="maq-note">photo Pexels détourée, même traitement que le héros ; les trois points arrivent au défilement, l'un après l'autre ; rien d'autre ne bouge ici.</p>
+</section>
+
+<!-- Scène 3 : étape 1 de la boucle -->
+<section class="scene">
+  <div class="texte">
+    <p class="etiquette">1 · Pendant le live</p>
+    <h2 class="titre titre-2">Il commente «&nbsp;JP&nbsp;». C'est réservé.</h2>
+    <p class="chapo">Premier arrivé, premier servi, à la seconde près, même en malgache, en français ou en abrégé. Vous changez d'article avec un seul bouton.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <h3 class="ecran-titre">Article en cours <small>n°14 · Sac perlé · 38 000 Ar</small></h3>
+      <p class="gagnante"><span>Mia</span><span class="horodatage">21:04:12</span></p>
+      <ol class="attente">
+        <li><span>2. Faly</span><span class="horodatage">21:04:19</span></li>
+        <li><span>3. Vero</span><span class="horodatage">21:04:31</span></li>
+      </ol>
+      <a class="bouton" href="#">Article suivant</a>
+      <p class="ecran-aide">En dessous d'un certain seuil de confiance, vous validez d'un tap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Scène 4 : étape 2 -->
+<section class="scene fond-fort">
+  <div class="texte">
+    <p class="etiquette">2 · Juste après</p>
+    <h2 class="titre titre-2">Le récap part tout seul.</h2>
+    <p class="chapo">Chaque gagnant reçoit en privé, sur Messenger : l'article, le prix, votre numéro MVola ou Orange Money, et l'heure limite.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <div class="bulle">
+        <b>Sac perlé n°14 · 38 000 Ar</b>
+        MVola : 034 05 123 45 (Naty)
+        <span class="delai">À régler avant 22 h 30, sinon il passe au suivant.</span>
+      </div>
+      <div class="bulle bulle-droite">
+        Voici ma capture
+        <span class="capture">capture MVola</span>
+      </div>
+    </div>
+  </div>
+  <p class="maq-note">le même récap voyage de scène en scène : réservation, message, paiement (l'objet qui traverse).</p>
+</section>
+
+<!-- Scène 5 : étape 3 -->
+<section class="scene">
+  <div class="nuage nuage-paiement" aria-hidden="true"></div>
+  <div class="texte">
+    <p class="etiquette">3 · Le paiement</p>
+    <h2 class="titre titre-2">La capture est lue. Vous confirmez d'un tap.</h2>
+    <p class="chapo">Livreo lit le montant, la référence et la date, et signale ce qui ne colle pas. Rien n'est marqué « payé » sans votre accord.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <h3 class="ecran-titre">Capture de Mia <small>lue par Livreo, à confirmer</small></h3>
+      <dl class="lecture">
+        <div><dt>Montant</dt><dd>38 000 Ar <span class="ok">cohérent</span></dd></div>
+        <div><dt>Référence</dt><dd class="horodatage">MP251029.2141</dd></div>
+        <div><dt>Date</dt><dd>aujourd'hui, 21 h 41 <span class="ok">cohérent</span></dd></div>
+      </dl>
+      <a class="bouton bouton-or" href="#">Confirmer le paiement</a>
+      <p class="ecran-aide">Une fausse capture ? Les incohérences sont marquées en rouge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Scène 6 : étape 4 -->
+<section class="scene fond-bleu">
+  <div class="texte">
+    <p class="etiquette">4 · Si ça traîne</p>
+    <h2 class="titre titre-2">Pas payé à temps ? Au suivant.</h2>
+    <p class="chapo">À l'heure limite, l'article passe au premier de la liste d'attente, qui reçoit son propre récap. Les « JP fantômes » ne bloquent plus vos articles.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <div class="passage">
+        <span class="quand">22:30:00 · délai dépassé</span>
+        <p>Le sac n°14 passe à <b>Faly</b>, 2ᵉ de la liste.</p>
+        <p class="ecran-aide">Récap envoyé à Faly · 22:30:01</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bande nuit : la seule bande sombre de la page -->
+<section class="scene fond-nuit scene-nuit">
+  <div class="texte">
+    <p class="etiquette">Nos engagements</p>
+    <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+  </div>
+  <div class="chiffres">
+    <div class="chiffre"><strong>0</strong><span>commentaire perdu</span></div>
+    <div class="chiffre"><strong>0</strong><span>article attribué deux fois</span></div>
+    <div class="chiffre"><strong>0</strong><span>« payé » sans preuve</span></div>
+  </div>
+  <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+  <p class="maq-note">les zéros se dessinent au défilement ; fond qui respire (fond-respire), pas d'autre animation ici.</p>
+</section>
+
+<!-- Scène finale -->
+<section class="scene fin">
+  <div class="nuage nuage-fin" aria-hidden="true"></div>
+  <div class="texte">
+    <p class="etiquette">Vendeuses pilotes</p>
+    <h2 class="titre titre-2">Votre prochain live, sans cahier.</h2>
+    <p class="chapo">Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés, cette semaine. Vous gardez la main : Livreo ne publie jamais à votre place.</p>
+    <div class="actions">
+      <a class="bouton" href="#">Proposer mon live</a>
+      <a class="lien" href="#">Écrire à l'équipe</a>
+    </div>
+  </div>
+</section>
+
+<p class="pied">Livreo · Antananarivo · Meta Global AI Developer Hackathon 2026</p>
+
+</body>
+</html>

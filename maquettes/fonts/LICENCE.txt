@@ -1,0 +1,5 @@
+DM Sans (Colophon Foundry), JetBrains Mono (JetBrains) et Caveat (Impallari Type) : SIL Open Font License 1.1.
+Texte complet : https://openfontlicense.org/open-font-license-official-text/
+Fichiers issus des paquets Fontsource @fontsource-variable/dm-sans 5.3.0
+@fontsource/jetbrains-mono 5.3.0
+et @fontsource/caveat 5.3.0 (sous-ensemble latin).

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — propositions C et D pour la boucle</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 4rem; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.5rem clamp(24px, 6vw, 80px) 0; font-size: 1.1rem; font-weight: 800; color: var(--encre-400); }
+.variante { padding: 2rem clamp(24px, 6vw, 80px) 4rem; }
+.deux-col { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 1080px) { .deux-col { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); gap: 5rem; } }
+
+/* La liste des 4 étapes, en chiffres fins. */
+.pas-liste { display: grid; gap: 1.6rem; margin-top: 2rem; }
+.pas-liste article { display: grid; grid-template-columns: 3rem 1fr; column-gap: 1rem; align-items: baseline; }
+.pas-liste b {
+  font-size: 2.2rem; font-weight: 250; line-height: 1; letter-spacing: -0.02em;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.pas-liste h3 { margin: 0 0 .15rem; font-size: 1.05rem; font-weight: 800; letter-spacing: -0.015em; }
+.pas-liste p { margin: 0; font-size: .92rem; line-height: 1.45; color: var(--encre-500); }
+
+/* ---------- C. La conversation ---------- */
+.fil {
+  max-width: 420px; justify-self: center; width: 100%;
+  display: grid; gap: .9rem;
+}
+.fil-info {
+  justify-self: center; text-align: center;
+  font: 700 .72rem/1.5 var(--mono); letter-spacing: .03em; color: var(--encre-400);
+}
+.fil-info.paye { color: var(--or-encre); }
+.fil-info.rouge { color: var(--direct); }
+.fil .bulle { box-shadow: 0 10px 30px -18px rgb(11 20 48 / .35); }
+.fil .bulle-droite { background: var(--accent); color: #fff; }
+
+/* ---------- D. L'écran annoté ---------- */
+.tableau {
+  position: relative;
+  background: #ffffff; border: 1.5px solid var(--bleu-200); border-radius: 24px;
+  box-shadow: var(--ombre-ecran); padding: 1.4rem 1.5rem; max-width: 560px; width: 100%;
+  justify-self: center;
+}
+.tableau-tete { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.1rem; }
+.tableau-tete strong { font-size: 1rem; }
+.tableau-tete .direct { display: inline-flex; align-items: center; gap: .35rem; font: 800 .7rem/1 var(--sans); letter-spacing: .05em; color: var(--direct); }
+.tableau-tete .direct i { width: 7px; height: 7px; border-radius: 50%; background: var(--direct); }
+.lignes { display: grid; gap: .65rem; }
+.ligne-vente {
+  position: relative;
+  display: grid; grid-template-columns: auto 1fr auto auto; column-gap: .9rem; align-items: baseline;
+  padding: .65rem .8rem; border-radius: 12px; background: var(--bleu-pale);
+  font-size: .9rem;
+}
+.ligne-vente .heure { font: 700 .72rem/1.6 var(--mono); color: var(--encre-400); }
+.ligne-vente .statut { font-weight: 700; font-size: .78rem; }
+.statut.paye { color: var(--or-encre); }
+.statut.envoye { color: var(--encre-400); }
+.statut.suivant { color: var(--accent); }
+.statut.rouge { color: var(--direct); }
+.ligne-vente .pastille {
+  position: absolute; left: -2.8rem; top: 50%; translate: 0 -50%;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff; font: 800 .8rem/1 var(--sans);
+}
+.tableau .bouton { width: 100%; margin-top: 1.1rem; height: 48px; font-size: .95rem; }
+@media (max-width: 1079px) { .ligne-vente .pastille { display: none; } }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Deux nouvelles pistes pour la boucle — à valider avant d'entrer dans le site</p>
+
+<p class="titre-variante">C · La conversation</p>
+<section class="variante variante-c">
+  <div class="deux-col">
+    <div>
+      <p class="etiquette">La boucle Livreo</p>
+      <h2 class="titre titre-2">Tout se passe dans la conversation.</h2>
+      <p class="chapo">Du « JP » au paiement, chaque vente avance toute seule, sur Messenger.</p>
+      <div class="pas-liste">
+        <article><b>1</b><div><h3>Réservé à la seconde.</h3><p>Le premier « JP » gagne, liste d'attente comprise.</p></div></article>
+        <article><b>2</b><div><h3>Le récap part tout seul.</h3><p>Article, prix, numéro MVola, heure limite.</p></div></article>
+        <article><b>3</b><div><h3>La capture est lue.</h3><p>Montant, référence, date : vous confirmez d'un tap.</p></div></article>
+        <article><b>4</b><div><h3>Sinon, au suivant.</h3><p>Délai dépassé : l'article repart dans la liste.</p></div></article>
+      </div>
+    </div>
+    <div class="fil">
+      <p class="fil-info">21:04:12 · sac n°14 réservé pour Mia</p>
+      <div class="bulle">
+        <b>Sac perlé n°14 · 38 000 Ar</b>
+        MVola : 034 05 123 45 (Naty)
+        <span class="delai">À régler avant 22 h 30.</span>
+      </div>
+      <div class="bulle bulle-droite">
+        Voici ma capture
+        <span class="capture">capture MVola</span>
+      </div>
+      <p class="fil-info">lecture : 38 000 Ar · MP251029.2141 · cohérent</p>
+      <p class="fil-info paye">21:41:07 · payé, confirmé par Naty d'un tap</p>
+      <p class="fil-info rouge">22:30:00 · sac n°7 : délai dépassé, il passe à Faly</p>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">D · L'écran annoté</p>
+<section class="variante variante-d">
+  <div class="deux-col">
+    <div>
+      <p class="etiquette">La boucle Livreo</p>
+      <h2 class="titre titre-2">Votre live, tenu à la seconde.</h2>
+      <p class="chapo">Un seul écran pendant le live : chaque vente y avance toute seule.</p>
+      <div class="pas-liste">
+        <article><b>1</b><div><h3>Réservé à la seconde.</h3><p>Le premier « JP » gagne, liste d'attente comprise.</p></div></article>
+        <article><b>2</b><div><h3>Le récap part tout seul.</h3><p>Article, prix, numéro MVola, heure limite.</p></div></article>
+        <article><b>3</b><div><h3>La capture est lue.</h3><p>Montant, référence, date : vous confirmez d'un tap.</p></div></article>
+        <article><b>4</b><div><h3>Sinon, au suivant.</h3><p>Délai dépassé : l'article repart dans la liste.</p></div></article>
+      </div>
+    </div>
+    <div class="tableau">
+      <div class="tableau-tete">
+        <strong>Live du 29 octobre</strong>
+        <span class="direct"><i></i>EN DIRECT · 214</span>
+      </div>
+      <div class="lignes">
+        <p class="ligne-vente"><span class="pastille">1</span><span class="heure">21:04:12</span><span>Sac perlé n°14 · <b>Mia</b></span><span></span><span class="statut envoye">réservé</span></p>
+        <p class="ligne-vente"><span class="pastille">2</span><span class="heure">21:04:13</span><span>Récap envoyé à Mia</span><span></span><span class="statut envoye">Messenger</span></p>
+        <p class="ligne-vente"><span class="pastille">3</span><span class="heure">21:41:07</span><span>38 000 Ar · MP251029.2141</span><span></span><span class="statut paye">payé</span></p>
+        <p class="ligne-vente"><span class="pastille">4</span><span class="heure">22:30:00</span><span>Sac n°7 · délai dépassé</span><span class="statut rouge"></span><span class="statut suivant">passe à Faly</span></p>
+        <p class="ligne-vente"><span class="heure">22:30:01</span><span>Récap envoyé à Faly</span><span></span><span class="statut envoye">Messenger</span></p>
+      </div>
+      <span class="bouton">Article suivant</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

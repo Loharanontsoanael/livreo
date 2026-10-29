@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — côté acheteuses : AC amélioré</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 15ch; }
+.eng .chapo-nuit { margin: 0; max-width: 32rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+.kicker { margin: 2.8rem 0 0; font: 650 1.15rem/1.4 var(--titrage); letter-spacing: -0.01em; color: #9cc0ff; max-width: 30rem; }
+
+/* Le rond « Ar » : notre propre repère neutre pour le paiement mobile. */
+.rond-ar {
+  border-radius: 50%; display: grid; place-items: center;
+  border: 1.5px solid #9cc0ff; color: #9cc0ff;
+  font: 700 .8em/1 var(--titrage); letter-spacing: -0.01em;
+}
+
+/* ---------- AE · Le fil aux trois icônes (split) ---------- */
+.eng-ae .deux { display: grid; gap: 3.5rem; }
+@media (min-width: 980px) { .eng-ae .deux { grid-template-columns: minmax(0, 27rem) minmax(0, 1fr); gap: 5.5rem; align-items: center; } }
+.ae-fil { position: relative; display: grid; gap: 3rem; align-content: start; max-width: 34rem; }
+.ae-fil::before {
+  content: ""; position: absolute; left: 20px; top: 1.4rem; bottom: 1.4rem; width: 1px;
+  background: rgb(255 255 255 / .22);
+}
+.ae-item { position: relative; margin: 0; display: grid; grid-template-columns: 41px minmax(0, 1fr); gap: 1.4rem; align-items: start; }
+.ae-icone {
+  position: relative; width: 41px; height: 41px;
+  display: grid; place-items: center;
+  background: var(--nuit); padding: 2px; border-radius: 50%;
+}
+.ae-icone svg { width: 37px; height: 37px; display: block; }
+.ae-icone .rond-ar { width: 37px; height: 37px; font-size: .85rem; }
+.ae-item b { display: block; font: 650 1.4rem/1.25 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.ae-item span { display: block; margin-top: .4rem; font-size: .95rem; line-height: 1.6; color: #aab8d8; max-width: 26rem; }
+
+/* ---------- AF · La grande liste (pleine largeur, façon registre) ---------- */
+.af-liste { margin-top: 3.8rem; display: grid; gap: 2.6rem; }
+.af-rang { margin: 0; display: grid; gap: .6rem; }
+@media (min-width: 980px) {
+  .af-rang { grid-template-columns: 56px minmax(0, 23rem) minmax(0, 1fr); gap: 2.2rem; align-items: baseline; }
+}
+.af-icone { align-self: start; }
+.af-icone svg { width: 42px; height: 42px; display: block; }
+.af-icone .rond-ar { width: 42px; height: 42px; font-size: .95rem; }
+.af-rang b { font: 650 clamp(1.4rem, 2.6vw, 1.85rem)/1.2 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.af-rang span { font-size: 1rem; line-height: 1.6; color: #aab8d8; max-width: 30rem; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-ms3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0695ff"/><stop offset="1" stop-color="#a334fa"/>
+    </linearGradient>
+    <symbol id="i-fb3" viewBox="0 0 24 24">
+      <path fill="#0866ff" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+    </symbol>
+    <symbol id="i-ms3" viewBox="0 0 24 24">
+      <path fill="url(#g-ms3)" d="M.001 11.639C.001 4.949 5.241 0 12.001 0S24 4.95 24 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 00-.64.05l-2.39 1.05a.96.96 0 01-1.35-.85l-.07-2.14a.97.97 0 00-.32-.68A11.39 11.389 0 01.002 11.64zm8.32-2.19l-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 00-2.61.48z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<p class="maq-bandeau">AC retravaillé : sans MVola (Mobile Money générique), deux designs améliorés</p>
+
+<p class="titre-variante">AE · Le fil aux trois icônes (les logos posés sur le fil de la nuit)</p>
+<section class="eng eng-ae" id="eng-ae">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+      <p class="chapo-nuit">Facebook, Messenger, le Mobile Money : elles s'en servent tous les jours. Acheter sur votre live ne leur demande rien de nouveau.</p>
+      <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+    </div>
+    <div class="ae-fil">
+      <div class="ae-item">
+        <div class="ae-icone"><svg aria-hidden="true"><use href="#i-fb3"/></svg></div>
+        <div>
+          <b>Elle est déjà sur votre live.</b>
+          <span>Elle commente « jp », c'est tout. Aucun site à ouvrir, aucun compte à créer.</span>
+        </div>
+      </div>
+      <div class="ae-item">
+        <div class="ae-icone"><svg aria-hidden="true"><use href="#i-ms3"/></svg></div>
+        <div>
+          <b>Elle a déjà Messenger.</b>
+          <span>Son récap de commande y arrive tout seul : l'article, le prix, le délai.</span>
+        </div>
+      </div>
+      <div class="ae-item">
+        <div class="ae-icone"><p class="rond-ar" aria-hidden="true">Ar</p></div>
+        <div>
+          <b>Elle paie comme d'habitude.</b>
+          <span>Par Mobile Money : sa capture est lue et confirmée en quelques secondes.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">AF · La grande liste (pleine largeur, titre et détail côte à côte)</p>
+<section class="eng eng-af" id="eng-af">
+  <p class="etiquette">Côté acheteuses</p>
+  <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+  <p class="chapo-nuit">Facebook, Messenger, le Mobile Money : elles s'en servent tous les jours. Acheter sur votre live ne leur demande rien de nouveau.</p>
+  <div class="af-liste">
+    <div class="af-rang">
+      <div class="af-icone"><svg aria-hidden="true"><use href="#i-fb3"/></svg></div>
+      <b>Elle est déjà sur votre live.</b>
+      <span>Elle commente « jp », c'est tout. Aucun site à ouvrir, aucun compte à créer.</span>
+    </div>
+    <div class="af-rang">
+      <div class="af-icone"><svg aria-hidden="true"><use href="#i-ms3"/></svg></div>
+      <b>Elle a déjà Messenger.</b>
+      <span>Son récap de commande y arrive tout seul : l'article, le prix, le délai.</span>
+    </div>
+    <div class="af-rang">
+      <div class="af-icone"><p class="rond-ar" aria-hidden="true" style="margin:0">Ar</p></div>
+      <b>Elle paie comme d'habitude.</b>
+      <span>Par Mobile Money : sa capture est lue et confirmée en quelques secondes.</span>
+    </div>
+  </div>
+  <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+</section>
+
+</body>
+</html>

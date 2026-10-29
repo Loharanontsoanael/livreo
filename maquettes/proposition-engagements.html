@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — engagements : trois designs</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la section sur la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 70% 30%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 70% 30%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 14ch; }
+.eng .meta-tech {
+  margin: 3.5rem 0 0; max-width: 46rem;
+  font-size: .95rem; line-height: 1.75; color: #aab8d8;
+}
+
+/* ---------- J · Les trois lignes à la ligne de base ---------- */
+.eng-j .rangs { margin-top: 3.2rem; display: grid; gap: 2rem; }
+.eng-j .rang { display: flex; align-items: baseline; gap: 1.8rem; flex-wrap: wrap; }
+.eng-j .rang b {
+  font: 200 clamp(4rem, 8vw, 6.5rem)/0.9 var(--sans);
+  color: #fff; font-variant-numeric: tabular-nums;
+}
+.eng-j .rang span {
+  font: 600 clamp(1.3rem, 2.4vw, 1.8rem)/1.2 var(--titrage);
+  color: #c9d8f5;
+}
+
+/* ---------- K · Le zéro unique en contour ---------- */
+.eng-k .deux { display: grid; gap: 2.5rem; align-items: center; }
+@media (min-width: 980px) { .eng-k .deux { grid-template-columns: minmax(0, 1fr) auto; gap: 4rem; } }
+.eng-k .zero {
+  margin: 0;
+  font: 200 clamp(14rem, 26vw, 22rem)/0.78 var(--sans);
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(156 192 255 / .6);
+  justify-self: center; user-select: none;
+}
+.eng-k .liste { margin: 2.6rem 0 0; padding: 0; list-style: none; display: grid; gap: 1.15rem; }
+.eng-k .liste li {
+  font: 700 .85rem/1.5 var(--mono); letter-spacing: .02em; color: #d7e2f7;
+}
+.eng-k .liste li::before { content: "0  "; color: #9cc0ff; white-space: pre; }
+
+/* ---------- L · Le manifeste en mots ---------- */
+.eng-l .manifeste { margin-top: 3rem; display: grid; gap: 1.5rem; }
+.eng-l .manifeste p {
+  margin: 0; max-width: 30ch;
+  font: 650 clamp(1.7rem, 3.6vw, 2.6rem)/1.15 var(--titrage);
+  letter-spacing: -0.015em; color: #fff;
+}
+.eng-l .manifeste b { font-weight: 650; color: #9cc0ff; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Engagements : trois designs de remplacement, à comparer avec l'actuel (trois 0 en colonnes)</p>
+
+<p class="titre-variante">J · Les trois lignes (le 0 et sa promesse sur la même ligne de base)</p>
+<section class="eng eng-j" id="eng-j">
+  <p class="etiquette">Nos engagements</p>
+  <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+  <div class="rangs">
+    <p class="rang"><b>0</b> <span>commentaire perdu.</span></p>
+    <p class="rang"><b>0</b> <span>article attribué deux fois.</span></p>
+    <p class="rang"><b>0</b> <span>« payé » sans preuve.</span></p>
+  </div>
+  <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+</section>
+
+<p class="titre-variante">K · Le zéro unique (un seul chiffre en contour, les trois promesses en repères mono)</p>
+<section class="eng eng-k" id="eng-k">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Nos engagements</p>
+      <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+      <ul class="liste">
+        <li>commentaire perdu</li>
+        <li>article attribué deux fois</li>
+        <li>« payé » sans preuve</li>
+      </ul>
+      <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+    </div>
+    <p class="zero" aria-hidden="true">0</p>
+  </div>
+</section>
+
+<p class="titre-variante">L · Le manifeste en mots (sans chiffres, trois phrases pleines)</p>
+<section class="eng eng-l" id="eng-l">
+  <p class="etiquette">Nos engagements</p>
+  <h2 class="titre titre-2">Fiable dès le premier live.</h2>
+  <div class="manifeste">
+    <p><b>Aucun</b> commentaire perdu.</p>
+    <p><b>Aucun</b> article attribué deux fois.</p>
+    <p><b>Aucun</b> « payé » sans preuve.</p>
+  </div>
+  <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+</section>
+
+</body>
+</html>

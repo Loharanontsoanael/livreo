@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — côté acheteuses : posture couchée</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+.eng { position: relative; background: var(--nuit); overflow: hidden; padding: 5rem clamp(24px, 6vw, 80px); min-height: 88vh; display: grid; align-items: center; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 15ch; }
+.eng .chapo-nuit { margin: 0; max-width: 28rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+.gestes2 { margin: 2.2rem 0 0; max-width: 30rem; font: 700 .78rem/2 var(--mono); letter-spacing: .02em; color: #7f9ad1; }
+.kicker { margin: 2.2rem 0 0; max-width: 26rem; font: 650 1.12rem/1.4 var(--titrage); letter-spacing: -0.01em; color: #9cc0ff; }
+
+.eng .deux { display: grid; gap: 3rem; align-items: center; position: relative; z-index: 2; }
+@media (min-width: 980px) { .eng .deux { grid-template-columns: minmax(0, 30rem) minmax(0, 1fr); gap: 4rem; } }
+
+/* Le téléphone couché : image à l'échelle naturelle, bords fondus. */
+.av-sujet { position: relative; margin: 0; justify-self: center; --tel-l: min(52vw, 46rem); }
+.av-sujet img {
+  display: block; width: var(--tel-l); height: auto;
+  -webkit-mask: radial-gradient(68% 64% at 50% 48%, #000 36%, transparent 72%);
+  mask: radial-gradient(68% 64% at 50% 48%, #000 36%, transparent 72%);
+}
+/* Le cache qui éteint l'écran d'origine (l'heure anglaise de la photo). */
+.av-cache {
+  position: absolute; left: 21%; top: 10%; width: 56%; height: 66%;
+  rotate: -14deg; border-radius: 18% / 26%;
+  background: #04060e;
+  box-shadow: 0 0 46px 30px #04060e;
+  opacity: .96;
+}
+/* Notre interface, posée sur le cache, dans le même angle. */
+.av-ecran {
+  position: absolute; left: 24%; top: 14%; width: 50%; height: 58%;
+  rotate: -14deg;
+  display: grid; align-content: center; justify-items: center; gap: .6em;
+  font-size: calc(var(--tel-l) / 34);
+  text-align: left;
+}
+.av-heure {
+  margin: 0; font: 600 .9em/1 var(--mono); color: #9fb6e4; font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 16px rgb(102 161 255 / .6);
+}
+.av-exp { margin: .2em 0 0; font: 700 max(.5rem, .34em)/1 var(--mono); letter-spacing: .05em; color: #7f9ad1; }
+.av-chat { margin-top: .4em; width: 86%; display: grid; gap: .5em; }
+.av-bulle {
+  margin: 0; max-width: 88%;
+  font: 550 max(.6rem, .44em)/1.45 var(--sans);
+  padding: .65em .9em; border-radius: 1.1em;
+}
+.av-livreo { justify-self: start; background: #1a2440; color: #dbe6ff; border-bottom-left-radius: .35em; }
+.av-cliente { justify-self: end; background: var(--accent); color: #fff; border-bottom-right-radius: .35em; }
+.av-statut {
+  margin: .3em 0 0; justify-self: center;
+  font: 700 max(.5rem, .36em)/1.4 var(--mono); letter-spacing: .02em; color: #9cc0ff;
+  text-shadow: 0 0 14px rgb(8 102 255 / .6);
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Posture « téléphone couché » (photo AN) avec notre interface posée sur l'écran</p>
+
+<p class="titre-variante">AP · La veilleuse habillée</p>
+<section class="eng" id="eng-ap">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+      <p class="chapo-nuit">Ce soir, elles sont déjà devant votre live. Tout ce qu'il faut pour acheter est déjà dans leur main.</p>
+      <p class="gestes2">un commentaire pour commander · un récap sur Messenger · un paiement Mobile Money</p>
+      <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+    </div>
+    <figure class="av-sujet" aria-hidden="true">
+      <img src="assets/tel-veille.jpg" alt="">
+      <div class="av-cache"></div>
+      <div class="av-ecran">
+        <p class="av-heure">21:42</p>
+        <p class="av-exp">Livreo</p>
+        <div class="av-chat">
+          <p class="av-bulle av-livreo">Robe bleue wax · 45&nbsp;000&nbsp;Ar. Réservée pour vous jusqu'à 22:00.</p>
+          <p class="av-bulle av-cliente">capture envoyée</p>
+        </div>
+        <p class="av-statut">payé · confirmé à 21:44</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<p class="titre-variante">AQ · Le téléphone posé (photo refroidie en bleu, interface en perspective)</p>
+<section class="eng" id="eng-aq">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+      <p class="chapo-nuit">Ce soir, elles sont déjà devant votre live. Tout ce qu'il faut pour acheter est déjà dans leur main.</p>
+      <p class="gestes2">un commentaire pour commander · un récap sur Messenger · un paiement Mobile Money</p>
+      <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+    </div>
+    <figure class="aq-sujet" aria-hidden="true">
+      <img src="assets/tel-pose.jpg" alt="">
+      <div class="aq-ecran">
+        <p class="av-heure">21:42</p>
+        <div class="av-chat" style="width:92%">
+          <p class="av-bulle av-livreo">Robe bleue wax · 45&nbsp;000&nbsp;Ar. Réservée pour vous jusqu'à 22:00.</p>
+          <p class="av-bulle av-cliente">capture envoyée</p>
+        </div>
+        <p class="av-statut">payé · confirmé à 21:44</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+.aq-sujet { position: relative; margin: 0; justify-self: center; --tel-l: min(50vw, 44rem); }
+.aq-sujet img {
+  display: block; width: var(--tel-l); height: auto;
+  filter: hue-rotate(200deg) saturate(.5) brightness(.62) contrast(1.15);
+  -webkit-mask: radial-gradient(60% 54% at 50% 56%, #000 38%, transparent 75%);
+  mask: radial-gradient(60% 54% at 50% 56%, #000 38%, transparent 75%);
+}
+.aq-ecran {
+  position: absolute; left: 24%; top: 38%; width: 42%; height: 36%;
+  transform: perspective(900px) rotateX(52deg) rotateZ(19deg);
+  transform-origin: 50% 50%;
+  display: grid; align-content: center; justify-items: center; gap: .55em;
+  font-size: calc(var(--tel-l) / 38);
+}
+</style>
+
+<p class="titre-variante">AR · Le téléphone à plat (vu du dessus, interface posée sur la vitre)</p>
+<section class="eng" id="eng-ar">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+      <p class="chapo-nuit">Ce soir, elles sont déjà devant votre live. Tout ce qu'il faut pour acheter est déjà dans leur main.</p>
+      <p class="gestes2">un commentaire pour commander · un récap sur Messenger · un paiement Mobile Money</p>
+      <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+    </div>
+    <figure class="ar-sujet" aria-hidden="true">
+      <img src="assets/tel-plat.jpg" alt="">
+      <div class="ar-ecran">
+        <p class="av-heure">21:42</p>
+        <p class="av-exp">Livreo</p>
+        <div class="av-chat" style="width:88%">
+          <p class="av-bulle av-livreo">Robe bleue wax · 45&nbsp;000&nbsp;Ar. Réservée pour vous jusqu'à 22:00.</p>
+          <p class="av-bulle av-cliente">capture envoyée</p>
+        </div>
+        <p class="av-statut">payé · confirmé à 21:44</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<style>
+.ar-sujet { position: relative; margin: 0; justify-self: center; --tel-h2: min(74svh, 42rem); }
+.ar-sujet img {
+  display: block; width: auto; height: var(--tel-h2);
+  filter: saturate(.8) brightness(.9);
+  -webkit-mask: radial-gradient(66% 60% at 50% 50%, #000 42%, transparent 78%);
+  mask: radial-gradient(66% 60% at 50% 50%, #000 42%, transparent 78%);
+}
+.ar-ecran {
+  position: absolute; left: 36.5%; top: 31%; width: 33.5%; height: 47%;
+  display: grid; align-content: center; justify-items: center; gap: .6em;
+  font-size: calc(var(--tel-h2) / 30);
+}
+</style>
+
+</body>
+</html>

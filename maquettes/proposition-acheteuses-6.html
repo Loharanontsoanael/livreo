@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — côté acheteuses : le téléphone comme asset</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+.eng { position: relative; background: var(--nuit); overflow: hidden; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 15ch; }
+.eng .chapo-nuit { margin: 0; max-width: 28rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+.gestes { margin: 2.4rem 0 0; font: 700 .8rem/2 var(--mono); letter-spacing: .02em; color: #7f9ad1; max-width: 30rem; }
+.kicker { margin: 2.4rem 0 0; font: 650 1.12rem/1.4 var(--titrage); letter-spacing: -0.01em; color: #9cc0ff; max-width: 26rem; }
+
+/* ---------- AN · La veilleuse (le téléphone posé, déjà allumé) ---------- */
+.eng-an { min-height: 88vh; display: grid; align-items: center; padding: 5rem clamp(24px, 6vw, 80px); }
+.an-photo { position: absolute; inset: 0 0 0 auto; width: 62%; }
+.an-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 45%; }
+.an-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(rgb(11 20 48 / .18), rgb(11 20 48 / .18)),
+    linear-gradient(90deg, var(--nuit) 0%, rgb(11 20 48 / .75) 28%, rgb(11 20 48 / .25) 60%, transparent 85%),
+    linear-gradient(0deg, var(--nuit) 0%, transparent 30%),
+    linear-gradient(180deg, var(--nuit) 0%, transparent 28%),
+    linear-gradient(270deg, var(--nuit) 0%, transparent 16%);
+}
+.an-contenu { position: relative; z-index: 2; max-width: 30rem; }
+
+/* ---------- AO · Le monolithe (le téléphone debout, écran habillé) ---------- */
+.eng-ao { min-height: 92vh; display: grid; align-items: center; padding: 5rem clamp(24px, 6vw, 80px); }
+.ao-contenu { position: relative; z-index: 2; max-width: 30rem; }
+.ao-figure {
+  position: absolute; inset: 0 2% 0 auto; width: 46%;
+}
+.ao-figure img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.ao-figure::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(rgb(11 20 48 / .42), rgb(11 20 48 / .42)),
+    linear-gradient(90deg, var(--nuit) 0%, rgb(11 20 48 / .65) 25%, rgb(11 20 48 / .2) 55%, transparent 80%),
+    linear-gradient(270deg, var(--nuit) 0%, transparent 22%),
+    linear-gradient(0deg, var(--nuit) 0%, transparent 24%),
+    linear-gradient(180deg, var(--nuit) 0%, transparent 22%);
+}
+/* L'écran du téléphone, habillé par nous : l'heure du live et le signe que c'est payé. */
+.ao-ecran {
+  position: absolute; z-index: 3;
+  left: 66.5%; top: 24%; width: 16.5%; height: 46%;
+  display: grid; align-content: center; justify-items: center; gap: .8rem;
+  rotate: -1.5deg;
+  text-align: center;
+}
+.ao-heure {
+  margin: 0; font: 600 clamp(1.6rem, 2.6vw, 2.3rem)/1 var(--mono);
+  color: #cfe0ff; font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 30px rgb(102 161 255 / .9), 0 0 70px rgb(8 102 255 / .5);
+}
+.ao-note {
+  margin: 0; max-width: 100%; font: 700 .58rem/1.7 var(--mono); letter-spacing: .03em;
+  color: rgb(156 192 255 / .85);
+  text-shadow: 0 0 18px rgb(8 102 255 / .7);
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Côté acheteuses : le téléphone comme seul visuel, sans personne</p>
+
+<p class="titre-variante">AN · La veilleuse (son téléphone posé, déjà allumé dans le noir)</p>
+<section class="eng eng-an" id="eng-an">
+  <div class="an-photo" aria-hidden="true"><img src="assets/tel-veille.jpg" alt=""></div>
+  <div class="an-contenu">
+    <p class="etiquette">Côté acheteuses</p>
+    <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+    <p class="chapo-nuit">Ce soir, leur téléphone est déjà posé à côté d'elles. Tout ce qu'il faut pour acheter sur votre live est déjà dedans.</p>
+    <p class="gestes">elle commente « jp » · le récap arrive sur Messenger · elle paie par Mobile Money</p>
+    <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+  </div>
+</section>
+
+<p class="titre-variante">AO · Le monolithe (le téléphone debout, son écran raconte la vente)</p>
+<section class="eng eng-ao" id="eng-ao">
+  <div class="ao-figure" aria-hidden="true">
+    <img src="assets/tel-monolithe.jpg" alt="">
+  </div>
+  <div class="ao-ecran" aria-hidden="true">
+    <p class="ao-heure">21:42</p>
+    <p class="ao-note">« jp » reçu · récap envoyé · payé</p>
+  </div>
+  <div class="ao-contenu">
+    <p class="etiquette">Côté acheteuses</p>
+    <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+    <p class="chapo-nuit">Pendant votre live, leur téléphone fait tout : le commentaire, le récap sur Messenger, le paiement par Mobile Money.</p>
+    <p class="gestes">elle commente « jp » · le récap arrive sur Messenger · elle paie par Mobile Money</p>
+    <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+  </div>
+</section>
+
+</body>
+</html>

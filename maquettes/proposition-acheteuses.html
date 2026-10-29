@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — côté acheteuses : trois designs</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 17ch; }
+.eng .chapo-nuit { margin: 0; max-width: 36rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+.kicker { margin: 3.2rem 0 0; font: 650 1.15rem/1.4 var(--titrage); letter-spacing: -0.01em; color: #9cc0ff; max-width: 34rem; }
+
+/* ---------- AB · Les trois gestes (écho du fil de la boucle) ---------- */
+.eng-ab .deux { display: grid; gap: 3rem; }
+@media (min-width: 980px) { .eng-ab .deux { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 5rem; align-items: center; } }
+.ach-fil { position: relative; padding-left: 1.6rem; display: grid; gap: 2.4rem; align-content: start; }
+.ach-fil::before {
+  content: ""; position: absolute; left: 2px; top: .7rem; bottom: .7rem; width: 1px;
+  background: rgb(255 255 255 / .22);
+}
+.ach-geste { position: relative; margin: 0; display: grid; gap: .35rem; }
+.ach-geste::before {
+  content: ""; position: absolute; left: -1.6rem; top: .55rem;
+  width: 6px; height: 6px; border-radius: 50%; background: #ffffff;
+}
+.ach-geste b { font: 600 1.45rem/1.25 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.ach-geste span { font-size: .95rem; line-height: 1.55; color: #aab8d8; }
+
+/* ---------- AC · Elles ont déjà tout ---------- */
+.deja { margin-top: 3.4rem; display: grid; gap: 2.4rem; }
+@media (min-width: 980px) { .deja { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; } }
+.deja-item { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 1rem; align-items: start; }
+.deja-item svg { width: 34px; height: 34px; margin-top: .15rem; }
+.deja-item .mvola {
+  width: 34px; height: 34px; margin-top: .15rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #ffd300; color: #1a1a1a; font: 800 .62rem/1 var(--sans); letter-spacing: -0.02em;
+}
+.deja-item b { display: block; font: 650 1.25rem/1.2 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.deja-item span { display: block; margin-top: .35rem; font-size: .95rem; line-height: 1.6; color: #b9c7e6; }
+
+/* ---------- AD · Commenter. Recevoir. Payer. ---------- */
+.verbes { margin-top: 3.6rem; display: grid; gap: 2.6rem; }
+@media (min-width: 980px) { .verbes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; } }
+.verbe { display: grid; gap: .7rem; align-content: start; }
+.verbe b { font: 700 clamp(2.1rem, 4vw, 3rem)/1.05 var(--titrage); letter-spacing: -0.025em; color: #fff; }
+.verbe small { font: 700 .76rem/1.6 var(--mono); letter-spacing: .02em; color: #9cc0ff; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Côté acheteuses : le contenu marketing qui lève la dernière objection, en trois designs</p>
+
+<p class="titre-variante">AB · Les trois gestes (l'écho du fil de la boucle, côté cliente)</p>
+<section class="eng eng-ab" id="eng-ab">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Côté acheteuses</p>
+      <h2 class="titre titre-2">Simple aussi pour vos clientes.</h2>
+      <p class="chapo-nuit">Rien à installer, rien à apprendre. Elles achètent comme elles commentent : en trois gestes.</p>
+      <p class="kicker">Vos clientes ne changent rien à leurs habitudes. Elles achètent juste plus vite.</p>
+    </div>
+    <div class="ach-fil">
+      <p class="ach-geste">
+        <b>Elle commente « jp ».</b>
+        <span>Comme elle l'a toujours fait, pendant votre live.</span>
+      </p>
+      <p class="ach-geste">
+        <b>Son récap arrive sur Messenger.</b>
+        <span>L'article, le prix, le délai pour payer.</span>
+      </p>
+      <p class="ach-geste">
+        <b>Elle paie MVola, envoie la capture.</b>
+        <span>Lue et confirmée en quelques secondes.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">AC · Elles ont déjà tout (Facebook, Messenger, MVola : rien de nouveau à adopter)</p>
+<section class="eng eng-ac" id="eng-ac">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g-ms2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#0695ff"/><stop offset="1" stop-color="#a334fa"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <p class="etiquette">Côté acheteuses</p>
+  <h2 class="titre titre-2">Vos clientes ont déjà tout.</h2>
+  <p class="chapo-nuit">Facebook, Messenger, MVola : elles s'en servent tous les jours. Acheter sur votre live ne leur demande rien de nouveau.</p>
+  <div class="deja">
+    <div class="deja-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0866ff" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+      <div>
+        <b>Elle est déjà sur votre live.</b>
+        <span>Elle commente « jp », c'est tout. Aucun site à ouvrir, aucun compte à créer.</span>
+      </div>
+    </div>
+    <div class="deja-item">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="url(#g-ms2)" d="M.001 11.639C.001 4.949 5.241 0 12.001 0S24 4.95 24 11.639c0 6.689-5.24 11.638-12 11.638-1.21 0-2.38-.16-3.47-.46a.96.96 0 00-.64.05l-2.39 1.05a.96.96 0 01-1.35-.85l-.07-2.14a.97.97 0 00-.32-.68A11.39 11.389 0 01.002 11.64zm8.32-2.19l-3.52 5.6c-.35.53.32 1.139.82.75l3.79-2.87c.26-.2.6-.2.87 0l2.8 2.1c.84.63 2.04.4 2.6-.48l3.52-5.6c.35-.53-.32-1.13-.82-.75l-3.79 2.87c-.25.2-.6.2-.86 0l-2.8-2.1a1.8 1.8 0 00-2.61.48z"/></svg>
+      <div>
+        <b>Elle a déjà Messenger.</b>
+        <span>Son récap de commande y arrive tout seul : l'article, le prix, le délai.</span>
+      </div>
+    </div>
+    <div class="deja-item">
+      <p class="mvola" aria-hidden="true">MVola</p>
+      <div>
+        <b>Elle paie déjà avec MVola.</b>
+        <span>Elle envoie sa capture comme d'habitude. Livreo la lit et confirme.</span>
+      </div>
+    </div>
+  </div>
+  <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+</section>
+
+<p class="titre-variante">AD · Commenter. Recevoir. Payer. (les trois verbes en affiche)</p>
+<section class="eng eng-ad" id="eng-ad">
+  <p class="etiquette">Côté acheteuses</p>
+  <h2 class="titre titre-2">Simple aussi pour vos clientes.</h2>
+  <div class="verbes">
+    <div class="verbe">
+      <b>Commenter.</b>
+      <small>« jp », pendant votre live</small>
+    </div>
+    <div class="verbe">
+      <b>Recevoir.</b>
+      <small>le récap sur Messenger</small>
+    </div>
+    <div class="verbe">
+      <b>Payer.</b>
+      <small>MVola, capture lue, confirmé</small>
+    </div>
+  </div>
+  <p class="kicker">Rien à installer, rien à apprendre : elles achètent juste plus vite.</p>
+</section>
+
+</body>
+</html>

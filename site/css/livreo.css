@@ -1,0 +1,538 @@
+/*
+ * Livreo : la landing. Construit sur la lib « couches » (css/couches.css,
+ * js/couches.js), reprise du projet agenda-toilettage.
+ * Système typographique : DM Sans pour le discours, JetBrains Mono pour les
+ * données et les repères. Page blanc pur ; deux bandes fortes seulement
+ * (le récap Messenger en bleu, les engagements en nuit).
+ */
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/dm-sans-latin-wght.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/jetbrains-mono-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("../fonts/hanken-grotesk-latin-wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Jetons Livreo. */
+  --encre: #121a2e;
+  --encre-500: #49536b;
+  --encre-400: #67738f;
+  --accent: #0866ff;
+  --accent-700: #0a4fc4;
+  --direct: #c2183a;
+  --direct-700: #9c1230;
+  --bleu-pale: #eef3fe;
+  --bleu-200: #d2e0fb;
+  --or: #e8a63d;
+  --or-doux: #fdf0d8;
+  --or-encre: #6b4300;
+
+  --sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --titrage: "Hanken Grotesk", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --ombre-ecran: 0 2px 4px rgb(11 20 48 / .08), 0 24px 60px -24px rgb(11 20 48 / .35);
+
+  /* Jetons attendus par la lib couches, traduits en bleu Livreo. */
+  --brand-50: #eef3fe;
+  --brand-100: #e2ecfe;
+  --brand-200: #d2e0fb;
+  --brand-300: #a9c5fa;
+  --brand-500: #2c7bff;
+  --brand-600: #0866ff;
+  --brand-700: #0a4fc4;
+  --nuit: #0b1430;
+  --ink-500: #49536b;
+  --ink-700: #303a52;
+  --c-main: var(--sans);  /* pas d'écriture manuscrite dans cette version */
+  --c-titre: var(--sans);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: #ffffff; color: var(--encre);
+  font: 400 1rem/1.5 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- En-tête ---------- */
+
+.entete {
+  position: absolute; inset: 0 0 auto; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem clamp(20px, 7vw, 96px);
+}
+.marque {
+  font-weight: 800; font-size: 1.15rem; letter-spacing: -0.03em;
+  color: var(--encre); text-decoration: none;
+}
+.c-pause { color: var(--encre-400); }
+
+/* ---------- Scènes ---------- */
+
+.scene {
+  position: relative; overflow-x: clip;
+  display: grid; align-content: center; gap: 2rem;
+  min-height: 100svh; padding: 5.5rem 20px 4.5rem;
+}
+.scene:has(.c-flux) { z-index: 1; }
+.fond-fort { background: linear-gradient(160deg, var(--accent), var(--accent-700)); color: #ffffff; }
+.fond-nuit { background: var(--nuit); color: #eef2fb; }
+
+.texte { position: relative; z-index: 7; max-width: 34rem; }
+.objet { position: relative; z-index: 1; display: grid; justify-items: center; }
+
+@media (min-width: 980px) {
+  .scene {
+    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
+    align-items: center; gap: 4rem;
+    padding: 5.5rem clamp(32px, 7vw, 96px) 5rem;
+  }
+}
+
+/* Repère de scène : en mono, jamais en capitales. */
+.etiquette {
+  margin: 0 0 1rem; font: 700 .8rem/1.4 var(--mono);
+  letter-spacing: .04em; color: var(--accent);
+}
+.fond-nuit .etiquette, .fond-fort .etiquette { color: #c7dbff; }
+
+.titre {
+  margin: 0 0 1.2rem;
+  font-family: var(--titrage);
+  font-size: clamp(2.4rem, 7vw, 4.4rem); font-weight: 700;
+  line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance;
+}
+.titre-2 { font-size: clamp(2rem, 5.5vw, 3.4rem); }
+
+.chapo {
+  margin: 0 0 2rem; max-width: 30rem;
+  font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.5; color: var(--encre-500);
+}
+.fond-nuit .chapo { color: #b9c7e6; }
+.fond-fort .chapo { color: #dbe7ff; }
+
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.actions .bouton, .actions .lien { height: 52px; padding: 0 1.4rem; font-size: 1rem; }
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 56px; padding: 0 1.9rem; border-radius: 999px;
+  background: var(--accent); color: #ffffff;
+  font: 700 1.05rem/1 var(--sans); text-decoration: none; white-space: nowrap;
+  transition: background-color .15s ease-out, scale .15s ease-out;
+}
+.bouton:hover { background: var(--accent-700); }
+.bouton:active { scale: .97; }
+.bouton-petit { height: 44px; padding: 0 1.1rem; font-size: .9rem; }
+.lien {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 56px; padding: 0 1.6rem; border: 1.5px solid var(--bleu-200); border-radius: 999px;
+  color: var(--encre); font-weight: 700; text-decoration: none;
+  transition: border-color .15s ease-out, background-color .15s ease-out;
+}
+.lien:hover { border-color: var(--brand-300); background: var(--bleu-pale); }
+
+.horodatage { font: 700 .8rem/1.2 var(--mono); color: var(--encre-400); }
+
+/* La nappe de points (c-nuage-points de la lib), placée par scène. */
+.nuage {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: min(var(--taille, 58rem), 150vw); aspect-ratio: 1;
+  background: radial-gradient(circle, var(--brand-300) 0 1.4px, transparent 1.9px) 0 0 / 11px 11px;
+  -webkit-mask: radial-gradient(closest-side, #000 15%, transparent);
+  mask: radial-gradient(closest-side, #000 15%, transparent);
+  opacity: .65;
+}
+.nuage-accueil { left: 50%; top: 58%; translate: -50% -50%; --taille: 44rem; }
+@media (min-width: 980px) {
+  .nuage-accueil { left: auto; right: -4rem; top: 38%; translate: 0 -50%; --taille: 46rem; }
+}
+.nuage-paiement { --taille: 40rem; right: -7rem; top: 50%; translate: 0 -50%; }
+.nuage-fin { --taille: 42rem; right: -12rem; top: 50%; translate: 0 -50%; }
+.nuage-nuit { --taille: 50rem; left: -12rem; top: 50%; translate: 0 -50%; opacity: .16; }
+/* Le décor de transition entre le héros et le problème : les « JP » du flux
+   tombent sur une nappe de points. */
+.nuage-transition { --taille: 36rem; right: -4rem; top: -11rem; opacity: .5; }
+
+/* ---------- Héros ---------- */
+
+.sujet-live { position: relative; margin: 0; width: min(430px, 82vw); }
+.sujet-live img {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 32px 44px rgb(11 20 48 / .24));
+  -webkit-mask: linear-gradient(180deg, #000 84%, transparent 99%);
+  mask: linear-gradient(180deg, #000 84%, transparent 99%);
+}
+/* Les « JP » qui tombent : en mono, pas en écriture à la main. */
+.c-flux i { font: 700 .95rem var(--mono); }
+
+/* Les preuves : pleine largeur, gauche / centre / droite. */
+.preuves {
+  margin: 1.5rem 0 0; padding: 0; list-style: none;
+  display: grid; grid-template-columns: repeat(3, auto);
+  justify-content: space-between; gap: 1.5rem;
+}
+.preuves li { font-size: .95rem; color: var(--encre-500); }
+.preuves li:nth-child(2) { text-align: center; }
+.preuves li:nth-child(3) { text-align: right; }
+.preuves b {
+  display: block; white-space: nowrap; margin-bottom: .3rem;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 275;
+  line-height: 1.05; letter-spacing: -0.025em; color: var(--encre);
+  font-variant-numeric: tabular-nums;
+}
+.preuves b i { font-style: normal; color: var(--accent); }
+.preuves li span {
+  display: block;
+  font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em;
+  color: var(--encre-400);
+}
+@media (min-width: 980px) {
+  .preuves { grid-column: 1 / -1; }
+  .preuves li span { white-space: nowrap; }
+}
+
+/* ---------- Le problème ---------- */
+
+.sujet-probleme { position: relative; margin: 0; width: min(290px, 65vw); }
+.sujet-probleme img {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 28px 40px rgb(11 20 48 / .22));
+  -webkit-mask: linear-gradient(180deg, #000 82%, transparent 99%);
+  mask: linear-gradient(180deg, #000 82%, transparent 99%);
+}
+/* Le problème : l'accordéon de cartes. La carte active s'élargit et se
+   déplie en bloc bleu avec son texte ; les autres se replient en photos
+   labellisées, assombries en bas. */
+.scene-probleme { min-height: 0; grid-template-columns: 1fr; align-content: start; }
+.cartes-probleme { margin: 1rem 0 0; display: flex; flex-direction: column; gap: 1.1rem; }
+.carte {
+  position: relative; overflow: hidden; border-radius: 20px;
+  min-height: 110px; cursor: pointer;
+  transition: min-height .6s cubic-bezier(.22, .61, .36, 1), flex .65s cubic-bezier(.22, .61, .36, 1);
+}
+.carte:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.carte img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.carte::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 52%, rgb(11 20 48 / .78));
+}
+.carte-label {
+  position: absolute; z-index: 2; left: 1.2rem; right: 1.2rem; bottom: 1rem; margin: 0;
+  color: #ffffff; font: 650 1.05rem/1.3 var(--titrage); letter-spacing: -0.01em;
+  transition: opacity .35s ease;
+}
+.carte-detail {
+  position: absolute; z-index: 1; inset: 0; padding: 1.8rem 1.7rem;
+  display: grid; align-content: end; gap: .55rem;
+  background: linear-gradient(160deg, var(--accent), var(--accent-700));
+  opacity: 0; transition: opacity .45s ease;
+}
+.carte-detail span { font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: #c7dbff; }
+.carte-detail h3 {
+  margin: 0; font: 650 clamp(1.4rem, 2.2vw, 1.8rem)/1.15 var(--titrage);
+  letter-spacing: -0.02em; color: #ffffff;
+}
+.carte-detail p { margin: 0; font-size: .95rem; line-height: 1.5; color: #dbe7ff; }
+.carte.est-active { min-height: 330px; }
+.carte.est-active .carte-detail { opacity: 1; }
+.carte.est-active .carte-label { opacity: 0; }
+@media (min-width: 980px) {
+  .cartes-probleme { flex-direction: row; gap: 1.3rem; height: 440px; }
+  .carte { flex: 1; min-height: 0; }
+  .carte.est-active { flex: 2.6; min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carte, .carte-label, .carte-detail { transition: none; }
+}
+
+/* ---------- Écrans du produit (seuls blocs avec cadre + ombre) ---------- */
+
+.ecran {
+  width: min(400px, 92vw); border-radius: 26px; background: #ffffff;
+  border: 1.5px solid var(--bleu-200); box-shadow: var(--ombre-ecran);
+  padding: 1.3rem 1.4rem;
+}
+.fond-fort .ecran { border-color: rgb(255 255 255 / .35); background: transparent; box-shadow: none; }
+.ecran-titre { margin: 0 0 1rem; font-size: .95rem; font-weight: 800; }
+.ecran-titre small { display: block; font-weight: 600; color: var(--encre-400); }
+.gagnante { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-weight: 800; font-size: 1.15rem; }
+.gagnante .horodatage { color: var(--accent); }
+.attente { margin: .8rem 0 0; padding: 0; list-style: none; display: grid; gap: .45rem; color: var(--encre-500); }
+.attente li { display: flex; justify-content: space-between; gap: 1rem; }
+.ecran .bouton { width: 100%; margin-top: 1.3rem; height: 52px; }
+.ecran-aide { margin: .6rem 0 0; text-align: center; font-size: .82rem; color: var(--encre-400); }
+
+/* Messenger : la conversation. */
+.bulle { max-width: 85%; padding: .8rem 1rem; border-radius: 20px 20px 20px 6px; background: var(--bleu-pale); font-size: .92rem; }
+.bulle + .bulle { margin-top: .6rem; }
+.bulle-droite { margin-left: auto; border-radius: 20px 20px 6px 20px; background: var(--accent); color: #ffffff; }
+.bulle-droite .capture {
+  margin-top: .5rem; display: grid; place-items: center; height: 72px; border-radius: 10px;
+  background: var(--accent-700); color: #cfe0ff;
+  font: 600 .85rem var(--sans); letter-spacing: .02em;
+}
+.bulle b { display: block; }
+.bulle .delai { margin-top: .4rem; font-weight: 800; color: var(--direct-700); }
+.fond-fort .bulle { background: #ffffff; color: var(--encre); }
+.fond-fort .bulle-droite { background: var(--nuit); color: #ffffff; }
+.fond-fort .bulle-droite .capture { background: #243457; color: #9fb4dd; }
+
+/* Paiement : ce que Muse Spark a lu. */
+.lecture { margin: 0; display: grid; gap: .55rem; }
+.lecture div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.lecture dt { color: var(--encre-400); font-size: .9rem; }
+.lecture dd { margin: 0; font-weight: 800; font-variant-numeric: tabular-nums; }
+.lecture .ok { color: var(--or-encre); font-size: .78rem; font-weight: 700; }
+.bouton-or { background: var(--or-encre); }
+.bouton-or:hover { background: #553500; }
+
+/* Passage au suivant. */
+.passage { display: grid; gap: .5rem; }
+.passage .quand { font: 700 1rem var(--mono); color: var(--direct); }
+.passage p { margin: 0; font-size: 1.05rem; }
+.passage b { font-size: 1.2rem; }
+
+/* ---------- La boucle, sur le vif ----------
+   La photo du live en pleine largeur, voile bleu nuit, et les 4 moments en
+   pastilles produit qui flottent en escalier, comme des notifications. */
+.vif { position: relative; background: var(--nuit); overflow: hidden; }
+/* L'entrée dans l'acte nuit : le blanc de la section précédente fond dans
+   la photo au lieu de la couper. */
+.vif::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 10rem; z-index: 2;
+  background: linear-gradient(180deg,
+    #ffffff 0,
+    rgb(255 255 255 / .7) 20%,
+    rgb(255 255 255 / .38) 42%,
+    rgb(255 255 255 / .16) 64%,
+    rgb(255 255 255 / .05) 82%,
+    rgb(255 255 255 / 0) 100%);
+  pointer-events: none;
+}
+.vif-photo { position: relative; height: 46svh; }
+.vif-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 42% 28%;
+}
+.vif-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 0 12%, rgb(11 20 48 / .12) 32%, rgb(11 20 48 / .1) 55%, var(--nuit) 100%);
+}
+.vif-contenu {
+  position: relative; z-index: 3;
+  display: grid; gap: 2.5rem;
+  padding: 1.5rem 20px 4.5rem;
+}
+@media (min-width: 1080px) {
+  .vif { min-height: 94svh; display: grid; align-items: center; }
+  .vif-photo { position: absolute; inset: 0 auto 0 0; width: 66%; height: 100%; }
+  .vif-photo img { object-position: 40% 30%; }
+  .vif-photo::after {
+    background:
+      linear-gradient(90deg, rgb(11 20 48 / .35), rgb(11 20 48 / .05) 40%, var(--nuit) 97%),
+      linear-gradient(180deg, transparent 0 10%, rgb(11 20 48 / .12) 30%, transparent 42%, transparent 72%, var(--nuit) 100%);
+  }
+  .vif-contenu {
+    justify-self: end; max-width: 38rem;
+    padding: 5rem clamp(32px, 6vw, 88px) 5rem 0;
+  }
+}
+.vif-texte .etiquette { color: #9cc0ff; }
+.vif-texte h2 { color: #ffffff; }
+.vif-texte p { margin: 0; max-width: 28rem; font-size: 1.1rem; line-height: 1.5; color: #d7e2f7; }
+
+/* Les 4 étapes, écrites directement sur la photo : un fil vertical, des
+   points, la typographie comme seul matériau. Couleurs de la page only. */
+.fil-etapes {
+  display: grid; gap: 2.3rem; position: relative;
+  padding-left: 2rem; max-width: 30rem;
+}
+/* La piste : un trait cheveu, des petits points pleins. Minimal. */
+.fil-etapes { padding-left: 1.6rem; }
+.fil-etapes::before {
+  content: ""; position: absolute; left: 2px; top: .7rem; bottom: .7rem;
+  width: 1px; background: rgb(255 255 255 / .22);
+}
+.etape-f { position: relative; margin: 0; }
+.etape-f::before {
+  content: ""; position: absolute; left: -1.6rem; top: .55rem;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #ffffff;
+}
+.etape-f b { display: block; font: 600 1.55rem/1.2 var(--titrage); letter-spacing: -0.015em; color: #ffffff; }
+.etape-f small { display: block; margin-top: .25rem; font-size: .95rem; line-height: 1.45; color: #c9d6ef; }
+.etape-f .paye { color: #9cc0ff; font-weight: 800; }
+.etape-f .rouge { color: #f0a9b8; font-weight: 800; }
+/* Les étapes apparaissent l'une après l'autre au défilement (CSS pur). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .etape-f {
+      animation: etape-pose linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+@keyframes etape-pose {
+  from { opacity: 0; translate: 0 22px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+/* ---------- Bande nuit : côté acheteuses ---------- */
+
+/* Le bloc texte de la scène : une seule voix, le chapo. Le gras porte la promesse. */
+.scene-nuit .chapo b { font-weight: 650; color: #eef2fb; }
+
+/* Le téléphone monolithe : la photo fond dans la nuit par un masque radial,
+   son écran est habillé par notre propre contenu. */
+.cl-sujet { position: relative; margin: 0; --tel-h: min(62svh, 34rem); }
+@media (min-width: 980px) { .cl-sujet { --tel-h: min(78svh, 44rem); } }
+.cl-sujet img {
+  display: block; width: auto; height: var(--tel-h);
+  filter: saturate(.8) brightness(.9);
+  -webkit-mask: radial-gradient(66% 60% at 50% 50%, #000 42%, transparent 78%);
+  mask: radial-gradient(66% 60% at 50% 50%, #000 42%, transparent 78%);
+}
+/* La lumière de l'écran qui déborde dans le noir. */
+.cl-lueur {
+  position: absolute; left: 22%; top: 20%; width: 62%; height: 68%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgb(150 190 255 / .2), rgb(120 165 255 / .07) 55%, transparent 78%);
+  mix-blend-mode: screen;
+}
+/* L'écran allumé : un vrai fil Messenger sombre, du haut de l'écran au champ de saisie. */
+.cl-ecran {
+  position: absolute; left: 36.5%; top: 31%; width: 33.5%; height: 47%;
+  text-align: center;
+  display: grid; grid-template-rows: auto auto 1fr auto; gap: .5em;
+  padding: .5em .55em .55em;
+  font-size: calc(var(--tel-h) / 30);
+  background: linear-gradient(180deg, #0d1424, #0a101d);
+  border-radius: .7em;
+  box-shadow: inset 0 0 2.4em rgb(90 140 255 / .14), 0 0 1.6em rgb(120 165 255 / .18);
+}
+/* La barre d'état : l'heure, le signal, la batterie. */
+.cl-barre { display: flex; justify-content: space-between; align-items: center; padding: 0 .15em; }
+.cl-heure-mini {
+  margin: 0; font: 600 .34em/1 var(--mono); color: #cfe0ff; font-variant-numeric: tabular-nums;
+}
+.cl-icones { display: flex; align-items: flex-end; gap: .09em; }
+.ico-barre { display: block; width: .11em; background: #cfe0ff; border-radius: .04em; }
+.ico-barre.b1 { height: .26em; }
+.ico-barre.b2 { height: .38em; }
+.ico-barre.b3 { height: .5em; }
+.ico-batterie {
+  display: block; width: .95em; height: .48em; margin-left: .22em;
+  border: 1px solid rgb(207 224 255 / .75); border-radius: .12em; position: relative;
+}
+.ico-batterie::after {
+  content: ""; position: absolute; inset: 1px; right: 28%;
+  background: #cfe0ff; border-radius: .05em;
+}
+/* L'en-tête de la discussion. */
+.cl-entete-chat { display: flex; align-items: center; justify-content: center; gap: .3em; }
+.cl-avatar {
+  width: .95em; height: .95em; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff;
+  font: 700 .5em/1 var(--titrage);
+}
+.cl-entete-chat b { font: 650 .42em/1 var(--titrage); letter-spacing: .01em; color: #eef2fb; }
+.cl-date {
+  margin: 0 0 .1em; justify-self: center;
+  font: 700 max(.46rem, .28em)/1 var(--mono); letter-spacing: .04em; color: #5f7bb4;
+}
+.cl-chat { width: 100%; display: grid; gap: .5em; justify-items: start; align-content: start; }
+.bulle {
+  margin: 0; max-width: 88%; text-align: left;
+  font: 550 max(.6rem, .42em)/1.45 var(--sans);
+  padding: .7em .95em; border-radius: 1.1em;
+}
+.bulle-livreo {
+  justify-self: start; background: #1a2440; color: #dbe6ff;
+  border-bottom-left-radius: .35em;
+}
+.bulle-cliente {
+  justify-self: end; background: var(--accent); color: #ffffff;
+  border-bottom-right-radius: .35em;
+}
+.cl-statut {
+  margin: .3em 0 0; justify-self: center;
+  font: 700 max(.5rem, .34em)/1.4 var(--mono); letter-spacing: .02em; color: #9cc0ff;
+  text-shadow: 0 0 14px rgb(8 102 255 / .6);
+}
+/* Sur petit écran, la vitre est étroite : tout se resserre pour y tenir. */
+@media (max-width: 979px) {
+  .cl-ecran { gap: .4em; padding: .42em .48em .48em; }
+  .bulle { font-size: max(.54rem, .42em); padding: .6em .85em; }
+  .cl-statut { font-size: max(.46rem, .34em); }
+  .cl-date { font-size: max(.42rem, .28em); }
+  .cl-chat { gap: .42em; }
+  .cl-saisie { padding: .26em .45em; }
+  .cl-saisie span { font-size: max(.46rem, .36em); }
+}
+/* Le champ de saisie, en bas de l'écran. */
+.cl-saisie {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: .32em .5em;
+  background: #141d33; border-radius: 99px;
+}
+.cl-saisie span { font: 550 max(.52rem, .36em)/1 var(--sans); color: #5f7bb4; }
+.cl-saisie i {
+  display: block; width: .62em; height: .62em; border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---------- Fin, pied, barre téléphone ---------- */
+
+.fin { min-height: 70svh; }
+.fin .nuage-fin { right: -3rem; top: 50%; translate: 0 -50%; --taille: 42rem; }
+
+/* Réassurance : trois repères mono, sans boîte. */
+.promesses { margin: 2.2rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .8rem 2.2rem; }
+.promesses li { font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em; color: var(--encre-400); }
+.promesses li::before { content: "· "; color: var(--accent); font-weight: 700; }
+
+/* Le pied de page : marque, mission, liens mono, ligne méta. Sans filet. */
+.pied-livreo {
+  padding: 3.5rem clamp(24px, 6vw, 96px) 2.5rem;
+  display: grid; gap: 2rem;
+}
+@media (min-width: 900px) {
+  .pied-livreo { grid-template-columns: minmax(0, 1.2fr) auto; align-items: start; }
+}
+.pied-marque-livreo { font: 700 1.2rem/1.3 var(--titrage); letter-spacing: -0.02em; color: var(--encre); margin: 0 0 .3rem; }
+.pied-mission { margin: 0; font-size: .95rem; color: var(--encre-500); max-width: 26rem; }
+.pied-liens { display: grid; gap: .55rem; justify-items: start; }
+.pied-liens a { font: 700 .8rem/1.5 var(--mono); letter-spacing: .02em; color: var(--encre-500); text-decoration: none; }
+.pied-liens a:hover { color: var(--accent); }
+.pied-meta {
+  grid-column: 1 / -1; margin: 1rem 0 0;
+  font: 700 .72rem/1.6 var(--mono); letter-spacing: .03em; color: var(--encre-400);
+}
+.c-barre-cta span { min-width: 0; }
+.c-barre-cta .bouton { flex-shrink: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

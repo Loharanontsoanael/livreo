@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — « Construit avec Meta » : trois designs</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 72% 30%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 17ch; }
+
+/* ---------- V · La chaîne (le même fil que la boucle) ---------- */
+.eng-v .deux { display: grid; gap: 3rem; }
+@media (min-width: 980px) { .eng-v .deux { grid-template-columns: minmax(0, 28rem) minmax(0, 1fr); gap: 5rem; align-items: center; } }
+.v-fil { position: relative; padding-left: 1.8rem; display: grid; gap: 2.8rem; align-content: start; }
+.v-fil::before {
+  content: ""; position: absolute; left: 2px; top: .9rem; bottom: .9rem; width: 1px;
+  background: rgb(255 255 255 / .22);
+}
+.v-brique { position: relative; display: grid; gap: .4rem; }
+.v-brique::before {
+  content: ""; position: absolute; left: -1.8rem; top: 1.65rem;
+  width: 6px; height: 6px; border-radius: 50%; background: #ffffff;
+}
+.v-brique small { font: 700 .68rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+.v-brique b { font: 700 1.7rem/1.15 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.v-brique span { font-size: .98rem; line-height: 1.6; color: #b9c7e6; max-width: 30rem; }
+
+/* ---------- W · La phrase tissée ---------- */
+.w-phrase {
+  margin: 3.2rem 0 0; max-width: 56rem;
+  font: 500 clamp(1.55rem, 3.2vw, 2.4rem)/1.42 var(--titrage);
+  letter-spacing: -0.015em; color: #7f93c4;
+  text-wrap: pretty;
+}
+.w-phrase b { font-weight: 700; color: #fff; }
+.w-phrase i { font-style: normal; color: #9cc0ff; }
+
+/* ---------- X · Ce qui passe dedans ---------- */
+.x-cols { margin-top: 3.6rem; display: grid; gap: 2.8rem; }
+@media (min-width: 980px) { .x-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; } }
+.x-col { display: grid; gap: .8rem; align-content: start; }
+.x-col small { font: 700 .68rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+.x-col b { font: 700 1.55rem/1.15 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.x-col span { font-size: .95rem; line-height: 1.6; color: #b9c7e6; }
+.x-col .donnee { margin: .4rem 0 0; font: 600 .8rem/1.6 var(--mono); color: #9cc0ff; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Le contenu est acté : « Construit avec Meta ». Trois designs pour le porter.</p>
+
+<p class="titre-variante">V · La chaîne (le même fil minimal que la boucle, qui porte les trois briques)</p>
+<section class="eng eng-v" id="eng-v">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Sous le capot</p>
+      <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+    </div>
+    <div class="v-fil">
+      <div class="v-brique">
+        <small>pendant le live</small>
+        <b>Graph API</b>
+        <span>Capte chaque commentaire du direct, à la seconde où il est posté.</span>
+      </div>
+      <div class="v-brique">
+        <small>l'intelligence</small>
+        <b>Muse Spark</b>
+        <span>Comprend « jp », le malgache du direct, et lit les captures MVola.</span>
+      </div>
+      <div class="v-brique">
+        <small>avec les acheteurs</small>
+        <b>Messenger Platform</b>
+        <span>Envoie le récapitulatif et reçoit la confirmation, sans quitter Facebook.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">W · La phrase tissée (une seule respiration, les noms en blanc)</p>
+<section class="eng eng-w" id="eng-w">
+  <p class="etiquette">Sous le capot</p>
+  <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+  <p class="w-phrase"><b>Graph API</b> capte chaque commentaire du direct. <b>Muse Spark</b> comprend « jp », le malgache, et lit les captures MVola. <b>Messenger</b> envoie le récap et reçoit la confirmation, <i>d'un tap</i>.</p>
+</section>
+
+<p class="titre-variante">X · Ce qui passe dedans (trois colonnes, avec la donnée réelle qui transite)</p>
+<section class="eng eng-x" id="eng-x">
+  <p class="etiquette">Sous le capot</p>
+  <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+  <div class="x-cols">
+    <div class="x-col">
+      <small>pendant le live</small>
+      <b>Graph API</b>
+      <span>Capte chaque commentaire du direct, à la seconde.</span>
+      <p class="donnee">21:42:03 · « izaho koa jp »</p>
+    </div>
+    <div class="x-col">
+      <small>l'intelligence</small>
+      <b>Muse Spark</b>
+      <span>Comprend le parler du live et lit les captures MVola.</span>
+      <p class="donnee">intention : réservation · 96 %</p>
+    </div>
+    <div class="x-col">
+      <small>avec les acheteurs</small>
+      <b>Messenger Platform</b>
+      <span>Envoie le récap, reçoit la confirmation d'un tap.</span>
+      <p class="donnee">récap envoyé · payé confirmé</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

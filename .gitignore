@@ -1,0 +1,11 @@
+# Dépendances et sorties de build
+node_modules/
+.next/
+out/
+
+# Captures de travail (régénérables avec les scripts Playwright)
+maquettes/captures/
+
+# Système
+.DS_Store
+*.log

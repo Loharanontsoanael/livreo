@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — proposition : la boucle sur bleu</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+/* Proposition : toute la boucle sur une masse bleu Livreo. Titres en blanc,
+   écrans produit en blanc, numéros en grands chiffres fins. */
+body { padding: 0 0 4rem; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.5rem clamp(24px, 6vw, 80px) 1rem; font-size: 1.1rem; font-weight: 800; color: var(--encre-400); }
+
+.bande-boucle {
+  background: linear-gradient(160deg, var(--accent), var(--accent-700));
+  color: #ffffff;
+  padding: 4.5rem clamp(24px, 6vw, 80px) 4.5rem;
+}
+.bande-tete { max-width: 36rem; margin-bottom: 3rem; }
+.bande-tete .etiquette { color: #c7dbff; }
+.bande-tete h2 { margin: 0 0 1rem; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #ffffff; }
+.bande-tete p { margin: 0; font-size: 1.1rem; line-height: 1.5; color: #dbe7ff; }
+
+.pas { display: grid; gap: 2.5rem; }
+@media (min-width: 1080px) { .pas { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.7rem; align-items: start; } }
+.pas article { display: grid; gap: .45rem; align-content: start; }
+.pas b.num {
+  font-size: 2.8rem; font-weight: 250; line-height: 1; letter-spacing: -0.02em;
+  color: #ffffff; font-variant-numeric: tabular-nums;
+}
+.pas article > h3 { margin: .3rem 0 0; font-size: 1.08rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.25; color: #ffffff; }
+.pas p.note { margin: 0 0 .9rem; font-size: .92rem; line-height: 1.5; color: #cfe0ff; }
+.pas .ecran { width: 100%; padding: 1.1rem 1.15rem; border-color: rgb(255 255 255 / .4); color: var(--encre); }
+
+/* Variante B : le même contenu, en panneau arrondi sur la page blanche. */
+.panneau { margin: 0 clamp(24px, 6vw, 80px); border-radius: 32px; padding: 4rem clamp(24px, 4vw, 56px); }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Deux variantes « la boucle sur notre bleu » — à valider avant d'entrer dans le site</p>
+
+<p class="titre-variante">A · Bande pleine largeur</p>
+<section class="bande-boucle variante-a">
+  <div class="bande-tete">
+    <p class="etiquette">La boucle Livreo</p>
+    <h2>Du commentaire au paiement.</h2>
+    <p>Quatre étapes automatiques, et vous gardez la main à chaque instant.</p>
+  </div>
+  <div class="pas">
+    <article>
+      <b class="num">1</b>
+      <h3>Il commente «&nbsp;JP&nbsp;». C'est réservé.</h3>
+      <p class="note">Premier «&nbsp;JP&nbsp;», premier servi, à la seconde près, même en malgache ou en abrégé.</p>
+      <div class="ecran">
+        <h3 class="ecran-titre">Article en cours <small>n°14 · Sac perlé · 38 000 Ar</small></h3>
+        <p class="gagnante"><span>Mia</span><span class="horodatage">21:04:12</span></p>
+        <ol class="attente">
+          <li><span>2. Faly</span><span class="horodatage">21:04:19</span></li>
+          <li><span>3. Vero</span><span class="horodatage">21:04:31</span></li>
+        </ol>
+      </div>
+    </article>
+    <article>
+      <b class="num">2</b>
+      <h3>Le récap part tout seul.</h3>
+      <p class="note">Article, prix, numéro MVola ou Orange Money et heure limite, en privé sur Messenger.</p>
+      <div class="ecran">
+        <div class="bulle">
+          <b>Sac perlé n°14 · 38 000 Ar</b>
+          MVola : 034 05 123 45 (Naty)
+          <span class="delai">À régler avant 22 h 30.</span>
+        </div>
+        <div class="bulle bulle-droite">
+          Voici ma capture
+          <span class="capture">capture MVola</span>
+        </div>
+      </div>
+    </article>
+    <article>
+      <b class="num">3</b>
+      <h3>La capture est lue, vous confirmez.</h3>
+      <p class="note">Montant, référence et date vérifiés. Rien n'est «&nbsp;payé&nbsp;» sans votre accord.</p>
+      <div class="ecran">
+        <h3 class="ecran-titre">Capture de Mia <small>lue par Livreo</small></h3>
+        <dl class="lecture">
+          <div><dt>Montant</dt><dd>38 000 Ar <span class="ok">cohérent</span></dd></div>
+          <div><dt>Référence</dt><dd class="horodatage">MP251029.2141</dd></div>
+          <div><dt>Date</dt><dd>21 h 41 <span class="ok">cohérent</span></dd></div>
+        </dl>
+        <span class="bouton bouton-or">Confirmer le paiement</span>
+      </div>
+    </article>
+    <article>
+      <b class="num">4</b>
+      <h3>Pas payé à temps ? Au suivant.</h3>
+      <p class="note">À l'heure limite, l'article passe au premier de la liste d'attente, récap compris.</p>
+      <div class="ecran">
+        <div class="passage">
+          <span class="quand">22:30:00 · délai dépassé</span>
+          <p>Le sac n°7 passe à <b>Faly</b>, 2ᵉ de la liste.</p>
+          <p class="ecran-aide">Récap envoyé à Faly · 22:30:01</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<p class="titre-variante">B · Panneau arrondi sur la page blanche</p>
+<section class="bande-boucle panneau variante-b">
+  <div class="bande-tete">
+    <p class="etiquette">La boucle Livreo</p>
+    <h2>Du commentaire au paiement.</h2>
+    <p>Quatre étapes automatiques, et vous gardez la main à chaque instant.</p>
+  </div>
+  <div class="pas">
+    <article>
+      <b class="num">1</b>
+      <h3>Il commente «&nbsp;JP&nbsp;». C'est réservé.</h3>
+      <p class="note">Premier «&nbsp;JP&nbsp;», premier servi, à la seconde près, même en malgache ou en abrégé.</p>
+      <div class="ecran">
+        <h3 class="ecran-titre">Article en cours <small>n°14 · Sac perlé · 38 000 Ar</small></h3>
+        <p class="gagnante"><span>Mia</span><span class="horodatage">21:04:12</span></p>
+        <ol class="attente">
+          <li><span>2. Faly</span><span class="horodatage">21:04:19</span></li>
+          <li><span>3. Vero</span><span class="horodatage">21:04:31</span></li>
+        </ol>
+      </div>
+    </article>
+    <article>
+      <b class="num">2</b>
+      <h3>Le récap part tout seul.</h3>
+      <p class="note">Article, prix, numéro MVola ou Orange Money et heure limite, en privé sur Messenger.</p>
+      <div class="ecran">
+        <div class="bulle">
+          <b>Sac perlé n°14 · 38 000 Ar</b>
+          MVola : 034 05 123 45 (Naty)
+          <span class="delai">À régler avant 22 h 30.</span>
+        </div>
+        <div class="bulle bulle-droite">
+          Voici ma capture
+          <span class="capture">capture MVola</span>
+        </div>
+      </div>
+    </article>
+    <article>
+      <b class="num">3</b>
+      <h3>La capture est lue, vous confirmez.</h3>
+      <p class="note">Montant, référence et date vérifiés. Rien n'est «&nbsp;payé&nbsp;» sans votre accord.</p>
+      <div class="ecran">
+        <h3 class="ecran-titre">Capture de Mia <small>lue par Livreo</small></h3>
+        <dl class="lecture">
+          <div><dt>Montant</dt><dd>38 000 Ar <span class="ok">cohérent</span></dd></div>
+          <div><dt>Référence</dt><dd class="horodatage">MP251029.2141</dd></div>
+          <div><dt>Date</dt><dd>21 h 41 <span class="ok">cohérent</span></dd></div>
+        </dl>
+        <span class="bouton bouton-or">Confirmer le paiement</span>
+      </div>
+    </article>
+    <article>
+      <b class="num">4</b>
+      <h3>Pas payé à temps ? Au suivant.</h3>
+      <p class="note">À l'heure limite, l'article passe au premier de la liste d'attente, récap compris.</p>
+      <div class="ecran">
+        <div class="passage">
+          <span class="quand">22:30:00 · délai dépassé</span>
+          <p>Le sac n°7 passe à <b>Faly</b>, 2ᵉ de la liste.</p>
+          <p class="ecran-aide">Récap envoyé à Faly · 22:30:01</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+</body>
+</html>

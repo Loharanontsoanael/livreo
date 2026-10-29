@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — propositions scène finale + pied</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 2rem; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) 0; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+.variante { position: relative; overflow-x: clip; padding: 4rem clamp(24px, 6vw, 80px) 3rem; }
+
+/* Réassurance : trois repères mono, sans boîte. */
+.promesses { margin: 2.2rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .8rem 2.2rem; }
+.promesses li { font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em; color: var(--encre-400); }
+.promesses li::before { content: "— "; color: var(--accent); }
+
+/* ---------- H : centré, épuré ---------- */
+.vh { text-align: center; }
+.vh .etiquette { justify-content: center; }
+.vh .titre { margin-inline: auto; max-width: 18ch; }
+.vh .chapo { margin: 0 auto 2rem; }
+.vh .actions { justify-content: center; }
+.vh .promesses { justify-content: center; }
+.vh .nuage { left: 50%; top: 58%; translate: -50% -50%; --taille: 40rem; }
+
+/* ---------- I : split avec la vendeuse détourée ---------- */
+.vi .deux { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 1080px) { .vi .deux { grid-template-columns: minmax(0, 30rem) minmax(0, 1fr); gap: 4rem; } }
+.vi .sujet { position: relative; justify-self: center; width: min(430px, 82vw); }
+.vi .sujet img {
+  display: block; width: 100%; height: auto;
+  filter: drop-shadow(0 32px 44px rgb(11 20 48 / .22));
+  -webkit-mask: linear-gradient(180deg, #000 82%, transparent 99%);
+  mask: linear-gradient(180deg, #000 82%, transparent 99%);
+}
+.vi .nuage { right: -5rem; top: 50%; translate: 0 -50%; --taille: 42rem; }
+
+/* ---------- Le pied de page ---------- */
+.pied-livreo {
+  padding: 3.5rem clamp(24px, 6vw, 80px) 2.5rem;
+  display: grid; gap: 2rem;
+}
+@media (min-width: 900px) {
+  .pied-livreo { grid-template-columns: minmax(0, 1.2fr) auto; align-items: start; }
+}
+.pied-marque-livreo { font: 700 1.2rem/1.3 var(--titrage); letter-spacing: -0.02em; color: var(--encre); margin: 0 0 .3rem; }
+.pied-mission { margin: 0; font-size: .95rem; color: var(--encre-500); max-width: 26rem; }
+.pied-liens { display: grid; gap: .55rem; justify-items: start; }
+.pied-liens a { font: 700 .8rem/1.5 var(--mono); letter-spacing: .02em; color: var(--encre-500); text-decoration: none; }
+.pied-liens a:hover { color: var(--accent); }
+.pied-meta {
+  grid-column: 1 / -1; margin: 1rem 0 0;
+  font: 700 .72rem/1.6 var(--mono); letter-spacing: .03em; color: var(--encre-400);
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Scène finale + pied de page : deux variantes — à valider avant d'entrer dans le site</p>
+
+<p class="titre-variante">H · Centré, épuré</p>
+<section class="variante vh">
+  <div class="nuage" aria-hidden="true"></div>
+  <p class="etiquette">Vendeuses pilotes</p>
+  <h2 class="titre titre-2">Votre prochain live, sans cahier.</h2>
+  <p class="chapo">Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés, cette semaine.</p>
+  <div class="actions">
+    <a class="bouton" href="#">Proposer mon live</a>
+    <a class="lien" href="#">Écrire à l'équipe</a>
+  </div>
+  <ul class="promesses">
+    <li>gratuit pendant le pilote</li>
+    <li>vous gardez la main, Livreo ne publie jamais à votre place</li>
+    <li>on installe tout avec vous, avant votre live</li>
+  </ul>
+</section>
+
+<p class="titre-variante">I · Split, avec la vendeuse qui vous invite (écho du héros)</p>
+<section class="variante vi">
+  <div class="deux">
+    <div>
+      <p class="etiquette">Vendeuses pilotes</p>
+      <h2 class="titre titre-2">Votre prochain live, sans cahier.</h2>
+      <p class="chapo">Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés, cette semaine.</p>
+      <div class="actions">
+        <a class="bouton" href="#">Proposer mon live</a>
+        <a class="lien" href="#">Écrire à l'équipe</a>
+      </div>
+      <ul class="promesses">
+        <li>gratuit pendant le pilote</li>
+        <li>vous gardez la main</li>
+        <li>installé avec vous, avant votre live</li>
+      </ul>
+    </div>
+    <div class="sujet">
+      <div class="nuage" aria-hidden="true"></div>
+      <img src="assets/vendeuse-invite.png" alt="Une vendeuse souriante derrière son ring light, prête pour son live" width="1920" height="2504">
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">Le pied de page (commun aux deux variantes)</p>
+<footer class="pied-livreo">
+  <div>
+    <p class="pied-marque-livreo">Livreo</p>
+    <p class="pied-mission">L'assistant de vente des lives Facebook, construit à Antananarivo pour les vendeuses de Madagascar.</p>
+  </div>
+  <nav class="pied-liens" aria-label="Liens de bas de page">
+    <a href="#">comment ça marche</a>
+    <a href="#">proposer mon live</a>
+    <a href="#">écrire à l'équipe</a>
+  </nav>
+  <p class="pied-meta">construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · Meta Global AI Developer Hackathon 2026 · misaotra</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — comparatif de fontes pour le fil des étapes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Instrument+Sans:wght@500;600;700&family=Hanken+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { background: var(--nuit); color: #fff; padding: 0 0 4rem; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.grille { display: grid; gap: 3rem; padding: 3rem clamp(24px, 6vw, 80px); }
+@media (min-width: 1100px) { .grille { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.option h2 {
+  margin: 0 0 1.6rem; font: 700 .8rem/1.4 var(--mono); letter-spacing: .04em; color: #9cc0ff;
+}
+.fil-etapes { margin: 0; }
+.etape-f b { font-size: 1.55rem; line-height: 1.2; color: #fff; }
+
+.opt-a .etape-f b { font-family: var(--sans); font-weight: 620; letter-spacing: -0.015em; }
+.opt-b .etape-f b { font-family: "Schibsted Grotesk", var(--sans); font-weight: 600; letter-spacing: -0.02em; }
+.opt-c .etape-f b { font-family: "Instrument Sans", var(--sans); font-weight: 600; letter-spacing: -0.01em; }
+.opt-d .etape-f b { font-family: "Hanken Grotesk", var(--sans); font-weight: 600; letter-spacing: -0.015em; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Comparatif : la même liste, quatre fontes / graisses — à choisir avant d'intégrer</p>
+
+<div class="grille">
+  <section class="option opt-a">
+    <h2>A · DM Sans, graisse disciplinée (620 au lieu de 800)</h2>
+    <div class="fil-etapes">
+      <p class="etape-f"><b>Réservé à la seconde.</b></p>
+      <p class="etape-f"><b>Le récap part tout seul.</b></p>
+      <p class="etape-f"><b>La capture est lue. <span class="paye">Payé.</span></b></p>
+      <p class="etape-f"><b><span class="rouge">Délai dépassé.</span> Au suivant.</b></p>
+    </div>
+  </section>
+
+  <section class="option opt-b">
+    <h2>B · Schibsted Grotesk 600 — éditorial, du caractère</h2>
+    <div class="fil-etapes">
+      <p class="etape-f"><b>Réservé à la seconde.</b></p>
+      <p class="etape-f"><b>Le récap part tout seul.</b></p>
+      <p class="etape-f"><b>La capture est lue. <span class="paye">Payé.</span></b></p>
+      <p class="etape-f"><b><span class="rouge">Délai dépassé.</span> Au suivant.</b></p>
+    </div>
+  </section>
+
+  <section class="option opt-c">
+    <h2>C · Instrument Sans 600 — neutre premium, façon produit</h2>
+    <div class="fil-etapes">
+      <p class="etape-f"><b>Réservé à la seconde.</b></p>
+      <p class="etape-f"><b>Le récap part tout seul.</b></p>
+      <p class="etape-f"><b>La capture est lue. <span class="paye">Payé.</span></b></p>
+      <p class="etape-f"><b><span class="rouge">Délai dépassé.</span> Au suivant.</b></p>
+    </div>
+  </section>
+
+  <section class="option opt-d">
+    <h2>D · Hanken Grotesk 600 — sobre, chaleureux, très lisible</h2>
+    <div class="fil-etapes">
+      <p class="etape-f"><b>Réservé à la seconde.</b></p>
+      <p class="etape-f"><b>Le récap part tout seul.</b></p>
+      <p class="etape-f"><b>La capture est lue. <span class="paye">Payé.</span></b></p>
+      <p class="etape-f"><b><span class="rouge">Délai dépassé.</span> Au suivant.</b></p>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

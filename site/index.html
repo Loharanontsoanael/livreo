@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — vos lives Facebook, encaissés</title>
+<meta name="description" content="Livreo transforme les commentaires « JP » de vos lives Facebook en commandes payées : réservation à la seconde, récap Messenger, paiement vérifié. Pour les vendeuses en live à Madagascar.">
+<link rel="stylesheet" href="css/couches.css">
+<link rel="stylesheet" href="css/livreo.css">
+<script src="js/couches.js" defer></script>
+</head>
+<body>
+
+<header class="entete">
+  <a class="marque" href="#">Livreo</a>
+  <button class="c-pause" data-couche="pause">Mettre les animations en pause</button>
+</header>
+
+<main>
+
+<!-- Le héros -->
+<section class="scene">
+  <div class="nuage nuage-accueil" aria-hidden="true"></div>
+  <div class="texte">
+    <p class="etiquette">L'assistant de vente des lives Facebook à Madagascar</p>
+    <h1 class="titre">Transformez vos lives en ventes&nbsp;payées.</h1>
+    <p class="chapo">Livreo capte les commentaires de votre live Facebook, réserve chaque article au premier acheteur, envoie le récapitulatif sur Messenger et vérifie chaque paiement. Vous animez, Livreo encaisse.</p>
+    <div class="actions">
+      <a class="bouton" href="#pilotes">Essayer sur mon live</a>
+      <a class="lien" href="#boucle">Comment ça marche</a>
+    </div>
+  </div>
+  <div class="objet">
+    <figure class="sujet-live">
+      <img src="img/vendeuse-live.png" alt="Une vendeuse présente une robe bleue pendant son live" width="672" height="744">
+      <div class="c-flux" data-couche="flux" data-elements="JP, jp, JP, izaho koa jp, jp !!, JP" aria-hidden="true"></div>
+    </figure>
+  </div>
+  <ul class="preuves">
+    <li>
+      <b>3 <i>s</i></b>
+      <span>du commentaire à la réservation</span>
+    </li>
+    <li>
+      <b>100 <i>%</i></b>
+      <span>des commentaires captés</span>
+    </li>
+    <li>
+      <b>0</b>
+      <span>paiement validé sans preuve</span>
+    </li>
+  </ul>
+</section>
+
+<!-- Le problème -->
+<section class="scene">
+  <div class="texte">
+    <p class="etiquette">Le problème</p>
+    <h2 class="titre titre-2" data-couche="mots">Après le live, des heures de travail.</h2>
+    <p class="chapo">Aujourd'hui, tout se fait à la main. Chaque étape prend du temps, et chaque étape fait perdre des ventes.</p>
+  </div>
+  <div class="objet">
+    <figure class="sujet-probleme">
+      <img src="img/gerante-carnet.png" alt="Une gérante de boutique note une commande au téléphone, carnet en main" width="851" height="2124" loading="lazy">
+    </figure>
+  </div>
+  <div class="problemes">
+    <div>
+      <span class="probleme-cle">recopier</span>
+      <p>Chaque commentaire du live est <b>recopié à la main</b> dans un cahier, un par un, souvent tard dans la nuit.</p>
+    </div>
+    <div>
+      <span class="probleme-cle">vérifier</span>
+      <p>Chaque capture MVola ou Orange Money est <b>contrôlée à l'œil</b>. Les fausses passent, et elles coûtent cher.</p>
+    </div>
+    <div>
+      <span class="probleme-cle">relancer</span>
+      <p>Les acheteurs qui ne paient jamais <b>bloquent les articles</b>&nbsp;: les « JP fantômes » font perdre des ventes à chaque live.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Étape 1 -->
+<section class="scene" id="boucle">
+  <div class="texte">
+    <p class="etiquette">1 · Pendant le live</p>
+    <h2 class="titre titre-2">Il commente «&nbsp;JP&nbsp;». C'est réservé.</h2>
+    <p class="chapo">Premier arrivé, premier servi, à la seconde près, même en malgache, en français ou en abrégé. Vous changez d'article avec un seul bouton.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <h3 class="ecran-titre">Article en cours <small>n°14 · Sac perlé · 38 000 Ar</small></h3>
+      <p class="gagnante"><span>Mia</span><span class="horodatage">21:04:12</span></p>
+      <ol class="attente">
+        <li><span>2. Faly</span><span class="horodatage">21:04:19</span></li>
+        <li><span>3. Vero</span><span class="horodatage">21:04:31</span></li>
+      </ol>
+      <a class="bouton" href="#pilotes">Article suivant</a>
+      <p class="ecran-aide">En dessous d'un certain seuil de confiance, vous validez d'un tap.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Étape 2 : la bande forte -->
+<section class="scene fond-fort">
+  <div class="texte">
+    <p class="etiquette">2 · Juste après</p>
+    <h2 class="titre titre-2" data-couche="mots">Le récap part tout seul.</h2>
+    <p class="chapo">Chaque gagnant reçoit en privé, sur Messenger : l'article, le prix, votre numéro MVola ou Orange Money, et l'heure limite.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <div class="bulle">
+        <b>Sac perlé n°14 · 38 000 Ar</b>
+        MVola : 034 05 123 45 (Naty)
+        <span class="delai">À régler avant 22 h 30, sinon il passe au suivant.</span>
+      </div>
+      <div class="bulle bulle-droite">
+        Voici ma capture
+        <span class="capture">capture MVola</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Étape 3 -->
+<section class="scene">
+  <div class="nuage nuage-paiement" aria-hidden="true"></div>
+  <div class="texte">
+    <p class="etiquette">3 · Le paiement</p>
+    <h2 class="titre titre-2">La capture est lue. Vous confirmez d'un tap.</h2>
+    <p class="chapo">Livreo lit le montant, la référence et la date, et signale ce qui ne colle pas. Rien n'est marqué « payé » sans votre accord.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <h3 class="ecran-titre">Capture de Mia <small>lue par Livreo, à confirmer</small></h3>
+      <dl class="lecture">
+        <div><dt>Montant</dt><dd>38 000 Ar <span class="ok">cohérent</span></dd></div>
+        <div><dt>Référence</dt><dd class="horodatage">MP251029.2141</dd></div>
+        <div><dt>Date</dt><dd>aujourd'hui, 21 h 41 <span class="ok">cohérent</span></dd></div>
+      </dl>
+      <a class="bouton bouton-or" href="#pilotes">Confirmer le paiement</a>
+      <p class="ecran-aide">Une fausse capture ? Les incohérences sont marquées en rouge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Étape 4 -->
+<section class="scene">
+  <div class="texte">
+    <p class="etiquette">4 · Si ça traîne</p>
+    <h2 class="titre titre-2">Pas payé à temps ? Au suivant.</h2>
+    <p class="chapo">À l'heure limite, l'article passe au premier de la liste d'attente, qui reçoit son propre récap. Les « JP fantômes » ne bloquent plus vos articles.</p>
+  </div>
+  <div class="objet">
+    <div class="ecran">
+      <div class="passage">
+        <span class="quand">22:30:00 · délai dépassé</span>
+        <p>Le sac n°14 passe à <b>Faly</b>, 2ᵉ de la liste.</p>
+        <p class="ecran-aide">Récap envoyé à Faly · 22:30:01</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Les engagements : la seule bande nuit -->
+<section class="scene fond-nuit scene-nuit">
+  <div class="texte">
+    <p class="etiquette">Nos engagements</p>
+    <h2 class="titre titre-2" data-couche="mots">Fiable dès le premier live.</h2>
+  </div>
+  <div class="chiffres">
+    <div class="chiffre"><strong>0</strong><span>commentaire perdu</span></div>
+    <div class="chiffre"><strong>0</strong><span>article attribué deux fois</span></div>
+    <div class="chiffre"><strong>0</strong><span>« payé » sans preuve</span></div>
+  </div>
+  <p class="meta-tech">Moins de 3 secondes entre le commentaire et la réservation. Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre les commentaires et lire les captures.</p>
+</section>
+
+<!-- L'appel aux pilotes -->
+<section class="scene fin" id="pilotes">
+  <div class="nuage nuage-fin" aria-hidden="true"></div>
+  <div class="texte">
+    <p class="etiquette">Vendeuses pilotes</p>
+    <h2 class="titre titre-2">Votre prochain live, sans cahier.</h2>
+    <p class="chapo">Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés, cette semaine. Vous gardez la main : Livreo ne publie jamais à votre place.</p>
+    <div class="actions">
+      <a class="bouton" href="#">Proposer mon live</a>
+      <a class="lien" href="#">Écrire à l'équipe</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<p class="pied">Livreo · Antananarivo · Meta Global AI Developer Hackathon 2026</p>
+
+<!-- Téléphone : la bande d'action en bas, après le héros. -->
+<div class="c-barre-cta" data-couche="barre-cta">
+  <span>Votre prochain live, sans cahier.</span>
+  <a class="bouton bouton-petit" href="#pilotes">Essayer</a>
+</div>
+
+</body>
+</html>

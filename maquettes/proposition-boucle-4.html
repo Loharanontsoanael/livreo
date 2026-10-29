@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — proposition E : la boucle sur le vif</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+/* Proposition E : la photo du live en pleine largeur, et les 4 étapes en
+   pastilles produit compactes qui flottent dessus, en escalier. */
+body { padding: 0 0 4rem; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+
+.vif { position: relative; min-height: 92vh; display: grid; align-items: center; overflow: hidden; }
+.vif-photo { position: absolute; inset: 0; }
+.vif-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.vif-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgb(11 20 48 / .88) 0%, rgb(11 20 48 / .55) 42%, rgb(11 20 48 / .15) 70%),
+    linear-gradient(180deg, rgb(11 20 48 / .25), transparent 30%, transparent 70%, rgb(11 20 48 / .45));
+}
+.vif-contenu {
+  position: relative; z-index: 1;
+  display: grid; gap: 3rem;
+  padding: 4.5rem clamp(24px, 6vw, 80px);
+}
+@media (min-width: 1080px) {
+  .vif-contenu { grid-template-columns: minmax(0, 30rem) minmax(0, 1fr); align-items: center; gap: 4rem; }
+}
+.vif-texte .etiquette { color: #9cc0ff; }
+.vif-texte h2 { margin: 0 0 1rem; font-size: clamp(2.1rem, 4.5vw, 3.3rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #ffffff; }
+.vif-texte p { margin: 0; max-width: 26rem; font-size: 1.1rem; line-height: 1.5; color: #d7e2f7; }
+
+/* Le ticket de caisse : « Livreo encaisse », littéralement. Papier blanc
+   incliné, tout en mono, bord cranté, statuts en couleur. */
+.ticket-cadre { justify-self: center; rotate: -2.5deg; filter: drop-shadow(0 34px 50px rgb(11 20 48 / .55)); }
+@media (min-width: 1080px) { .ticket-cadre { justify-self: end; margin: 12rem 1.5rem 0 0; } }
+.ticket {
+  position: relative; width: min(380px, 88vw);
+  background: #ffffff; padding: 1.7rem 1.5rem 1.9rem;
+  font: 700 .82rem/1.9 var(--mono); color: var(--encre);
+}
+.ticket::after {
+  content: ""; position: absolute; top: 100%; left: 0; width: 100%; height: 11px;
+  background:
+    linear-gradient(-45deg, #ffffff 6px, transparent 0),
+    linear-gradient(45deg, #ffffff 6px, transparent 0);
+  background-size: 16px 16px; background-position: 0 0;
+}
+.ticket-marque { text-align: center; font-size: 1.05rem; letter-spacing: .35em; margin: 0 0 .1rem; }
+.ticket-sous { text-align: center; color: var(--encre-400); font-size: .72rem; letter-spacing: .04em; margin: 0 0 1rem; }
+.ticket-lignes { border-top: 2px dashed var(--bleu-200); border-bottom: 2px dashed var(--bleu-200); padding: .9rem 0; margin: 0 0 .9rem; display: grid; gap: .35rem; }
+.ticket-ligne { display: grid; grid-template-columns: auto 1fr auto; column-gap: .9rem; align-items: baseline; margin: 0; }
+.ticket-ligne .h { color: var(--encre-400); font-size: .72rem; }
+.ticket-ligne .s { font-size: .74rem; letter-spacing: .05em; }
+.ticket-ligne .s.bleu { color: var(--accent); }
+.ticket-ligne .s.paye { color: var(--or-encre); }
+.ticket-ligne .s.rouge { color: var(--direct); }
+.ticket-total { display: flex; justify-content: space-between; margin: 0; font-size: .95rem; }
+.ticket-merci { text-align: center; margin: .9rem 0 0; color: var(--encre-400); font-size: .72rem; letter-spacing: .18em; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Proposition E « la boucle sur le vif » — à valider avant d'entrer dans le site</p>
+
+<section class="vif">
+  <div class="vif-photo" aria-hidden="true">
+    <img src="assets/candidat-6.jpg" alt="">
+  </div>
+  <div class="vif-contenu">
+    <div class="vif-texte">
+      <p class="etiquette">La boucle Livreo</p>
+      <h2>Pendant qu'elle vend, Livreo encaisse.</h2>
+      <p>Quatre étapes automatiques, horodatées à la seconde, pendant que le live continue.</p>
+    </div>
+    <div class="ticket-cadre">
+      <div class="ticket">
+        <p class="ticket-marque">LIVREO</p>
+        <p class="ticket-sous">live du 29 octobre · 21:00 → 22:34</p>
+        <div class="ticket-lignes">
+          <p class="ticket-ligne"><span class="h">21:04:12</span><span>sac n°14 → Mia</span><span class="s bleu">réservé</span></p>
+          <p class="ticket-ligne"><span class="h">21:04:13</span><span>récap Messenger</span><span class="s bleu">envoyé</span></p>
+          <p class="ticket-ligne"><span class="h">21:41:07</span><span>38 000 Ar · capture ok</span><span class="s paye">payé</span></p>
+          <p class="ticket-ligne"><span class="h">22:30:00</span><span>sac n°7 → Faly</span><span class="s rouge">au suivant</span></p>
+        </div>
+        <p class="ticket-total"><span>ventes du live</span><b>12 · 0 cahier</b></p>
+        <p class="ticket-merci">MISAOTRA · À SAMEDI</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

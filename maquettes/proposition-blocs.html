@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — propositions blocs couleur</title>
+<style>
+@font-face { font-family: "DM Sans"; src: url("fonts/dm-sans-latin-wght.woff2") format("woff2"); font-weight: 100 1000; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono-latin-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+:root {
+  --encre: #121a2e; --encre-500: #49536b; --encre-400: #67738f;
+  --accent: #0866ff; --accent-700: #0a4fc4;
+  --bleu-pale: #eef3fe; --bleu-200: #d2e0fb;
+  --or-doux: #fdf0d8; --or-encre: #6b4300;
+  --sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: var(--encre); font: 400 1rem/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+.variante { padding: 4rem clamp(24px, 6vw, 80px) 5rem; }
+.maq-bandeau { padding: .6rem 16px; text-align: center; background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 .6rem; }
+.chapo { margin: 0 0 2.5rem; max-width: 34rem; color: var(--encre-500); }
+.cle { display: block; margin-bottom: .3rem; font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: var(--accent); }
+figure { margin: 0; }
+figcaption { margin-top: .8rem; font-size: .95rem; color: var(--encre-500); }
+img { display: block; width: 100%; height: auto; object-fit: cover; }
+
+/* ---------- A. Blocs décalés ---------- */
+.va .rangee { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; }
+.va figure { position: relative; padding: 0 1.1rem 1.1rem 0; }
+.va figure::before {
+  content: ""; position: absolute; inset: 1.1rem 0 0 1.1rem; z-index: 0;
+  border-radius: 22px; background: var(--bleu-pale);
+}
+.va figure:nth-child(2)::before { background: var(--or-doux); }
+.va figure:nth-child(3)::before { background: var(--bleu-200); }
+.va img { position: relative; z-index: 1; aspect-ratio: 4 / 3; border-radius: 20px; }
+.va figcaption { position: relative; z-index: 1; padding: 1rem .2rem 0 ; }
+
+/* ---------- B. Bande traversante ---------- */
+.vb { padding-inline: 0; }
+.vb .haut { padding: 0 clamp(24px, 6vw, 80px); }
+.vb .bande {
+  margin-top: 5.5rem; background: linear-gradient(160deg, var(--accent), var(--accent-700));
+  padding: 0 clamp(24px, 6vw, 80px) 2.2rem;
+}
+.vb .rangee {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem;
+  translate: 0 -3.2rem; margin-bottom: -1rem;
+}
+.vb img { aspect-ratio: 4 / 3; border-radius: 20px; }
+.vb figcaption { color: #dbe7ff; }
+.vb .cle { color: #ffffff; }
+
+/* ---------- C. Mosaïque + bloc ---------- */
+.vc .mosaique {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem;
+}
+.vc figure { position: relative; }
+.vc img { aspect-ratio: 16 / 10.5; border-radius: 22px; }
+.vc .cle-sur-image {
+  position: absolute; left: 1.1rem; bottom: 1rem; margin: 0;
+  font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: #ffffff;
+  text-shadow: 0 1px 10px rgb(11 20 48 / .75);
+}
+.vc .bloc {
+  border-radius: 22px; background: linear-gradient(160deg, var(--accent), var(--accent-700));
+  color: #ffffff; display: grid; align-content: center; gap: .6rem; padding: 2rem;
+}
+.vc .bloc p { margin: 0; font-size: clamp(1.2rem, 2.2vw, 1.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; }
+.vc .bloc span { font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: #c7dbff; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Trois pistes « blocs couleur » pour la section problème — à comparer, puis je code la retenue</p>
+
+<section class="variante va">
+  <h2>A · Blocs décalés</h2>
+  <p class="chapo">Chaque photo est posée sur un bloc de couleur légèrement décalé (bleu pâle, or doux, bleu clair). Éditorial, calme, et la touche d'or relie la palette paiement.</p>
+  <div class="rangee">
+    <figure>
+      <img src="../livreo-web/public/img/asset-recopier.jpg" alt="" width="1000" height="667">
+      <figcaption><span class="cle">recopier</span>Chaque commentaire noté à la main, un par un.</figcaption>
+    </figure>
+    <figure>
+      <img src="../livreo-web/public/img/asset-verifier.jpg" alt="" width="1000" height="667">
+      <figcaption><span class="cle">vérifier</span>Chaque capture Mobile Money contrôlée à l'œil.</figcaption>
+    </figure>
+    <figure>
+      <img src="../livreo-web/public/img/asset-relancer.jpg" alt="" width="1000" height="667">
+      <figcaption><span class="cle">relancer</span>Des articles bloqués par les « JP fantômes ».</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="variante vb">
+  <div class="haut">
+    <h2>B · Bande traversante</h2>
+    <p class="chapo">Une bande bleu plein traverse toute la page ; les photos sont à cheval dessus, les légendes passent en blanc dans la bande. Fort, structuré, très « marque ».</p>
+  </div>
+  <div class="bande">
+    <div class="rangee">
+      <figure>
+        <img src="../livreo-web/public/img/asset-recopier.jpg" alt="" width="1000" height="667">
+        <figcaption><span class="cle">recopier</span>Chaque commentaire noté à la main, un par un.</figcaption>
+      </figure>
+      <figure>
+        <img src="../livreo-web/public/img/asset-verifier.jpg" alt="" width="1000" height="667">
+        <figcaption><span class="cle">vérifier</span>Chaque capture Mobile Money contrôlée à l'œil.</figcaption>
+      </figure>
+      <figure>
+        <img src="../livreo-web/public/img/asset-relancer.jpg" alt="" width="1000" height="667">
+        <figcaption><span class="cle">relancer</span>Des articles bloqués par les « JP fantômes ».</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="variante vc">
+  <h2>C · Mosaïque + bloc</h2>
+  <p class="chapo">Une grille deux par deux : trois photos, et le quatrième carreau est un bloc bleu plein qui porte la phrase-choc. Les mots-clés passent sur les images.</p>
+  <div class="mosaique">
+    <figure>
+      <img src="../livreo-web/public/img/asset-recopier.jpg" alt="" width="1000" height="667">
+      <p class="cle-sur-image">recopier</p>
+    </figure>
+    <figure>
+      <img src="../livreo-web/public/img/asset-verifier.jpg" alt="" width="1000" height="667">
+      <p class="cle-sur-image">vérifier</p>
+    </figure>
+    <figure>
+      <img src="../livreo-web/public/img/asset-relancer.jpg" alt="" width="1000" height="667">
+      <p class="cle-sur-image">relancer</p>
+    </figure>
+    <div class="bloc">
+      <span>le prix du manuel</span>
+      <p>Des heures chaque soir, et des ventes perdues à chaque live.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

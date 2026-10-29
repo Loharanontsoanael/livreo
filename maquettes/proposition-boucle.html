@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — proposition : la boucle minute par minute</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+/* Proposition : la frise de la soirée. Une ligne de temps traverse la
+   section ; chaque étape y est ancrée par son horodatage en mono, avec son
+   écran produit en dessous. Le 22:30:00 du passage au suivant est en rouge. */
+body { padding: 3.5rem clamp(24px, 6vw, 80px) 5rem; }
+.maq-bandeau {
+  margin: -3.5rem calc(-1 * clamp(24px, 6vw, 80px)) 3rem;
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.intro { max-width: 34rem; margin-bottom: 3.5rem; }
+
+.frise { position: relative; display: grid; gap: 2.5rem; }
+.moment { position: relative; padding-left: 2.2rem; }
+.frise::before {
+  content: ""; position: absolute; left: 5px; top: .6rem; bottom: .6rem;
+  width: 2px; background: var(--bleu-200);
+}
+.moment::before {
+  content: ""; position: absolute; left: 0; top: .45rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); border: 2.5px solid #ffffff;
+  box-shadow: 0 0 0 2px var(--bleu-200);
+}
+.moment-heure {
+  display: block; margin-bottom: .2rem;
+  font: 700 1.25rem/1.2 var(--mono); letter-spacing: -0.01em;
+  color: var(--encre); font-variant-numeric: tabular-nums;
+}
+.moment-heure small { display: block; font: 700 .72rem/1.6 var(--mono); letter-spacing: .04em; color: var(--encre-400); }
+.moment-rouge .moment-heure { color: var(--direct); }
+.moment-rouge::before { background: var(--direct); }
+.moment-titre { margin: .6rem 0 .9rem; font-size: 1.15rem; font-weight: 800; letter-spacing: -0.015em; }
+.moment .ecran { width: min(360px, 100%); }
+
+@media (min-width: 1080px) {
+  .frise { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.8rem; align-items: start; }
+  .moment { padding-left: 0; padding-top: 2.4rem; }
+  .frise::before { left: .4rem; right: .4rem; top: 5px; bottom: auto; width: auto; height: 2px; }
+  .moment::before { left: 0; top: 0; }
+  .moment .ecran { width: 100%; }
+  .ecran { padding: 1.1rem 1.15rem; }
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Proposition « la soirée minute par minute » — à valider avant d'entrer dans le site</p>
+
+<div class="intro">
+  <p class="etiquette">La boucle Livreo</p>
+  <h2 class="titre titre-2">La soirée d'un live, minute par minute.</h2>
+  <p class="chapo">Quatre étapes automatiques, horodatées à la seconde. Vous gardez la main à chaque instant.</p>
+</div>
+
+<div class="frise">
+  <article class="moment">
+    <b class="moment-heure">21:04:12<small>pendant le live</small></b>
+    <h3 class="moment-titre">Il commente « JP ». C'est réservé.</h3>
+    <div class="ecran">
+      <h3 class="ecran-titre">Article en cours <small>n°14 · Sac perlé · 38 000 Ar</small></h3>
+      <p class="gagnante"><span>Mia</span><span class="horodatage">21:04:12</span></p>
+      <ol class="attente">
+        <li><span>2. Faly</span><span class="horodatage">21:04:19</span></li>
+        <li><span>3. Vero</span><span class="horodatage">21:04:31</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="moment">
+    <b class="moment-heure">21:04:13<small>juste après</small></b>
+    <h3 class="moment-titre">Le récap part tout seul.</h3>
+    <div class="ecran">
+      <div class="bulle">
+        <b>Sac perlé n°14 · 38 000 Ar</b>
+        MVola : 034 05 123 45 (Naty)
+        <span class="delai">À régler avant 22 h 30.</span>
+      </div>
+      <div class="bulle bulle-droite">
+        Voici ma capture
+        <span class="capture">capture MVola</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="moment">
+    <b class="moment-heure">21:41:07<small>le paiement</small></b>
+    <h3 class="moment-titre">La capture est lue, vous confirmez.</h3>
+    <div class="ecran">
+      <h3 class="ecran-titre">Capture de Mia <small>lue par Livreo</small></h3>
+      <dl class="lecture">
+        <div><dt>Montant</dt><dd>38 000 Ar <span class="ok">cohérent</span></dd></div>
+        <div><dt>Référence</dt><dd class="horodatage">MP251029.2141</dd></div>
+        <div><dt>Date</dt><dd>21 h 41 <span class="ok">cohérent</span></dd></div>
+      </dl>
+      <span class="bouton bouton-or">Confirmer le paiement</span>
+    </div>
+  </article>
+
+  <article class="moment moment-rouge">
+    <b class="moment-heure">22:30:00<small>si ça traîne</small></b>
+    <h3 class="moment-titre">Pas payé à temps ? Au suivant.</h3>
+    <div class="ecran">
+      <div class="passage">
+        <span class="quand">22:30:00 · délai dépassé</span>
+        <p>Le sac n°7 passe à <b>Faly</b>, 2ᵉ de la liste.</p>
+        <p class="ecran-aide">Récap envoyé à Faly · 22:30:01</p>
+      </div>
+    </div>
+  </article>
+</div>
+
+</body>
+</html>

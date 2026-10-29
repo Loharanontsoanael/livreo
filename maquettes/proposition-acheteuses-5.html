@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — côté acheteuses : trois concepts éditoriaux</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 6rem clamp(24px, 6vw, 80px) 6rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 50% 40%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 50% 40%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+
+/* ---------- AK · Azoko ! (le cri de victoire) ---------- */
+.eng-ak { text-align: center; }
+.eng-ak .etiquette { justify-content: center; }
+.azoko {
+  margin: .5rem 0 2rem;
+  font: 700 clamp(4.5rem, 11vw, 8.5rem)/1 var(--titrage);
+  letter-spacing: -0.035em; color: #fff;
+  text-shadow: 0 0 70px rgb(8 102 255 / .6);
+}
+.azoko-sens { margin: 0 auto; max-width: 36rem; font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.6; color: #b9c7e6; }
+.azoko-sens b { color: #fff; font-weight: 650; }
+.azoko-fin { margin: 2.6rem auto 0; max-width: 34rem; font: 700 .8rem/1.8 var(--mono); letter-spacing: .02em; color: #9cc0ff; }
+
+/* ---------- AL · L'intertitre (la vignette de 21 h 42) ---------- */
+.eng-al { text-align: center; }
+.al-heure {
+  margin: 0 0 1.8rem;
+  font: 600 clamp(3.4rem, 8vw, 5.5rem)/1 var(--mono);
+  color: #9cc0ff; font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 50px rgb(8 102 255 / .5);
+}
+.al-recit {
+  margin: 0 auto; max-width: 30ch;
+  font: 650 clamp(1.5rem, 3.2vw, 2.3rem)/1.35 var(--titrage);
+  letter-spacing: -0.02em; color: #fff; text-wrap: balance;
+}
+.al-recit i { font-style: normal; color: #9cc0ff; }
+.al-detail { margin: 2.8rem auto 0; font: 700 .8rem/1.8 var(--mono); letter-spacing: .02em; color: #7f9ad1; }
+
+/* ---------- AM · La question posée en grand ---------- */
+.eng-am .question {
+  margin: 0 0 2.2rem; max-width: 18ch;
+  font: 700 clamp(2.2rem, 5.5vw, 3.6rem)/1.08 var(--titrage);
+  letter-spacing: -0.03em; color: #fff; text-wrap: balance;
+}
+.eng-am .reponse {
+  margin: 0 0 1.2rem;
+  font: 650 clamp(1.5rem, 3vw, 2.1rem)/1.2 var(--titrage);
+  letter-spacing: -0.02em; color: #9cc0ff;
+}
+.eng-am .explication { margin: 0; max-width: 36rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.65; color: #b9c7e6; }
+.eng-am .explication b { color: #fff; font-weight: 650; }
+.eng-am .coda { margin: 2.8rem 0 0; font: 700 .8rem/1.8 var(--mono); letter-spacing: .02em; color: #9cc0ff; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Côté acheteuses, sans photo ni liste ni logo : trois concepts portés par le texte</p>
+
+<p class="titre-variante">AK · Le cri de victoire (le mot malgache en affiche, à faire corriger par vous)</p>
+<section class="eng eng-ak" id="eng-ak">
+  <p class="etiquette">Côté acheteuses</p>
+  <p class="azoko">« Azoko ! »</p>
+  <p class="azoko-sens">Le mot préféré de vos clientes quand l'article est à elles. Avec Livreo, il veut dire : <b>réservé, récapitulé sur Messenger, payé</b>. Avant même la fin de votre live.</p>
+  <p class="azoko-fin">rien à installer, rien à apprendre : elles commentent, le reste suit</p>
+</section>
+
+<p class="titre-variante">AL · L'intertitre (une vignette de cinéma entre deux scènes)</p>
+<section class="eng eng-al" id="eng-al">
+  <p class="al-heure">21:42</p>
+  <p class="al-recit">Quelque part à Antananarivo, une cliente vient d'acheter sur votre live. <i>Sans rien installer. Sans rien apprendre.</i></p>
+  <p class="al-detail">elle a commenté « jp » · le récap est arrivé sur Messenger · c'est payé</p>
+</section>
+
+<p class="titre-variante">AM · La question qu'elle se pose (l'objection affichée en grand, puis dissoute)</p>
+<section class="eng eng-am" id="eng-am">
+  <p class="etiquette">Côté acheteuses</p>
+  <p class="question">« Et si mes clientes n'y arrivent pas ? »</p>
+  <p class="reponse">Elles savent déjà.</p>
+  <p class="explication">Commenter un live, ouvrir Messenger, payer par Mobile Money : <b>elles le font déjà tous les jours</b>. Acheter chez vous, c'est simplement les trois à la suite.</p>
+  <p class="coda">rien à installer, rien à apprendre : elles achètent juste plus vite</p>
+</section>
+
+</body>
+</html>

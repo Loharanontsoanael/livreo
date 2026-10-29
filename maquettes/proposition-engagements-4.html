@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — la section nuit : trois contenus</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Socle commun : la nuit, avec sa trame de points. */
+.eng { position: relative; background: var(--nuit); padding: 5rem clamp(24px, 6vw, 80px) 5.5rem; overflow: hidden; }
+.eng::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .10;
+  -webkit-mask: radial-gradient(60rem 40rem at 72% 25%, #000, transparent 75%);
+  mask: radial-gradient(60rem 40rem at 72% 25%, #000, transparent 75%);
+}
+.eng > * { position: relative; }
+.eng .etiquette { color: #9cc0ff; }
+.eng h2 { color: #fff; max-width: 17ch; }
+.eng .chapo-nuit { margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55; color: #b9c7e6; }
+.eng .note-fin { margin: 3.2rem 0 0; max-width: 44rem; font-size: .95rem; line-height: 1.75; color: #8fa3cc; }
+
+/* ---------- S · L'IA qui comprend ---------- */
+.trads { margin-top: 3.4rem; display: grid; gap: 2.6rem; }
+@media (min-width: 980px) { .trads { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; } }
+.trad { display: grid; gap: .9rem; align-content: start; }
+.trad .recu { margin: 0; font: 600 1.05rem/1.4 var(--mono); color: #fff; }
+.trad .compris { margin: 0; font: 650 1.3rem/1.3 var(--titrage); letter-spacing: -0.015em; color: #9cc0ff; }
+.trad .detail { margin: 0; font-size: .92rem; line-height: 1.6; color: #aab8d8; }
+
+/* ---------- T · Construit avec Meta ---------- */
+.briques { margin-top: 3.4rem; display: grid; gap: 2.8rem; max-width: 44rem; }
+.brique { display: grid; gap: .45rem; }
+.brique b { font: 700 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.brique span { font-size: 1rem; line-height: 1.6; color: #b9c7e6; max-width: 36rem; }
+.brique small { font: 700 .68rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+
+/* ---------- U · Le temps rendu ---------- */
+.rendu { margin-top: 3.4rem; display: grid; gap: 2.2rem; max-width: 52rem; }
+.rendu-rang { display: grid; gap: .5rem; }
+@media (min-width: 980px) { .rendu-rang { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; align-items: baseline; } }
+.rendu-rang .avant { margin: 0; font: 600 .95rem/1.5 var(--mono); color: #68799f; }
+.rendu-rang .apres { margin: 0; font: 650 clamp(1.25rem, 2.4vw, 1.6rem)/1.25 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.rendu-rang .apres i { font-style: normal; color: #9cc0ff; }
+.rendu-entetes { display: none; }
+@media (min-width: 980px) {
+  .rendu-entetes { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 3rem; margin-bottom: -.8rem; }
+  .rendu-entetes small { font: 700 .68rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">La section nuit, après la boucle : trois contenus possibles (on sort de la « fiabilité »)</p>
+
+<p class="titre-variante">S · L'IA qui comprend (Muse Spark décode le parler des lives)</p>
+<section class="eng eng-s" id="eng-s">
+  <p class="etiquette">L'IA du live</p>
+  <h2 class="titre titre-2">Livreo comprend vos acheteurs.</h2>
+  <p class="chapo-nuit">Le malgache, le français, les abréviations du direct : Muse Spark lit tout, et ne confond jamais une question avec une commande.</p>
+  <div class="trads">
+    <div class="trad">
+      <p class="recu">« izaho koa jp »</p>
+      <p class="compris">Réservation enregistrée.</p>
+      <p class="detail">Hanta prend la robe bleue, sa place est gardée à la seconde.</p>
+    </div>
+    <div class="trad">
+      <p class="recu">« jp ve ? »</p>
+      <p class="compris">Une question, pas une commande.</p>
+      <p class="detail">Rien n'est réservé : Livreo distingue l'envie du doute.</p>
+    </div>
+    <div class="trad">
+      <p class="recu">capture MVola · 45 000 Ar</p>
+      <p class="compris">Paiement vérifié.</p>
+      <p class="detail">Le montant, le numéro et l'heure concordent : marqué payé.</p>
+    </div>
+  </div>
+  <p class="note-fin">Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre et vérifier.</p>
+</section>
+
+<p class="titre-variante">T · Construit avec Meta (la stack assumée, pour le jury)</p>
+<section class="eng eng-t" id="eng-t">
+  <p class="etiquette">Sous le capot</p>
+  <h2 class="titre titre-2">Construit avec Meta, de bout en bout.</h2>
+  <div class="briques">
+    <div class="brique">
+      <small>pendant le live</small>
+      <b>Graph API</b>
+      <span>Capte chaque commentaire du direct, à la seconde où il est posté.</span>
+    </div>
+    <div class="brique">
+      <small>avec les acheteurs</small>
+      <b>Messenger Platform</b>
+      <span>Envoie le récapitulatif de commande et reçoit la confirmation, sans quitter Facebook.</span>
+    </div>
+    <div class="brique">
+      <small>l'intelligence</small>
+      <b>Muse Spark</b>
+      <span>Comprend « jp », le malgache du direct, et lit les captures MVola pour vérifier chaque paiement.</span>
+    </div>
+  </div>
+</section>
+
+<p class="titre-variante">U · Le temps rendu (l'avant, l'après : ce que la vendeuse récupère)</p>
+<section class="eng eng-u" id="eng-u">
+  <p class="etiquette">Ce que ça change</p>
+  <h2 class="titre titre-2">Le live se termine. Le travail aussi.</h2>
+  <div class="rendu">
+    <div class="rendu-entetes" aria-hidden="true">
+      <small>avant</small>
+      <small>avec Livreo</small>
+    </div>
+    <div class="rendu-rang">
+      <p class="avant">3 heures à recopier les commentaires, la nuit</p>
+      <p class="apres">La liste de commandes est <i>déjà prête</i>.</p>
+    </div>
+    <div class="rendu-rang">
+      <p class="avant">encaissé deux jours plus tard, parfois jamais</p>
+      <p class="apres">Payé <i>pendant le live</i>.</p>
+    </div>
+    <div class="rendu-rang">
+      <p class="avant">des articles bloqués par les faux « j'ai payé »</p>
+      <p class="apres">Remis en vente <i>à la seconde</i>.</p>
+    </div>
+  </div>
+  <p class="note-fin">Construit avec les API Meta : Graph API pour le live, Messenger pour les acheteurs, Muse Spark pour comprendre et vérifier.</p>
+</section>
+
+</body>
+</html>
