@@ -503,10 +503,26 @@ a { color: var(--accent); text-underline-offset: 2px; }
   background: var(--accent);
 }
 
-/* ---------- Fin, pied, barre téléphone ---------- */
+/* ---------- Fin de page : démarrer ---------- */
 
-.fin { min-height: 70svh; }
-.fin .nuage-fin { right: -3rem; top: 50%; translate: 0 -50%; --taille: 42rem; }
+.demarrer { position: relative; overflow-x: clip; padding: 5rem 20px; }
+@media (min-width: 980px) { .demarrer { padding: 5.5rem clamp(32px, 7vw, 96px); } }
+.demarrer .chapo { margin-bottom: 0; }
+.pas-colonnes { margin: 3.2rem 0 0; display: grid; gap: 2.4rem; }
+@media (min-width: 980px) { .pas-colonnes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3.5rem; } }
+.pas { display: grid; gap: .55rem; align-content: start; }
+.pas i {
+  font: 200 clamp(2.6rem, 5vw, 3.6rem)/1 var(--sans); font-style: normal;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.pas b { font: 650 1.25rem/1.25 var(--titrage); letter-spacing: -0.015em; color: var(--encre); }
+.pas span { font-size: .98rem; line-height: 1.6; color: var(--encre-500); max-width: 24rem; }
+.demarrer-final { margin-top: 3rem; display: flex; align-items: center; gap: 1.2rem 2rem; flex-wrap: wrap; }
+.demarrer-final .conditions {
+  margin: 0; max-width: 34rem;
+  font: 700 .78rem/1.8 var(--mono); letter-spacing: .02em; color: var(--encre-400);
+}
+.demarrer-final .conditions b { color: var(--accent); font-weight: 700; }
 
 /* Réassurance : trois repères mono, sans boîte. */
 .promesses { margin: 2.2rem 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .8rem 2.2rem; }

@@ -140,35 +140,36 @@ export default function Accueil() {
           </div>
         </section>
 
-        {/* L'appel aux pilotes : l'écho du héros */}
-        <section className="scene fin" id="pilotes">
-          <div className="texte">
-            <p className="etiquette">Vendeuses pilotes</p>
-            <h2 className="titre titre-2">Votre prochain live, sans cahier.</h2>
-            <p className="chapo">
-              Nous cherchons des vendeuses à Antananarivo pour les premiers lives accompagnés,
-              cette semaine.
-            </p>
-            <div className="actions">
-              <a className="bouton" href="#">Proposer mon live</a>
+        {/* Démarrer : la vraie fin de page, les trois pas avant le pied */}
+        <section className="demarrer" id="pilotes">
+          <p className="etiquette">Vendeuses pilotes</p>
+          <h2 className="titre titre-2">Démarrez cette semaine.</h2>
+          <p className="chapo">
+            Les premiers lives accompagnés se font à Antananarivo, avec l&apos;équipe à vos côtés.
+          </p>
+          <div className="pas-colonnes">
+            <div className="pas">
+              <i>1</i>
+              <b>Proposez votre live.</b>
+              <span>Un message suffit. On vous répond le jour même, en français ou en malgache.</span>
             </div>
-            <ul className="promesses">
-              <li>gratuit pendant le pilote</li>
-              <li>vous gardez la main</li>
-              <li>installé avec vous, avant votre live</li>
-            </ul>
+            <div className="pas">
+              <i>2</i>
+              <b>On installe tout avec vous.</b>
+              <span>La veille de votre live, en 30 minutes. Rien à payer, rien à configurer vous-même.</span>
+            </div>
+            <div className="pas">
+              <i>3</i>
+              <b>Vous vendez, Livreo encaisse.</b>
+              <span>Vous animez votre live comme d&apos;habitude, la liste des commandes payées se remplit.</span>
+            </div>
           </div>
-          <div className="objet">
-            <div className="nuage nuage-fin" aria-hidden="true" />
-            <figure className="sujet-live">
-              <img
-                src="/img/vendeuse-live.png"
-                alt="Une vendeuse présente une robe bleue pendant son live"
-                width={672}
-                height={744}
-                loading="lazy"
-              />
-            </figure>
+          <div className="demarrer-final">
+            <a className="bouton" href="#">Proposer mon live</a>
+            <p className="conditions">
+              <b>gratuit pendant le pilote</b> · vous gardez la main · Livreo ne publie jamais à
+              votre place
+            </p>
           </div>
         </section>
       </main>
