@@ -610,3 +610,76 @@ a { color: var(--accent); text-underline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* ================= L'app vendeuse : écran Direct ================= */
+/* Verre nuit : la caméra plein écran, les infos fondent dessus. Sur
+   grand écran, l'app reste un téléphone centré sur fond nuit. */
+
+.app-direct {
+  position: fixed; inset: 0; overflow: hidden;
+  background: #000;
+}
+@media (min-width: 700px) {
+  body:has(.app-direct) { background: var(--nuit); }
+  .app-direct {
+    width: 420px; height: min(880px, 94vh);
+    inset: 50% auto auto 50%; translate: -50% -50%;
+    border-radius: 32px;
+    box-shadow: 0 40px 90px rgb(3 8 25 / .6);
+  }
+}
+.app-camera { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; }
+
+.app-haut {
+  position: absolute; inset: 0 0 auto 0; z-index: 2;
+  display: flex; align-items: center; gap: .6rem;
+  padding: max(1rem, env(safe-area-inset-top)) 1rem 2.2rem;
+  background: linear-gradient(180deg, rgb(0 0 0 / .55), transparent);
+}
+.app-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font: 700 .7rem/1 var(--mono); letter-spacing: .05em; color: #fff;
+  background: var(--direct); border-radius: 99px; padding: .4rem .65rem;
+}
+.app-badge i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+.app-duree { font: 600 .85rem/1 var(--mono); color: #fff; font-variant-numeric: tabular-nums; }
+.app-spectateurs { margin-left: auto; font: 600 .85rem/1 var(--mono); color: rgb(255 255 255 / .85); }
+
+/* La bulle de doute : l'IA demande, la vendeuse tranche d'un pouce. */
+.app-doute {
+  position: absolute; left: 1rem; right: 1rem; z-index: 2;
+  top: calc(64px + env(safe-area-inset-top, 0px));
+  display: flex; align-items: center; gap: .7rem;
+  padding: .7rem .9rem; border-radius: 16px;
+  background: rgb(11 20 48 / .78);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.app-doute p { margin: 0; flex: 1; font: 500 .88rem/1.35 var(--sans); color: #dbe6ff; }
+.app-doute p b { font-weight: 700; color: #fff; }
+.app-oui, .app-non {
+  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+  display: grid; place-items: center;
+  font: 700 .8rem/1 var(--sans);
+}
+.app-oui { background: var(--accent); color: #fff; }
+.app-non { background: rgb(255 255 255 / .16); color: #fff; }
+
+/* Le panneau bas : l'article en cours, la gagnante, la suite. */
+.app-bas {
+  position: absolute; inset: auto 0 0 0; z-index: 2;
+  padding: 2.6rem 1rem calc(1.1rem + env(safe-area-inset-bottom, 0px));
+  display: grid; gap: .75rem;
+  background: linear-gradient(180deg, transparent, rgb(11 20 48 / .88) 32%);
+}
+.app-ref { font: 700 .68rem/1 var(--mono); letter-spacing: .04em; color: #9cc0ff; }
+.app-article { margin: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.app-article b { font: 650 1.25rem/1.15 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.app-article span { font: 600 1.05rem/1 var(--mono); font-variant-numeric: tabular-nums; color: #9cc0ff; white-space: nowrap; }
+.app-gagnante { margin: 0; display: flex; align-items: center; gap: .55rem; font: 500 .92rem/1.3 var(--sans); color: #dbe6ff; }
+.app-gagnante i { width: 8px; height: 8px; border-radius: 50%; background: #35d07f; flex: none; }
+.app-attente { margin: 0; font: 600 .74rem/1.4 var(--mono); color: #7f9ad1; }
+.app-suivant {
+  height: 56px; border-radius: 99px; border: 0; cursor: pointer;
+  background: var(--vers-violet); color: #fff;
+  font: 650 1.05rem/1 var(--titrage);
+}
