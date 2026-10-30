@@ -5,7 +5,6 @@ export default function Accueil() {
     <>
       <header className="entete">
         <a className="marque" href="#">Livreo</a>
-        <button className="c-pause" data-couche="pause">Mettre les animations en pause</button>
       </header>
 
       <main>
@@ -165,31 +164,24 @@ export default function Accueil() {
             </div>
           </div>
           <div className="demarrer-final">
-            <a className="bouton" href="#">Proposer mon live</a>
+            <a className="bouton-demarrer" href="#">
+              <b>Proposer mon live</b>
+              <span>réponse le jour même</span>
+            </a>
             <p className="conditions">
-              <b>gratuit pendant le pilote</b> · vous gardez la main · Livreo ne publie jamais à
-              votre place
+              Gratuit pendant le pilote. Vous gardez la main : Livreo ne publie jamais à votre
+              place.
             </p>
           </div>
         </section>
       </main>
 
       <footer className="pied-livreo">
-        <div>
-          <p className="pied-marque-livreo">Livreo</p>
-          <p className="pied-mission">
-            L&apos;assistant de vente des lives Facebook, construit à Antananarivo pour les
-            vendeuses de Madagascar.
-          </p>
-        </div>
-        <nav className="pied-liens" aria-label="Liens de bas de page">
-          <a href="#boucle">comment ça marche</a>
-          <a href="#pilotes">proposer mon live</a>
-          <a href="#pilotes">écrire à l&apos;équipe</a>
-        </nav>
-        <p className="pied-meta">
-          construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · Meta
-          Global AI Developer Hackathon 2026 · misaotra
+        <p className="pied-ligne">
+          <b>Livreo</b> · Antananarivo, Madagascar
+        </p>
+        <p className="pied-ligne">
+          Construit avec les API Meta pour le Meta Global AI Developer Hackathon 2026. Misaotra.
         </p>
       </footer>
 

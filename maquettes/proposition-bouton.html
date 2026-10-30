@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — le bouton d'appel : quatre designs</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.planche { padding: 3rem clamp(24px, 6vw, 80px); display: grid; gap: 2.8rem; }
+.essai { display: grid; gap: .9rem; justify-items: start; }
+.essai small { font: 700 .78rem/1.4 var(--mono); color: var(--encre-400); }
+
+/* B1 · La pilule généreuse (dégradé discret, plus d'air) */
+.b1 {
+  display: inline-block; text-decoration: none;
+  background: linear-gradient(175deg, #1d79ff, var(--accent) 55%, var(--accent-700));
+  color: #fff; border-radius: 99px;
+  padding: 1.15rem 2.5rem;
+  font: 650 1.12rem/1 var(--titrage); letter-spacing: -0.01em;
+}
+.b1:hover { background: linear-gradient(175deg, var(--accent), var(--accent-700)); }
+
+/* B2 · Les deux lignes (la réponse est dans le bouton) */
+.b2 {
+  display: inline-grid; gap: .3rem; justify-items: center; text-decoration: none;
+  background: var(--accent); color: #fff; border-radius: 22px;
+  padding: .95rem 2.2rem 1rem;
+}
+.b2 b { font: 650 1.12rem/1 var(--titrage); letter-spacing: -0.01em; }
+.b2 span { font: 500 .8rem/1 var(--sans); color: rgb(255 255 255 / .75); }
+
+/* B3 · Le point EN DIRECT (le rouge du live entre dans le bouton) */
+.b3 {
+  display: inline-flex; align-items: center; gap: .7rem; text-decoration: none;
+  background: var(--accent); color: #fff; border-radius: 99px;
+  padding: 1.05rem 2.2rem;
+  font: 650 1.08rem/1 var(--titrage); letter-spacing: -0.01em;
+}
+.b3 i { width: 9px; height: 9px; border-radius: 50%; background: #ff5c77; box-shadow: 0 0 10px rgb(255 92 119 / .8); }
+
+/* B4 · L'ombre portée bleue (le bouton flotte) */
+.b4 {
+  display: inline-block; text-decoration: none;
+  background: var(--accent); color: #fff; border-radius: 99px;
+  padding: 1.1rem 2.4rem;
+  font: 650 1.1rem/1 var(--titrage); letter-spacing: -0.01em;
+  box-shadow: 0 16px 34px rgb(8 102 255 / .3), 0 3px 8px rgb(8 102 255 / .2);
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Le bouton « Proposer mon live » : quatre designs, en contexte clair</p>
+
+<div class="planche">
+  <div class="essai">
+    <small>B1 · la pilule généreuse (plus grande, dégradé discret)</small>
+    <a class="b1" href="#">Proposer mon live</a>
+  </div>
+  <div class="essai">
+    <small>B2 · les deux lignes (la promesse de réponse intégrée)</small>
+    <a class="b2" href="#"><b>Proposer mon live</b><span>réponse le jour même</span></a>
+  </div>
+  <div class="essai">
+    <small>B3 · le point EN DIRECT (le rouge du live, signature Livreo)</small>
+    <a class="b3" href="#"><i aria-hidden="true"></i>Proposer mon live</a>
+  </div>
+  <div class="essai">
+    <small>B4 · l'ombre bleue (le bouton flotte au-dessus de la page)</small>
+    <a class="b4" href="#">Proposer mon live</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — le pied de page : trois designs</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* ---------- F1 · Le pied nuit (la page se referme sur sa couleur) ---------- */
+.f1 {
+  position: relative; overflow: hidden;
+  background: var(--nuit); color: #eef2fb;
+  padding: 4rem clamp(24px, 6vw, 80px) 2.5rem;
+  display: grid; gap: 2rem;
+}
+.f1::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .08;
+  -webkit-mask: radial-gradient(50rem 26rem at 20% 0%, #000, transparent 75%);
+  mask: radial-gradient(50rem 26rem at 20% 0%, #000, transparent 75%);
+}
+.f1 > * { position: relative; }
+@media (min-width: 900px) { .f1 { grid-template-columns: minmax(0, 1.2fr) auto; align-items: start; } }
+.f1 .marque2 { font: 700 1.35rem/1.3 var(--titrage); letter-spacing: -0.02em; color: #fff; margin: 0 0 .35rem; }
+.f1 .mission2 { margin: 0; font-size: .95rem; line-height: 1.6; color: #b9c7e6; max-width: 26rem; }
+.f1 .liens2 { display: grid; gap: .55rem; justify-items: start; }
+.f1 .liens2 a { font: 700 .8rem/1.5 var(--mono); letter-spacing: .02em; color: #9cb4e0; text-decoration: none; }
+.f1 .liens2 a:hover { color: #fff; }
+.f1 .meta2 { grid-column: 1 / -1; margin: 1.2rem 0 0; font: 700 .72rem/1.6 var(--mono); letter-spacing: .03em; color: #7f9ad1; }
+
+/* ---------- F2 · Misaotra (le mot de la fin) ---------- */
+.f2 { padding: 4.5rem clamp(24px, 6vw, 80px) 2.5rem; display: grid; gap: 2.5rem; }
+.f2 .merci {
+  margin: 0; font: 650 clamp(3rem, 8vw, 5.5rem)/1 var(--titrage);
+  letter-spacing: -0.035em; color: var(--bleu-200);
+}
+.f2 .rang2 { display: grid; gap: 2rem; }
+@media (min-width: 900px) { .f2 .rang2 { grid-template-columns: minmax(0, 1.2fr) auto; align-items: start; } }
+.f2 .marque2 { font: 700 1.2rem/1.3 var(--titrage); letter-spacing: -0.02em; color: var(--encre); margin: 0 0 .3rem; }
+.f2 .mission2 { margin: 0; font-size: .95rem; color: var(--encre-500); max-width: 26rem; }
+.f2 .liens2 { display: grid; gap: .55rem; justify-items: start; }
+.f2 .liens2 a { font: 700 .8rem/1.5 var(--mono); letter-spacing: .02em; color: var(--encre-500); text-decoration: none; }
+.f2 .meta2 { margin: 0; font: 700 .72rem/1.6 var(--mono); letter-spacing: .03em; color: var(--encre-400); }
+
+/* ---------- F3 · Le grand wordmark (la marque en filigrane) ---------- */
+.f3 { position: relative; overflow: hidden; padding: 4rem clamp(24px, 6vw, 80px) 0; }
+.f3 .rang2 { display: grid; gap: 2rem; }
+@media (min-width: 900px) { .f3 .rang2 { grid-template-columns: minmax(0, 1.2fr) auto; align-items: start; } }
+.f3 .mission2 { margin: 0; font-size: .95rem; color: var(--encre-500); max-width: 26rem; }
+.f3 .liens2 { display: grid; gap: .55rem; justify-items: start; }
+.f3 .liens2 a { font: 700 .8rem/1.5 var(--mono); letter-spacing: .02em; color: var(--encre-500); text-decoration: none; }
+.f3 .meta2 { margin: 1.6rem 0 0; font: 700 .72rem/1.6 var(--mono); letter-spacing: .03em; color: var(--encre-400); }
+.f3 .filigrane {
+  margin: 2.5rem 0 0; display: block;
+  font: 700 clamp(5rem, 17vw, 14rem)/0.78 var(--titrage);
+  letter-spacing: -0.04em; text-align: center;
+  color: var(--bleu-pale);
+  user-select: none;
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Le pied de page : trois designs</p>
+
+<p class="titre-variante">F1 · Le pied nuit (la page se referme sur la couleur Livreo, trame discrète)</p>
+<footer class="f1" id="pied-f1">
+  <div>
+    <p class="marque2">Livreo</p>
+    <p class="mission2">L'assistant de vente des lives Facebook, construit à Antananarivo pour les vendeuses de Madagascar.</p>
+  </div>
+  <nav class="liens2">
+    <a href="#">comment ça marche</a>
+    <a href="#">proposer mon live</a>
+    <a href="#">écrire à l'équipe</a>
+  </nav>
+  <p class="meta2">construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · Meta Global AI Developer Hackathon 2026 · misaotra</p>
+</footer>
+
+<p class="titre-variante">F2 · Misaotra (le mot de la fin, en grand et en doux)</p>
+<footer class="f2" id="pied-f2">
+  <p class="merci">Misaotra.</p>
+  <div class="rang2">
+    <div>
+      <p class="marque2">Livreo</p>
+      <p class="mission2">L'assistant de vente des lives Facebook, construit à Antananarivo pour les vendeuses de Madagascar.</p>
+    </div>
+    <nav class="liens2">
+      <a href="#">comment ça marche</a>
+      <a href="#">proposer mon live</a>
+      <a href="#">écrire à l'équipe</a>
+    </nav>
+  </div>
+  <p class="meta2">construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · Meta Global AI Developer Hackathon 2026</p>
+</footer>
+
+<p class="titre-variante">F3 · Le grand wordmark (Livreo en filigrane, coupé par le bas de page)</p>
+<footer class="f3" id="pied-f3">
+  <div class="rang2">
+    <div>
+      <p class="mission2">L'assistant de vente des lives Facebook, construit à Antananarivo pour les vendeuses de Madagascar.</p>
+      <p class="meta2">construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · hackathon Meta 2026 · misaotra</p>
+    </div>
+    <nav class="liens2">
+      <a href="#">comment ça marche</a>
+      <a href="#">proposer mon live</a>
+      <a href="#">écrire à l'équipe</a>
+    </nav>
+  </div>
+  <span class="filigrane" aria-hidden="true">Livreo</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — le vrai footer : deux fonds</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+/* Le vrai footer : marque, navigation, contact, méta. */
+.pied2 { padding: 4rem clamp(24px, 6vw, 80px) 2.2rem; display: grid; gap: 2.8rem; }
+.pied2-colonnes { display: grid; gap: 2.5rem; }
+@media (min-width: 900px) {
+  .pied2-colonnes { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
+}
+.pied2 .marque2 { font: 700 1.3rem/1.3 var(--titrage); letter-spacing: -0.02em; color: var(--encre); margin: 0 0 .4rem; }
+.pied2 .mission2 { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--encre-500); max-width: 24rem; }
+.pied2 .lieu { margin: 1.1rem 0 0; font: 700 .75rem/1.5 var(--mono); letter-spacing: .02em; color: var(--encre-400); }
+.pied2 .col-titre { margin: 0 0 .9rem; font: 700 .72rem/1.4 var(--mono); letter-spacing: .04em; color: var(--encre-400); }
+.pied2 .col-liens { display: grid; gap: .6rem; justify-items: start; }
+.pied2 .col-liens a { font: 500 .95rem/1.4 var(--sans); color: var(--encre-500); text-decoration: none; }
+.pied2 .col-liens a:hover { color: var(--accent); }
+.pied2 .col-liens b { font-weight: 650; color: var(--encre); }
+.pied2-bas { display: grid; gap: .5rem; }
+@media (min-width: 900px) { .pied2-bas { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; } }
+.pied2-bas p { margin: 0; font: 700 .72rem/1.6 var(--mono); letter-spacing: .03em; color: var(--encre-400); }
+
+/* G2 : le même, sur fond bleu pâle. */
+.g2 { background: var(--bleu-pale); }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Le vrai footer : marque + navigation + contact + méta (liens de contact à remplacer par les vrais)</p>
+
+<p class="titre-variante">G1 · Sur blanc</p>
+<footer class="pied2" id="pied-g1">
+  <div class="pied2-colonnes">
+    <div>
+      <p class="marque2">Livreo</p>
+      <p class="mission2">L'assistant de vente des lives Facebook, construit pour les vendeuses de Madagascar.</p>
+      <p class="lieu">Antananarivo, Madagascar</p>
+    </div>
+    <div>
+      <p class="col-titre">la page</p>
+      <nav class="col-liens">
+        <a href="#boucle">Comment ça marche</a>
+        <a href="#clientes">Côté acheteuses</a>
+        <a href="#pilotes">Démarrer cette semaine</a>
+      </nav>
+    </div>
+    <div>
+      <p class="col-titre">écrire à l'équipe</p>
+      <nav class="col-liens">
+        <a href="#"><b>m.me/livreo</b> sur Messenger</a>
+        <a href="#">equipe@livreo.mg</a>
+        <a href="#">+261 34 00 000 00 sur WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+  <div class="pied2-bas">
+    <p>construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · Meta Global AI Developer Hackathon 2026</p>
+    <p>© 2026 Livreo · misaotra</p>
+  </div>
+</footer>
+
+<p class="titre-variante">G2 · Sur bleu pâle</p>
+<footer class="pied2 g2" id="pied-g2">
+  <div class="pied2-colonnes">
+    <div>
+      <p class="marque2">Livreo</p>
+      <p class="mission2">L'assistant de vente des lives Facebook, construit pour les vendeuses de Madagascar.</p>
+      <p class="lieu">Antananarivo, Madagascar</p>
+    </div>
+    <div>
+      <p class="col-titre">la page</p>
+      <nav class="col-liens">
+        <a href="#boucle">Comment ça marche</a>
+        <a href="#clientes">Côté acheteuses</a>
+        <a href="#pilotes">Démarrer cette semaine</a>
+      </nav>
+    </div>
+    <div>
+      <p class="col-titre">écrire à l'équipe</p>
+      <nav class="col-liens">
+        <a href="#"><b>m.me/livreo</b> sur Messenger</a>
+        <a href="#">equipe@livreo.mg</a>
+        <a href="#">+261 34 00 000 00 sur WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+  <div class="pied2-bas">
+    <p>construit avec les API Meta · Graph API · Messenger Platform · Muse Spark · Meta Global AI Developer Hackathon 2026</p>
+    <p>© 2026 Livreo · misaotra</p>
+  </div>
+</footer>
+
+</body>
+</html>
