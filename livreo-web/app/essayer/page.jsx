@@ -9,7 +9,7 @@ export default function Essayer() {
     <main className="app-ecran app-accueil">
       <p className="acc-marque">Livreo</p>
       <figure className="acc-visuel" aria-hidden="true">
-        <img src="/img/vendeuse-hero-bleue.png" alt="" />
+        <img src="/img/accueil-portant.png" alt="" />
       </figure>
       <Connexion />
     </main>

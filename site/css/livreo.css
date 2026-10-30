@@ -695,10 +695,11 @@ a { color: var(--accent); text-underline-offset: 2px; }
 /* La vendeuse au ring light ouvre l'écran et fond dans la nuit. */
 .acc-visuel { position: absolute; inset: 0 0 auto 0; height: 52%; margin: 0; overflow: hidden; pointer-events: none; }
 .acc-visuel img {
-  position: absolute; left: 50%; top: 3rem; translate: -50% 0;
-  height: calc(100% - 2.4rem); width: auto;
-  -webkit-mask: linear-gradient(180deg, #000 55%, transparent 96%);
-  mask: linear-gradient(180deg, #000 55%, transparent 96%);
+  position: absolute; left: 50%; top: 2.8rem; translate: -50% 0;
+  height: calc(100% - 2rem); width: auto;
+  filter: drop-shadow(0 26px 40px rgb(3 8 25 / .5));
+  -webkit-mask: linear-gradient(180deg, #000 62%, transparent 97%);
+  mask: linear-gradient(180deg, #000 62%, transparent 97%);
 }
 .app-accueil::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
