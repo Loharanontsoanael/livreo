@@ -92,7 +92,7 @@ export default function Accueil() {
                 <b>La capture est lue. <span className="paye">Payé.</span></b>
               </p>
               <p className="etape-f">
-                <b><span className="rouge">Délai dépassé.</span> Au suivant.</b>
+                <b>Au suivant, automatiquement.</b>
               </p>
             </div>
           </div>

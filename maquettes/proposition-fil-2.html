@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — le fil de la boucle : trois évolutions</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 0 0 3rem; background: #fff; }
+.maq-bandeau {
+  padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { padding: 2.2rem clamp(24px, 6vw, 80px) .8rem; font-size: 1.05rem; font-weight: 800; color: var(--encre-400); }
+
+.nuit-demo { background: var(--nuit); padding: 4rem clamp(24px, 6vw, 80px); display: grid; justify-content: start; }
+
+/* ---------- V1 · Les chiffres fins (écho du démarrage) ---------- */
+.fil-v1 { display: grid; gap: 2.2rem; }
+.fil-v1 p { margin: 0; display: flex; align-items: baseline; gap: 1.3rem; }
+.fil-v1 i {
+  font: 200 2.3rem/1 var(--sans); font-style: normal; font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  min-width: 1.4ch;
+}
+.fil-v1 b { font: 600 1.55rem/1.25 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.fil-v1 .paye2 { background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.fil-v1 .rouge2 { color: #f0a9b8; }
+
+/* ---------- V2 · Les chiffres fins + le fil qui les relie ---------- */
+.fil-v2 { position: relative; display: grid; gap: 2.2rem; padding-left: 0; }
+.fil-v2::before {
+  content: ""; position: absolute; left: .62rem; top: 2.4rem; bottom: .9rem; width: 1px;
+  background: rgb(255 255 255 / .18);
+}
+.fil-v2 p { margin: 0; position: relative; display: flex; align-items: baseline; gap: 1.3rem; }
+.fil-v2 i {
+  position: relative; z-index: 1;
+  font: 200 2.3rem/1 var(--sans); font-style: normal; font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  min-width: 1.4ch;
+  text-shadow: none;
+}
+.fil-v2 i::after { content: ""; position: absolute; inset: -2px -4px; background: var(--nuit); z-index: -1; }
+.fil-v2 b { font: 600 1.55rem/1.25 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.fil-v2 .paye2 { background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.fil-v2 .rouge2 { color: #f0a9b8; }
+
+/* ---------- V3 · L'escalier éditorial (sans fil, sans chiffres) ---------- */
+.fil-v3 { display: grid; gap: 1.9rem; }
+.fil-v3 p { margin: 0; }
+.fil-v3 b { font: 600 1.55rem/1.25 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.fil-v3 p:nth-child(1) { padding-left: 0; }
+.fil-v3 p:nth-child(2) { padding-left: 2.2rem; }
+.fil-v3 p:nth-child(3) { padding-left: 4.4rem; }
+.fil-v3 p:nth-child(4) { padding-left: 6.6rem; }
+.fil-v3 .paye2 { background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.fil-v3 .rouge2 { color: #f0a9b8; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Le fil de la boucle : trois évolutions plus affirmées (sur fond nuit, à juger)</p>
+
+<p class="titre-variante">V1 · Les chiffres fins (le même langage que le démarrage, version nuit)</p>
+<section class="nuit-demo" id="fil-1">
+  <div class="fil-v1">
+    <p><i>1</i> <b>Réservé à la seconde.</b></p>
+    <p><i>2</i> <b>Le récap part tout seul.</b></p>
+    <p><i>3</i> <b>La capture est lue. <span class="paye2">Payé.</span></b></p>
+    <p><i>4</i> <b><span class="rouge2">Délai dépassé.</span> Au suivant.</b></p>
+  </div>
+</section>
+
+<p class="titre-variante">V2 · Les chiffres fins, reliés par le fil discret</p>
+<section class="nuit-demo" id="fil-2">
+  <div class="fil-v2">
+    <p><i>1</i> <b>Réservé à la seconde.</b></p>
+    <p><i>2</i> <b>Le récap part tout seul.</b></p>
+    <p><i>3</i> <b>La capture est lue. <span class="paye2">Payé.</span></b></p>
+    <p><i>4</i> <b><span class="rouge2">Délai dépassé.</span> Au suivant.</b></p>
+  </div>
+</section>
+
+<p class="titre-variante">V3 · L'escalier (chaque étape descend d'un cran, sans fil ni chiffres)</p>
+<section class="nuit-demo" id="fil-3">
+  <div class="fil-v3">
+    <p><b>Réservé à la seconde.</b></p>
+    <p><b>Le récap part tout seul.</b></p>
+    <p><b>La capture est lue. <span class="paye2">Payé.</span></b></p>
+    <p><b><span class="rouge2">Délai dépassé.</span> Au suivant.</b></p>
+  </div>
+</section>
+
+</body>
+</html>

@@ -381,24 +381,12 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .vif-texte h2 { color: #ffffff; }
 .vif-texte p { margin: 0; max-width: 28rem; font-size: 1.1rem; line-height: 1.5; color: #d7e2f7; }
 
-/* Les 4 étapes, écrites directement sur la photo : un fil vertical, des
-   points, la typographie comme seul matériau. Couleurs de la page only. */
+/* Les 4 étapes, écrites directement sur la photo : la typographie seule,
+   sans fil, sans points, sans chiffres. */
 .fil-etapes {
-  display: grid; gap: 2.3rem; position: relative;
-  padding-left: 2rem; max-width: 30rem;
+  display: grid; gap: 2.1rem; position: relative; max-width: 32rem;
 }
-/* La piste : un trait cheveu, des petits points pleins. Minimal. */
-.fil-etapes { padding-left: 1.6rem; }
-.fil-etapes::before {
-  content: ""; position: absolute; left: 2px; top: .7rem; bottom: .7rem;
-  width: 1px; background: rgb(255 255 255 / .22);
-}
-.etape-f { position: relative; margin: 0; }
-.etape-f::before {
-  content: ""; position: absolute; left: -1.6rem; top: .55rem;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #ffffff;
-}
+.etape-f { margin: 0; }
 .etape-f b { display: block; font: 600 1.55rem/1.2 var(--titrage); letter-spacing: -0.015em; color: #ffffff; }
 .etape-f small { display: block; margin-top: .25rem; font-size: .95rem; line-height: 1.45; color: #c9d6ef; }
 .etape-f .paye {
@@ -406,7 +394,6 @@ a { color: var(--accent); text-underline-offset: 2px; }
   background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.etape-f .rouge { color: #f0a9b8; font-weight: 800; }
 /* Les étapes apparaissent l'une après l'autre au défilement (CSS pur). */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
