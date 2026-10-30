@@ -1,5 +1,9 @@
 import Script from "next/script";
 
+export const viewport = {
+  themeColor: "#ffffff",
+};
+
 export const metadata = {
   title: "Livreo — vos lives Facebook, encaissés",
   description:
@@ -13,8 +17,8 @@ export default function RootLayout({ children }) {
         {/* La lib couches et les styles Livreo sont servis tels quels depuis
             public/ : couches.css référence ses polices en chemins relatifs. */}
         {/* Le ?v= force les navigateurs à recharger les styles quand on itère. */}
-        <link rel="stylesheet" href="/css/couches.css?v=3" />
-        <link rel="stylesheet" href="/css/livreo.css?v=3" />
+        <link rel="stylesheet" href="/css/couches.css?v=4" />
+        <link rel="stylesheet" href="/css/livreo.css?v=4" />
       </head>
       <body>
         {children}

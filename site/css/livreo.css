@@ -551,6 +551,13 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .pas-colonnes { margin: 3.2rem 0 0; display: grid; gap: 2.4rem; }
 @media (min-width: 980px) { .pas-colonnes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3.5rem; } }
 .pas { display: grid; gap: .55rem; align-content: start; }
+/* Téléphone : le chiffre se range à gauche du texte. */
+@media (max-width: 979px) {
+  .pas-colonnes { gap: 1.9rem; }
+  .pas { grid-template-columns: auto 1fr; column-gap: 1.1rem; row-gap: .3rem; align-items: baseline; }
+  .pas i { grid-row: 1 / span 2; font-size: 1.9rem; min-width: 1.2ch; }
+  .pas b, .pas span { grid-column: 2; }
+}
 .pas i {
   font: 200 clamp(2.6rem, 5vw, 3.6rem)/1 var(--sans); font-style: normal;
   font-variant-numeric: tabular-nums;
