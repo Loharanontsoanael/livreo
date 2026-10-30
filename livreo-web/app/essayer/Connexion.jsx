@@ -36,23 +36,33 @@ export default function Connexion() {
 
   return (
     <div className="acc-bloc">
-      <div className="acc-page">
-        <span className="acc-avatar">C</span>
-        <div>
-          <b>{page.nom}</b>
-          <small>Page connectée · {page.detail}</small>
-        </div>
-        <i className="acc-ok" aria-hidden="true" />
-      </div>
-      <h1>Prête pour ce soir&nbsp;?</h1>
-      <p className="acc-chapo">
-        Quand votre live démarre dans Livreo, chaque «&nbsp;jp&nbsp;» devient
-        une commande, réservée à la seconde.
-      </p>
+      <h1>Ce soir, chez {page.nom.replace("Chez ", "")}.</h1>
+      <ul className="acc-prets">
+        <li>
+          <i className="est-ok" aria-hidden="true" />
+          <div>
+            <b>{page.nom}</b>
+            <small>Page connectée · {page.detail}</small>
+          </div>
+        </li>
+        <li>
+          <i className="est-ok" aria-hidden="true" />
+          <div>
+            <b>8 fiches articles prêtes</b>
+            <small>dernière : Robe bleue wax · 35 000 Ar</small>
+          </div>
+          <a href="#">revoir</a>
+        </li>
+        <li>
+          <i className="est-ok" aria-hidden="true" />
+          <div>
+            <b>Messenger actif</b>
+            <small>récaps et confirmations partiront tout seuls</small>
+          </div>
+        </li>
+      </ul>
       <a className="acc-lancer" href="/direct">Lancer le live</a>
-      <p className="acc-note">
-        D&apos;abord vos fiches&nbsp;: <a href="#">préparer les articles</a>.
-      </p>
+      <p className="acc-note">Dernier live : il y a 6 jours · 42 commandes payées.</p>
     </div>
   );
 }

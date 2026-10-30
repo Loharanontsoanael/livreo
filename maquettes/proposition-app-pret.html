@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — l'état « prêt pour le live » : B et C</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 2rem 0 3rem; background: #e8ecf4; display: grid; gap: 2rem; justify-items: center; }
+.maq-bandeau {
+  width: 100%; padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { font-size: .95rem; font-weight: 800; color: var(--encre-400); margin: 0; }
+.tel {
+  position: relative; width: 390px; height: 844px; overflow: hidden;
+  border-radius: 28px; background: var(--nuit);
+  display: grid; align-content: end; padding: 4.5rem 1.6rem 2.6rem;
+}
+.tel::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .12;
+  -webkit-mask: radial-gradient(28rem 30rem at 70% 18%, #000, transparent 75%);
+  mask: radial-gradient(28rem 30rem at 70% 18%, #000, transparent 75%);
+}
+.marque2 { position: absolute; top: 1.5rem; left: 1.6rem; margin: 0; font: 700 1.15rem/1 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.visuel2 { position: absolute; inset: 0 0 auto 0; height: 52%; margin: 0; overflow: hidden; pointer-events: none; }
+.visuel2 img {
+  position: absolute; left: 50%; top: 2.8rem; translate: -50% 0;
+  height: calc(100% - 2rem); width: auto;
+  filter: drop-shadow(0 26px 40px rgb(3 8 25 / .5));
+  -webkit-mask: linear-gradient(180deg, #000 62%, transparent 97%);
+  mask: linear-gradient(180deg, #000 62%, transparent 97%);
+}
+.bloc2 { position: relative; display: grid; gap: 1.2rem; justify-items: start; }
+.bloc2 h1 { margin: 0; font: 700 2rem/1.1 var(--titrage); letter-spacing: -0.025em; color: #fff; }
+.lancer2 {
+  margin-top: .6rem; width: 100%; height: 58px; border-radius: 99px;
+  display: grid; place-items: center; text-decoration: none;
+  background: var(--vers-violet); color: #fff;
+  font: 650 1.1rem/1 var(--titrage);
+}
+.note2 { margin: 0; font-size: .8rem; line-height: 1.6; color: #7f9ad1; }
+
+/* ---------- B · L'article vedette ---------- */
+.vedette { width: 100%; display: grid; gap: .4rem; }
+.vedette small { font: 700 .68rem/1.4 var(--mono); letter-spacing: .04em; color: #9cc0ff; }
+.vedette .ligne { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.vedette b { font: 650 1.3rem/1.2 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.vedette .prix { font: 600 1.05rem/1 var(--mono); color: #9cc0ff; white-space: nowrap; }
+.vedette p { margin: .2rem 0 0; font-size: .85rem; color: #7f9ad1; }
+
+/* ---------- C · Le programme du soir ---------- */
+.programme { width: 100%; display: grid; gap: .5rem; }
+.programme .quand { font: 600 2.4rem/1 var(--mono); color: #cfe0ff; font-variant-numeric: tabular-nums; }
+.programme .quoi { margin: 0; font: 650 1.1rem/1.4 var(--titrage); color: #fff; }
+.programme .detail { margin: 0; font-size: .85rem; line-height: 1.6; color: #7f9ad1; }
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">Après connexion : B et C, à comparer avec A (la check-list, déjà capturée)</p>
+
+<p class="titre-variante">B · L'article vedette (le prochain live commence par son premier article)</p>
+<div class="tel" id="pret-b">
+  <p class="marque2">Livreo</p>
+  <figure class="visuel2"><img src="../livreo-web/public/img/accueil-portant.png" alt=""></figure>
+  <div class="bloc2">
+    <div class="vedette">
+      <small>premier article du live</small>
+      <div class="ligne"><b>Robe bleue wax</b><span class="prix">35 000 Ar</span></div>
+      <p>R12 · 7 autres fiches prêtes derrière</p>
+    </div>
+    <a class="lancer2" href="#">Lancer le live</a>
+    <p class="note2">Chez Nirina · Page connectée · Messenger actif</p>
+  </div>
+</div>
+
+<p class="titre-variante">C · Le programme du soir (l'heure en grand, comme un rendez-vous)</p>
+<div class="tel" id="pret-c">
+  <p class="marque2">Livreo</p>
+  <figure class="visuel2"><img src="../livreo-web/public/img/accueil-portant.png" alt=""></figure>
+  <div class="bloc2">
+    <div class="programme">
+      <span class="quand">19:00</span>
+      <p class="quoi">Live chez Nirina, ce soir.</p>
+      <p class="detail">8 fiches prêtes · Page connectée · Messenger actif · dernier live : 42 commandes payées</p>
+    </div>
+    <a class="lancer2" href="#">Lancer le live</a>
+    <p class="note2">Un peu en avance ? Revoir les fiches articles.</p>
+  </div>
+</div>
+
+<p class="titre-variante">D · La valeur prête à vendre (le chiffre d'affaires du soir, en grand)</p>
+<div class="tel" id="pret-d">
+  <p class="marque2">Livreo</p>
+  <figure class="visuel2"><img src="../livreo-web/public/img/accueil-portant.png" alt=""></figure>
+  <div class="bloc2">
+    <div class="valeur">
+      <small>prêt à vendre ce soir</small>
+      <p class="montant">286&#8239;000&nbsp;<em>Ar</em></p>
+      <p class="sous">8 articles sur le portant, de 15&#8239;000 à 60&#8239;000&nbsp;Ar <a href="#">revoir</a></p>
+    </div>
+    <ul class="etat-d">
+      <li>Chez Nirina · Page connectée</li>
+      <li>Messenger actif, récaps automatiques</li>
+      <li>dernier live : 42 commandes payées</li>
+    </ul>
+    <a class="lancer2" href="#">Lancer le live</a>
+  </div>
+</div>
+
+<style>
+.valeur { width: 100%; display: grid; gap: .35rem; }
+.valeur small { font: 700 .7rem/1.4 var(--mono); letter-spacing: .04em; color: #9cc0ff; }
+.valeur .montant {
+  margin: 0; font: 200 3.4rem/1 var(--sans); letter-spacing: -0.03em;
+  color: #fff; font-variant-numeric: tabular-nums;
+}
+.valeur .montant em {
+  font-style: normal; font-size: 2.2rem;
+  background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.valeur .sous { margin: .2rem 0 0; font-size: .88rem; line-height: 1.5; color: #b9c7e6; }
+.valeur .sous a { color: #9cc0ff; }
+.etat-d { margin: .6rem 0 .2rem; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.etat-d li { font: 600 .74rem/1.5 var(--mono); letter-spacing: .02em; color: #7f9ad1; }
+.etat-d li::before { content: "· "; color: #9cc0ff; }
+</style>
+
+<p class="titre-variante">E · Le portant en types (ce qu'il y a à vendre, compté)</p>
+<div class="tel" id="pret-e">
+  <p class="marque2">Livreo</p>
+  <figure class="visuel2"><img src="../livreo-web/public/img/accueil-portant.png" alt=""></figure>
+  <div class="bloc2">
+    <div class="valeur">
+      <small>sur le portant ce soir</small>
+      <p class="montant-e"><em>8</em> articles</p>
+      <p class="types">5 robes · 2 hauts · 1 veste</p>
+      <p class="sous">286&#8239;000&nbsp;Ar de stock au total <a href="#">revoir les fiches</a></p>
+    </div>
+    <ul class="etat-d">
+      <li>Chez Nirina · Page connectée</li>
+      <li>Messenger actif, récaps automatiques</li>
+      <li>dernier live : 42 commandes payées</li>
+    </ul>
+    <a class="lancer2" href="#">Lancer le live</a>
+  </div>
+</div>
+
+<style>
+.montant-e {
+  margin: 0; display: flex; align-items: baseline; gap: .7rem;
+  font: 650 1.5rem/1 var(--titrage); letter-spacing: -0.015em; color: #fff;
+}
+.montant-e em {
+  font-style: normal; font: 200 3.4rem/1 var(--sans); letter-spacing: -0.03em;
+  color: #fff; font-variant-numeric: tabular-nums;
+}
+.types { margin: .3rem 0 0; font: 500 1.02rem/1.4 var(--sans); color: #b9c7e6; }
+</style>
+
+</body>
+</html>
