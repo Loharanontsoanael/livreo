@@ -12,8 +12,9 @@ export default function RootLayout({ children }) {
       <head>
         {/* La lib couches et les styles Livreo sont servis tels quels depuis
             public/ : couches.css référence ses polices en chemins relatifs. */}
-        <link rel="stylesheet" href="/css/couches.css" />
-        <link rel="stylesheet" href="/css/livreo.css" />
+        {/* Le ?v= force les navigateurs à recharger les styles quand on itère. */}
+        <link rel="stylesheet" href="/css/couches.css?v=3" />
+        <link rel="stylesheet" href="/css/livreo.css?v=3" />
       </head>
       <body>
         {children}

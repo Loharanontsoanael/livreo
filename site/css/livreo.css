@@ -229,15 +229,15 @@ a { color: var(--accent); text-underline-offset: 2px; }
   .preuves { grid-column: 1 / -1; }
   .preuves li span { white-space: nowrap; }
 }
-/* Téléphone : les preuves s'empilent, chiffre et libellé côte à côte. */
+/* Téléphone : les preuves en trois colonnes compactes. */
 @media (max-width: 979px) {
-  .preuves { grid-template-columns: 1fr; gap: 1.4rem; margin-top: 2.2rem; }
+  .preuves { grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.2rem; }
   .preuves li,
   .preuves li:nth-child(2),
   .preuves li:nth-child(3) { text-align: left; }
-  .preuves li { display: flex; align-items: baseline; gap: 1rem; }
-  .preuves b { margin-bottom: 0; font-size: 2.6rem; min-width: 4.6ch; }
-  .preuves li span { flex: 1; }
+  .preuves li { display: grid; gap: .4rem; align-content: start; }
+  .preuves b { margin-bottom: 0; font-size: 1.9rem; }
+  .preuves li span { font-size: .72rem; }
   /* Le flux de commentaires reste dans le cadre de la photo. */
   .sujet-live { overflow: clip; }
   /* Les deux boutons font la même largeur, pleine colonne. */
