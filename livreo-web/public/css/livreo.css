@@ -620,8 +620,8 @@ a { color: var(--accent); text-underline-offset: 2px; }
   background: #000;
 }
 @media (min-width: 700px) {
-  body:has(.app-direct) { background: var(--nuit); }
-  .app-direct {
+  body:has(.app-ecran), body:has(.app-direct) { background: #060b1d; }
+  .app-direct, .app-ecran {
     width: 420px; height: min(880px, 94vh);
     inset: 50% auto auto 50%; translate: -50% -50%;
     border-radius: 32px;
@@ -682,4 +682,57 @@ a { color: var(--accent); text-underline-offset: 2px; }
   height: 56px; border-radius: 99px; border: 0; cursor: pointer;
   background: var(--vers-violet); color: #fff;
   font: 650 1.05rem/1 var(--titrage);
+}
+
+/* ---------- L'app vendeuse : accueil (« Essayer sur mon live ») ---------- */
+
+.app-accueil {
+  position: fixed; inset: 0; overflow-y: auto;
+  background: var(--nuit);
+  display: grid; align-content: center;
+  padding: 4.5rem 1.6rem 3rem;
+}
+.app-accueil::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px);
+  background-size: 11px 11px; opacity: .12;
+  -webkit-mask: radial-gradient(28rem 30rem at 70% 18%, #000, transparent 75%);
+  mask: radial-gradient(28rem 30rem at 70% 18%, #000, transparent 75%);
+}
+.acc-marque {
+  position: absolute; top: 1.5rem; left: 1.6rem; margin: 0;
+  font: 700 1.15rem/1 var(--titrage); letter-spacing: -0.02em; color: #fff;
+}
+.acc-bloc { position: relative; display: grid; gap: 1.2rem; justify-items: start; }
+.acc-bloc h1 {
+  margin: 0; max-width: 13ch;
+  font: 700 clamp(1.9rem, 7vw, 2.4rem)/1.08 var(--titrage);
+  letter-spacing: -0.025em; color: #fff; text-wrap: balance;
+}
+.acc-chapo { margin: 0; max-width: 30ch; font-size: .98rem; line-height: 1.6; color: #b9c7e6; }
+.acc-fb {
+  margin-top: .6rem; width: 100%; height: 54px; border: 0; border-radius: 99px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  background: #1877f2; color: #fff;
+  font: 650 1rem/1 var(--titrage);
+}
+.acc-fb svg { width: 20px; height: 20px; }
+.acc-note { margin: 0; font-size: .8rem; line-height: 1.6; color: #7f9ad1; max-width: 32ch; }
+.acc-note a { color: #9cc0ff; }
+
+.acc-page { display: flex; align-items: center; gap: .8rem; width: 100%; margin-bottom: .6rem; }
+.acc-avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex: none;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff;
+  font: 700 1.1rem/1 var(--titrage);
+}
+.acc-page b { display: block; font: 650 1.02rem/1.25 var(--titrage); color: #fff; }
+.acc-page small { display: block; font: 600 .7rem/1.4 var(--mono); color: #7f9ad1; }
+.acc-ok { margin-left: auto; width: 10px; height: 10px; border-radius: 50%; background: #35d07f; }
+.acc-lancer {
+  margin-top: .6rem; width: 100%; height: 58px; border-radius: 99px;
+  display: grid; place-items: center; text-decoration: none;
+  background: var(--vers-violet); color: #fff;
+  font: 650 1.1rem/1 var(--titrage);
 }

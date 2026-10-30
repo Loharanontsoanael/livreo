@@ -20,7 +20,7 @@ export default function Accueil() {
               Vous animez, Livreo encaisse.
             </p>
             <div className="actions">
-              <a className="bouton" href="#pilotes">Essayer sur mon live</a>
+              <a className="bouton" href="/essayer">Essayer sur mon live</a>
               <a className="lien" href="#boucle">Comment ça marche</a>
             </div>
           </div>
@@ -188,7 +188,7 @@ export default function Accueil() {
       {/* Téléphone : la bande d'action en bas, après le héros. */}
       <div className="c-barre-cta" data-couche="barre-cta">
         <span>Votre prochain live, sans cahier.</span>
-        <a className="bouton bouton-petit" href="#pilotes">Essayer</a>
+        <a className="bouton bouton-petit" href="/essayer">Essayer</a>
       </div>
     </>
   );
