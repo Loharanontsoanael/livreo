@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livreo — écran Direct : deux versions plus pro</title>
+<link rel="stylesheet" href="../site/css/livreo.css">
+<style>
+body { padding: 2rem 0 3rem; background: #e8ecf4; display: grid; gap: 2rem; justify-items: center; }
+.maq-bandeau {
+  width: 100%; padding: .6rem 16px; text-align: center;
+  background: var(--bleu-pale); color: var(--accent-700); font-weight: 700; font-size: .9rem;
+}
+.titre-variante { font-size: .95rem; font-weight: 800; color: var(--encre-400); margin: 0; }
+.tel { position: relative; width: 390px; height: 844px; overflow: hidden; border-radius: 28px; background: #000; }
+.tel .camera { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 30%; }
+
+.haut2 {
+  position: absolute; inset: 0 0 auto 0; z-index: 2;
+  display: flex; align-items: center; gap: .7rem;
+  padding: 1rem 1rem 2.4rem;
+  background: linear-gradient(180deg, rgb(0 0 0 / .5), transparent);
+}
+.badge3 {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font: 700 .66rem/1 var(--mono); letter-spacing: .05em; color: #fff;
+  background: var(--direct); border-radius: 99px; padding: .38rem .6rem;
+}
+.badge3 i { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.duree3 { font: 600 .8rem/1 var(--mono); color: rgb(255 255 255 / .92); font-variant-numeric: tabular-nums; }
+.vues3 { margin-left: auto; font: 600 .8rem/1 var(--mono); color: rgb(255 255 255 / .75); }
+
+/* ===== F1 · La console ===== */
+.f1-doute {
+  position: absolute; left: .9rem; right: .9rem; bottom: 15.6rem; z-index: 3;
+  display: flex; align-items: center; gap: .8rem;
+  padding: .7rem .9rem; border-radius: 14px;
+  background: rgb(11 20 48 / .85); backdrop-filter: blur(12px);
+}
+.f1-doute .q { flex: 1; margin: 0; }
+.f1-doute .q small { display: block; font: 700 .62rem/1.4 var(--mono); letter-spacing: .04em; color: #7f9ad1; }
+.f1-doute .q b { font: 650 .95rem/1.3 var(--titrage); color: #fff; }
+.f1-doute .oui2, .f1-doute .non2 {
+  flex: none; height: 40px; padding: 0 1rem; border-radius: 99px; border: 0;
+  font: 700 .85rem/1 var(--sans); cursor: pointer;
+}
+.f1-doute .oui2 { background: var(--accent); color: #fff; }
+.f1-doute .non2 { background: rgb(255 255 255 / .14); color: #fff; }
+
+.f1-bas {
+  position: absolute; inset: auto 0 0 0; z-index: 2;
+  padding: 2.8rem .9rem 1rem;
+  background: linear-gradient(180deg, transparent, rgb(11 20 48 / .92) 34%);
+  display: grid; gap: .6rem;
+}
+.f1-rang1 { display: flex; align-items: center; gap: .7rem; }
+.f1-rang1 .ref { font: 700 .66rem/1 var(--mono); letter-spacing: .05em; color: #9cc0ff; }
+.f1-rang1 .jp { margin-left: auto; font: 700 .66rem/1 var(--mono); color: #9cc0ff; }
+.f1-rang2 { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 0; }
+.f1-rang2 b { font: 650 1.4rem/1.1 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.f1-rang2 span { font: 600 1.1rem/1 var(--mono); color: #fff; font-variant-numeric: tabular-nums; }
+.f1-gagnante { margin: 0; display: flex; align-items: center; gap: .55rem; font: 500 .95rem/1.3 var(--sans); color: #dbe6ff; }
+.f1-gagnante i { width: 7px; height: 7px; border-radius: 50%; background: #fff; flex: none; }
+.f1-attente { margin: 0; font: 500 .85rem/1.4 var(--sans); color: #8fa3cc; }
+.f1-bouton {
+  margin-top: .5rem; height: 54px; border-radius: 99px; border: 0; cursor: pointer;
+  background: var(--vers-violet); color: #fff;
+  font: 650 1.02rem/1 var(--titrage);
+}
+
+/* ===== F2 · Le bandeau TV ===== */
+.f2-doute {
+  position: absolute; left: .9rem; right: .9rem; bottom: 12.4rem; z-index: 3;
+  display: flex; align-items: center; gap: .8rem;
+  padding: .65rem .8rem; border-radius: 12px;
+  background: rgb(11 20 48 / .85); backdrop-filter: blur(12px);
+}
+.f2-doute p { flex: 1; margin: 0; font: 500 .9rem/1.35 var(--sans); color: #dbe6ff; }
+.f2-doute p b { color: #fff; }
+.f2-doute .oui2 { background: var(--accent); color: #fff; height: 38px; padding: 0 .9rem; border-radius: 99px; border: 0; font: 700 .82rem/1 var(--sans); }
+.f2-doute .non2 { background: rgb(255 255 255 / .14); color: #fff; height: 38px; padding: 0 .9rem; border-radius: 99px; border: 0; font: 700 .82rem/1 var(--sans); }
+
+.f2-bas {
+  position: absolute; inset: auto 0 0 0; z-index: 2;
+  padding: 2.4rem .9rem 1rem;
+  background: linear-gradient(180deg, transparent, rgb(11 20 48 / .94) 40%);
+  display: grid; gap: .8rem;
+}
+.f2-bandeau { display: grid; gap: .25rem; }
+.f2-l1 { display: flex; align-items: baseline; gap: .8rem; }
+.f2-l1 .ref { font: 700 .66rem/1 var(--mono); letter-spacing: .05em; color: #9cc0ff; align-self: center; }
+.f2-l1 b { font: 650 1.4rem/1.1 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.f2-l1 span { margin-left: auto; font: 600 1.1rem/1 var(--mono); color: #fff; font-variant-numeric: tabular-nums; }
+.f2-l2 { display: flex; align-items: center; gap: .6rem; margin: 0; font: 500 .92rem/1.3 var(--sans); color: #dbe6ff; }
+.f2-l2 i { width: 7px; height: 7px; border-radius: 50%; background: #fff; flex: none; }
+.f2-l2 .plus { margin-left: auto; font: 700 .72rem/1 var(--mono); color: #9cc0ff; }
+.f2-bouton {
+  height: 54px; border-radius: 99px; border: 0; cursor: pointer;
+  background: var(--vers-violet); color: #fff;
+  font: 650 1.02rem/1 var(--titrage);
+}
+</style>
+</head>
+<body>
+
+<p class="maq-bandeau">L'écran Direct, deux versions plus pro : la console (F1) et le bandeau TV (F2)</p>
+
+<p class="titre-variante">F1 · La console (grille stricte, doute en file d'événements, attente sans horodatages)</p>
+<div class="tel" id="direct-f1">
+  <img class="camera" src="assets/candidat-8.jpg" alt="">
+  <div class="haut2">
+    <span class="badge3"><i></i>EN DIRECT</span>
+    <span class="duree3">23:12</span>
+    <span class="vues3">128 regardent</span>
+  </div>
+  <div class="f1-doute">
+    <p class="q"><small>Livreo demande</small><b>« jp ve ? » de Mialy, c'est une commande ?</b></p>
+    <button class="oui2" type="button">Oui</button>
+    <button class="non2" type="button">Non</button>
+  </div>
+  <div class="f1-bas">
+    <div class="f1-rang1"><span class="ref">R12 · EN COURS</span><span class="jp">3 JP</span></div>
+    <p class="f1-rang2"><b>Robe rouge</b><span>35 000 Ar</span></p>
+    <p class="f1-gagnante"><i></i>Faniry R. gagne, récap envoyé</p>
+    <p class="f1-attente">2 en attente : Hanta, puis Mialy</p>
+    <button class="f1-bouton" type="button">Article suivant</button>
+  </div>
+</div>
+
+<p class="titre-variante">F2 · Le bandeau TV (deux lignes serrées, l'attente en compteur)</p>
+<div class="tel" id="direct-f2">
+  <img class="camera" src="assets/candidat-8.jpg" alt="">
+  <div class="haut2">
+    <span class="badge3"><i></i>EN DIRECT</span>
+    <span class="duree3">23:12</span>
+    <span class="vues3">128 regardent</span>
+  </div>
+  <div class="f2-doute">
+    <p>« jp ve ? » de Mialy : <b>c'est une commande ?</b></p>
+    <button class="oui2" type="button">Oui</button>
+    <button class="non2" type="button">Non</button>
+  </div>
+  <div class="f2-bas">
+    <div class="f2-bandeau">
+      <div class="f2-l1"><span class="ref">R12</span><b>Robe rouge</b><span>35 000 Ar</span></div>
+      <p class="f2-l2"><i></i>Faniry R. gagne, récap envoyé<span class="plus">+2 en attente</span></p>
+    </div>
+    <button class="f2-bouton" type="button">Article suivant</button>
+  </div>
+</div>
+
+<p class="titre-variante">F3 · Typographie pure (sans dot, sans carte : la question s'écrit dans le bandeau)</p>
+<div class="tel" id="direct-f3">
+  <img class="camera" src="assets/candidat-8.jpg" alt="">
+  <div class="haut2">
+    <span class="badge3"><i></i>EN DIRECT</span>
+    <span class="duree3">23:12</span>
+    <span class="vues3">128 regardent</span>
+  </div>
+  <div class="f3-bas">
+    <div class="f3-doute">
+      <p>«&nbsp;jp ve ?&nbsp;» de Mialy, c'est une commande&nbsp;?</p>
+      <button class="oui3" type="button">Oui</button>
+      <button class="non3" type="button">Non</button>
+    </div>
+    <p class="f3-ref">R12 · en cours · 3 jp</p>
+    <p class="f3-article"><b>Robe rouge</b><span>35&#8239;000&nbsp;Ar</span></p>
+    <p class="f3-gagnante">Faniry R. gagne, récap envoyé.</p>
+    <p class="f3-attente">2 en attente : Hanta, puis Mialy.</p>
+    <button class="f3-bouton" type="button">Article suivant</button>
+  </div>
+</div>
+
+<style>
+.f3-bas {
+  position: absolute; inset: auto 0 0 0; z-index: 2;
+  padding: 3.4rem 1rem 1rem;
+  background: linear-gradient(180deg, transparent, rgb(11 20 48 / .9) 30%);
+  display: grid; gap: .55rem;
+}
+.f3-doute {
+  display: flex; align-items: center; gap: .7rem;
+  margin-bottom: .9rem;
+}
+.f3-doute p { flex: 1; margin: 0; font: 650 1.05rem/1.35 var(--titrage); color: #fff; }
+.oui3, .non3 {
+  flex: none; height: 42px; padding: 0 1.15rem; border-radius: 99px; border: 0; cursor: pointer;
+  font: 700 .88rem/1 var(--sans);
+}
+.oui3 { background: var(--accent); color: #fff; }
+.non3 { background: rgb(255 255 255 / .14); color: #fff; }
+.f3-ref { margin: 0; font: 700 .74rem/1.4 "Manrope", var(--sans); letter-spacing: .01em; color: #9cc0ff; }
+.f3-article { margin: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.f3-article b { font: 650 1.45rem/1.1 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.f3-article span { font: 300 1.45rem/1 var(--sans); color: #fff; font-variant-numeric: tabular-nums; }
+.f3-gagnante { margin: 0; font: 500 .95rem/1.4 var(--sans); color: #dbe6ff; }
+.f3-attente { margin: 0; font: 500 .88rem/1.4 var(--sans); color: #8fa3cc; }
+.f3-bouton {
+  margin-top: .6rem; height: 54px; border-radius: 99px; border: 0; cursor: pointer;
+  background: var(--vers-violet); color: #fff;
+  font: 650 1.02rem/1 var(--titrage);
+}
+</style>
+
+</body>
+</html>

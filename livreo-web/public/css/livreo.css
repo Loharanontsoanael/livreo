@@ -645,39 +645,28 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .app-duree { font: 600 .85rem/1 var(--mono); color: #fff; font-variant-numeric: tabular-nums; }
 .app-spectateurs { margin-left: auto; font: 600 .85rem/1 var(--mono); color: rgb(255 255 255 / .85); }
 
-/* La bulle de doute : l'IA demande, la vendeuse tranche d'un pouce. */
-.app-doute {
-  position: absolute; left: 1rem; right: 1rem; z-index: 2;
-  top: calc(64px + env(safe-area-inset-top, 0px));
-  display: flex; align-items: center; gap: .7rem;
-  padding: .7rem .9rem; border-radius: 16px;
-  background: rgb(11 20 48 / .78);
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-}
-.app-doute p { margin: 0; flex: 1; font: 500 .88rem/1.35 var(--sans); color: #dbe6ff; }
-.app-doute p b { font-weight: 700; color: #fff; }
-.app-oui, .app-non {
-  flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
-  display: grid; place-items: center;
-  font: 700 .8rem/1 var(--sans);
-}
-.app-oui { background: var(--accent); color: #fff; }
-.app-non { background: rgb(255 255 255 / .16); color: #fff; }
-
-/* Le panneau bas : l'article en cours, la gagnante, la suite. */
+/* Le bandeau bas, typographie pure : la question du doute s'écrit dans le
+   flux (pas de carte), puis l'article, la gagnante, la suite. */
 .app-bas {
   position: absolute; inset: auto 0 0 0; z-index: 2;
-  padding: 2.6rem 1rem calc(1.1rem + env(safe-area-inset-bottom, 0px));
-  display: grid; gap: .75rem;
-  background: linear-gradient(180deg, transparent, rgb(11 20 48 / .88) 32%);
+  padding: 3.4rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  display: grid; gap: .55rem;
+  background: linear-gradient(180deg, transparent, rgb(11 20 48 / .9) 30%);
 }
-.app-ref { font: 700 .68rem/1 var(--mono); letter-spacing: .04em; color: #9cc0ff; }
+.app-doute { display: flex; align-items: center; gap: .7rem; margin-bottom: .9rem; }
+.app-doute p { flex: 1; margin: 0; font: 650 1.05rem/1.35 var(--titrage); color: #fff; }
+.app-oui, .app-non {
+  flex: none; height: 42px; padding: 0 1.15rem; border-radius: 99px; border: 0; cursor: pointer;
+  font: 700 .88rem/1 var(--sans);
+}
+.app-oui { background: var(--accent); color: #fff; }
+.app-non { background: rgb(255 255 255 / .14); color: #fff; }
+.app-ref { font: 700 .74rem/1.4 "Manrope", var(--sans); letter-spacing: .01em; color: #9cc0ff; }
 .app-article { margin: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-.app-article b { font: 650 1.25rem/1.15 var(--titrage); letter-spacing: -0.015em; color: #fff; }
-.app-article span { font: 600 1.05rem/1 var(--mono); font-variant-numeric: tabular-nums; color: #9cc0ff; white-space: nowrap; }
-.app-gagnante { margin: 0; display: flex; align-items: center; gap: .55rem; font: 500 .92rem/1.3 var(--sans); color: #dbe6ff; }
-.app-gagnante i { width: 8px; height: 8px; border-radius: 50%; background: #ffffff; flex: none; }
-.app-attente { margin: 0; font: 600 .74rem/1.4 var(--mono); color: #7f9ad1; }
+.app-article b { font: 650 1.45rem/1.1 var(--titrage); letter-spacing: -0.015em; color: #fff; }
+.app-article span { font: 300 1.45rem/1 var(--sans); font-variant-numeric: tabular-nums; color: #fff; white-space: nowrap; }
+.app-gagnante { margin: 0; font: 500 .95rem/1.4 var(--sans); color: #dbe6ff; }
+.app-attente { margin: 0; font: 500 .88rem/1.4 var(--sans); color: #8fa3cc; }
 .app-suivant {
   height: 56px; border-radius: 99px; border: 0; cursor: pointer;
   background: var(--vers-violet); color: #fff;
