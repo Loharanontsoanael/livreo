@@ -40,6 +40,14 @@
   --encre-400: #67738f;
   --accent: #0866ff;
   --accent-700: #0a4fc4;
+  --violet: #6d4aff;      /* le partenaire violet du bleu, pour les mélanges */
+  --violet-700: #5433d6;
+  /* Le glissement signature : du bleu qui se transite en violet, sans se faire remarquer. */
+  --vers-violet: linear-gradient(140deg, #0866ff 0%, #2458fa 45%, #4b4af4 78%, #6d4aff 100%);
+}
+/* La sélection de texte suit le glissement. */
+::selection { background: var(--violet); color: #fff; }
+:root {
   --direct: #c2183a;
   --direct-700: #9c1230;
   --bleu-pale: #eef3fe;
@@ -143,11 +151,11 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .bouton {
   display: inline-flex; align-items: center; justify-content: center;
   height: 56px; padding: 0 1.9rem; border-radius: 999px;
-  background: var(--accent); color: #ffffff;
+  background: var(--vers-violet); color: #ffffff;
   font: 700 1.05rem/1 var(--sans); text-decoration: none; white-space: nowrap;
-  transition: background-color .15s ease-out, scale .15s ease-out;
+  transition: filter .15s ease-out, scale .15s ease-out;
 }
-.bouton:hover { background: var(--accent-700); }
+.bouton:hover { filter: brightness(.9); }
 .bouton:active { scale: .97; }
 .bouton-petit { height: 44px; padding: 0 1.1rem; font-size: .9rem; }
 .lien {
@@ -207,7 +215,11 @@ a { color: var(--accent); text-underline-offset: 2px; }
   line-height: 1.05; letter-spacing: -0.025em; color: var(--encre);
   font-variant-numeric: tabular-nums;
 }
-.preuves b i { font-style: normal; color: var(--accent); }
+.preuves b i {
+  font-style: normal;
+  background: var(--vers-violet);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .preuves li span {
   display: block;
   font: 700 .78rem/1.5 var(--mono); letter-spacing: .015em;
@@ -253,10 +265,10 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .carte-detail {
   position: absolute; z-index: 1; inset: 0; padding: 1.8rem 1.7rem;
   display: grid; align-content: end; gap: .55rem;
-  background: linear-gradient(160deg, var(--accent), var(--accent-700));
+  background: linear-gradient(165deg, #0866ff 0%, #2458fa 42%, #4b4af4 74%, #6d4aff 100%);
   opacity: 0; transition: opacity .45s ease;
 }
-.carte-detail span { font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: #c7dbff; }
+.carte-detail span { font: 700 .78rem/1.4 var(--mono); letter-spacing: .04em; color: #ded6ff; }
 .carte-detail h3 {
   margin: 0; font: 650 clamp(1.4rem, 2.2vw, 1.8rem)/1.15 var(--titrage);
   letter-spacing: -0.02em; color: #ffffff;
@@ -389,7 +401,11 @@ a { color: var(--accent); text-underline-offset: 2px; }
 }
 .etape-f b { display: block; font: 600 1.55rem/1.2 var(--titrage); letter-spacing: -0.015em; color: #ffffff; }
 .etape-f small { display: block; margin-top: .25rem; font-size: .95rem; line-height: 1.45; color: #c9d6ef; }
-.etape-f .paye { color: #9cc0ff; font-weight: 800; }
+.etape-f .paye {
+  font-weight: 800;
+  background: linear-gradient(135deg, #9cc0ff 20%, #bdaeff 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .etape-f .rouge { color: #f0a9b8; font-weight: 800; }
 /* Les étapes apparaissent l'une après l'autre au défilement (CSS pur). */
 @media (prefers-reduced-motion: no-preference) {
@@ -425,7 +441,7 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .cl-lueur {
   position: absolute; left: 22%; top: 20%; width: 62%; height: 68%;
   pointer-events: none;
-  background: radial-gradient(closest-side, rgb(150 190 255 / .2), rgb(120 165 255 / .07) 55%, transparent 78%);
+  background: radial-gradient(closest-side, rgb(160 180 255 / .2), rgb(140 150 255 / .07) 55%, transparent 78%);
   mix-blend-mode: screen;
 }
 /* L'écran allumé : un vrai fil Messenger sombre, du haut de l'écran au champ de saisie. */
@@ -535,7 +551,9 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .pas { display: grid; gap: .55rem; align-content: start; }
 .pas i {
   font: 200 clamp(2.6rem, 5vw, 3.6rem)/1 var(--sans); font-style: normal;
-  color: var(--accent); font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums;
+  background: var(--vers-violet);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .pas b { font: 650 1.25rem/1.25 var(--titrage); letter-spacing: -0.015em; color: var(--encre); }
 .pas span { font-size: .98rem; line-height: 1.6; color: var(--encre-500); max-width: 24rem; }
@@ -543,11 +561,11 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .demarrer-final { margin-top: 3.8rem; display: grid; gap: 1.2rem; justify-items: center; text-align: center; }
 .bouton-demarrer {
   display: inline-grid; gap: .35rem; justify-items: center; text-decoration: none;
-  background: var(--accent); color: #fff; border-radius: 26px;
+  background: var(--vers-violet); color: #fff; border-radius: 26px;
   padding: 1.15rem 3.2rem 1.25rem;
-  transition: background .15s ease;
+  transition: filter .15s ease;
 }
-.bouton-demarrer:hover { background: var(--accent-700); }
+.bouton-demarrer:hover { filter: brightness(.9); }
 .bouton-demarrer b { font: 650 1.25rem/1 var(--titrage); letter-spacing: -0.01em; }
 .bouton-demarrer span { font: 500 .85rem/1 var(--sans); color: rgb(255 255 255 / .75); }
 .demarrer-final .conditions {

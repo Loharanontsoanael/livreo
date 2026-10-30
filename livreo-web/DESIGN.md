@@ -74,3 +74,18 @@ NODE_PATH=.outils/node_modules node scripts/verifier_couches.js http://localhost
 
 Attendu : tout passe sauf « couleurs : uniquement les jetons de la marque »
 (le script compare à la palette lavande de l'agenda, pas à celle de Livreo).
+
+## Le glissement bleu → violet (30 oct)
+
+Le violet est entré dans la palette comme partenaire du bleu Meta, avec une règle stricte :
+**jamais de violet franc, jamais de dégradé voyant**. Les éléments se lisent bleus et se
+« transitent » en violet en fin de course, sans se faire remarquer.
+
+- Jetons : `--violet #6d4aff`, `--violet-700 #5433d6`, et surtout `--vers-violet`
+  (dégradé 140° : bleu sur 45 % du trajet, violet seulement au dernier quart).
+- Porteurs du glissement : les boutons (`.bouton`, `.bouton-demarrer`), la carte active
+  de l'accordéon, les chiffres 1 2 3 du démarrage, les unités des stats du héros,
+  « Payé. » dans le fil de la boucle (version claire `#9cc0ff → #bdaeff`), le halo du
+  téléphone (légèrement violacé), la sélection de texte.
+- Restent bleu pur : étiquettes, liens, la nuit, les nappes de points.
+- Page entière sombre : testée et refusée, on reste en trois actes clairs.

@@ -25,7 +25,7 @@ for (const vue of vues) {
     deviceScaleFactor: vue.deviceScaleFactor,
   });
   const page = await contexte.newPage();
-  await page.goto("http://localhost:3005/", { waitUntil: "networkidle", timeout: 90000 });
+  await page.goto(process.env.LIVREO_URL || "http://localhost:3000/", { waitUntil: "networkidle", timeout: 90000 });
   await page.evaluate(() => document.fonts.ready);
   // Défilement pour charger les images différées.
   await page.evaluate(async () => {
