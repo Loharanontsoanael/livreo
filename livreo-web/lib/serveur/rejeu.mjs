@@ -4,12 +4,14 @@ import { declencher } from "./contexte.mjs";
 // Rejoue un live (réel, transcrit, ou de démonstration) dans la même chaîne
 // que les webhooks. Les envois vers les acheteuses sont toujours simulés :
 // les identifiants commencent par « rejeu- ».
-export function lancerRejeu(ctx, scenario, { vitesse = 1 } = {}) {
+// garderLive : les commentaires arrivent dans le live déjà ouvert depuis l'app,
+// et c'est la vendeuse qui passe les articles (répétition de la démo à deux).
+export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false } = {}) {
   if (ctx.rejeuEnCours) throw new Error("Un rejeu est déjà en cours.");
   const id = Date.now().toString(36);
   const minuteurs = [];
   ctx.rejeuEnCours = { id, minuteurs };
-  demarrerLive(ctx, { objetFbId: null });
+  if (!garderLive) demarrerLive(ctx, { objetFbId: null });
 
   const evenements = [
     ...(scenario.articles ?? []).map((a) => ({ ...a, genre: "article" })),

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
             public/ : couches.css référence ses polices en chemins relatifs. */}
         {/* Le ?v= force les navigateurs à recharger les styles quand on itère. */}
         <link rel="stylesheet" href="/css/couches.css?v=7" />
-        <link rel="stylesheet" href="/css/livreo.css?v=7" />
+        <link rel="stylesheet" href="/css/livreo.css?v=9" />
       </head>
       <body>
         {children}

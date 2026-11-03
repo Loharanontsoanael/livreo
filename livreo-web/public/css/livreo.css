@@ -735,3 +735,90 @@ a { color: var(--accent); text-underline-offset: 2px; }
   background: var(--vers-violet); color: #fff;
   font: 650 1.1rem/1 var(--titrage);
 }
+.acc-lancer:is(button) { border: 0; cursor: pointer; }
+.acc-lancer:disabled, .app-suivant:disabled { opacity: .6; cursor: default; }
+.acc-prets .est-vide { background: transparent; box-shadow: inset 0 0 0 1.5px #7f9ad1; }
+
+/* ---------- L'app vendeuse : les articles du soir ---------- */
+/* Une liste typographique dans la nuit : la référence, le nom, le prix.
+   Toucher une ligne l'ouvre en édition, sur place. */
+
+.art {
+  position: fixed; inset: 0; overflow-y: auto;
+  display: flex; flex-direction: column;
+  padding: max(1.5rem, env(safe-area-inset-top)) 1.6rem calc(2rem + env(safe-area-inset-bottom, 0px));
+  background: var(--nuit);
+}
+.art-haut { display: flex; justify-content: space-between; align-items: center; }
+.art-haut p { margin: 0; font: 700 1.15rem/1 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.art-haut a { font: 600 .85rem/1 var(--sans); color: #9cc0ff; text-decoration: none; }
+.art h1 {
+  margin: 2.4rem 0 .5rem;
+  font: 700 clamp(1.8rem, 7vw, 2rem)/1.08 var(--titrage); letter-spacing: -0.025em; color: #fff;
+}
+.art-chapo { margin: 0 0 1.6rem; max-width: 30ch; font-size: .95rem; line-height: 1.55; color: #b9c7e6; }
+
+.art-liste { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid rgb(255 255 255 / .08); }
+.art-liste li { border-top: 1px solid rgb(255 255 255 / .08); }
+.art-ligne {
+  width: 100%; padding: .95rem 0; border: 0; background: none; cursor: pointer; text-align: left;
+  display: grid; grid-template-columns: 2.6rem minmax(0, 1fr) auto; align-items: baseline; gap: .4rem;
+}
+.art-ref { font: 700 .74rem/1 "Manrope", var(--sans); font-style: normal; color: #9cc0ff; }
+.art-ligne b { font: 650 1.02rem/1.3 var(--titrage); color: #fff; overflow-wrap: anywhere; }
+.art-ligne span { font: 300 1.02rem/1 var(--sans); font-variant-numeric: tabular-nums; color: #fff; white-space: nowrap; }
+
+.art-ajout, .art-edition { display: grid; grid-template-columns: minmax(0, 1fr) 6.5rem 50px; gap: .5rem; }
+.art-ajout { margin-top: 1.1rem; }
+.art-edition { grid-template-columns: 2.6rem minmax(0, 1fr) 6.5rem; align-items: center; padding: .7rem 0 .9rem; }
+.art-ajout input, .art-edition input, .app-saisie input {
+  height: 50px; min-width: 0; border: 0; border-radius: 14px; padding: 0 .9rem;
+  background: rgb(255 255 255 / .08); color: #fff;
+  font: 500 16px/1 var(--sans);   /* 16px : iOS ne zoome pas sur le champ */
+}
+:is(.art-ajout, .art-edition, .app-saisie) input::placeholder { color: #7f9ad1; }
+:is(.art-ajout, .art-edition, .app-saisie) input:focus-visible { outline: 2px solid #9cc0ff; outline-offset: 1px; }
+.art-ajout button {
+  height: 50px; border: 0; border-radius: 50%; cursor: pointer;
+  background: rgb(255 255 255 / .14); color: #fff; font: 400 1.6rem/1 var(--sans);
+}
+.art-edition-actions { grid-column: 2 / -1; display: flex; justify-content: space-between; padding-top: .3rem; }
+.art-edition-actions button {
+  border: 0; background: none; cursor: pointer; padding: .5rem 0;
+  font: 600 .88rem/1 var(--sans); color: #8fa3cc;
+}
+.art-edition-actions button[type="submit"] { color: #9cc0ff; }
+.art-edition-actions button:disabled { opacity: .5; }
+.art-erreur { margin: .7rem 0 0; font: 500 .85rem/1.4 var(--sans); color: #ffc2cc; }
+
+.art-bas { margin-top: auto; padding-top: 1.6rem; display: grid; gap: .8rem; }
+.art-bas .acc-lancer { margin: 0; }
+.art-bas small { text-align: center; font-size: .8rem; line-height: 1.5; color: #7f9ad1; }
+
+/* ---------- L'écran Direct branché ---------- */
+
+.app-terminer {
+  margin-left: auto; height: 34px; padding: 0 .9rem; border: 0; border-radius: 99px; cursor: pointer;
+  background: rgb(255 255 255 / .16); color: #fff; font: 600 .82rem/1 var(--sans);
+}
+.app-terminer.est-confirme { background: var(--direct); }
+.app-hors-ligne { font: 600 .8rem/1 var(--sans); color: #ffc2cc; }
+.app-doute a { color: #9cc0ff; font: 600 .9rem/1 var(--sans); white-space: nowrap; }
+.app-oui:disabled, .app-non:disabled { opacity: .6; }
+.app-ensuite { margin: .35rem 0 0; font: 500 .85rem/1.4 var(--sans); color: #8fa3cc; }
+.app-ensuite b { font-weight: 600; color: #dbe6ff; }
+.app-erreur { margin: 0; font: 500 .85rem/1.4 var(--sans); color: #ffc2cc; }
+.app-actions { display: grid; grid-template-columns: minmax(0, 1fr) 56px; gap: .6rem; }
+.app-saisir {
+  height: 56px; border: 0; border-radius: 50%; cursor: pointer;
+  background: rgb(255 255 255 / .14); color: #fff; font: 400 1.7rem/1 var(--sans);
+}
+.app-saisie { display: grid; grid-template-columns: minmax(0, 1fr) 6.5rem; gap: .5rem; }
+.app-saisie input { background: rgb(255 255 255 / .12); }
+.app-saisie .app-non { height: 56px; }
+
+/* Sur ordinateur, les écrans d'app restent un téléphone centré : cette règle
+   vient en dernier pour passer devant le « inset: 0 » de chaque écran. */
+@media (min-width: 700px) {
+  .app-ecran { inset: 50% auto auto 50%; }
+}

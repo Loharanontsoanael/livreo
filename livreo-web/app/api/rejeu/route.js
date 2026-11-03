@@ -10,6 +10,8 @@ export const dynamic = "force-dynamic";
 // Rejoue un live dans la vraie chaîne de traitement, pour répéter et filmer
 // la démo sans vendeuse disponible. Corps optionnel :
 // { "scenario": { articles, commentaires, captures }, "vitesse": 2 }
+// { "garder_live": true } : les commentaires de démo tombent dans le live ouvert
+// depuis l'app, sans ses articles (la vendeuse les passe elle-même).
 export async function POST(requete) {
   const ctx = obtenirContexte();
   const refus = refuserSiNonVendeuse(requete, ctx.config);
@@ -19,7 +21,9 @@ export async function POST(requete) {
     const corps = await requete.json().catch(() => ({}));
     const vitesse = Number(corps.vitesse ?? 1);
     if (!(vitesse > 0 && vitesse <= 20)) throw new ErreurMetier(400, "La vitesse doit être comprise entre 0 et 20.");
-    return Response.json(lancerRejeu(ctx, corps.scenario ?? demo, { vitesse }));
+    const garderLive = corps.garder_live === true;
+    const scenario = corps.scenario ?? (garderLive ? { ...demo, articles: [] } : demo);
+    return Response.json(lancerRejeu(ctx, scenario, { vitesse, garderLive }));
   } catch (erreur) {
     if (erreur?.message === "Un rejeu est déjà en cours.") return Response.json({ erreur: erreur.message }, { status: 409 });
     return repondreErreur(erreur);

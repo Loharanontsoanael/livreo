@@ -23,6 +23,12 @@ Pour répéter la démo sans vendeuse :
 `curl -X POST localhost:3000/api/rejeu -H 'Content-Type: application/json' -d '{"vitesse":2}'`
 rejoue le live de `lib/serveur/rejeu-demo.json` dans la vraie chaîne de traitement.
 
+Pour répéter avec l'app : lancer le live depuis `/essayer`, montrer le premier
+article sur `/direct`, puis
+`curl -X POST localhost:3000/api/rejeu -H 'Content-Type: application/json' -d '{"vitesse":2,"garder_live":true}'` :
+les commentaires de démo tombent dans ce live, et c'est l'écran Direct qui
+passe les articles.
+
 Vérification de bout en bout sur un serveur lancé :
 `node ../outils/verifier-backend.mjs http://localhost:3000 <META_APP_SECRET> <META_VERIFY_TOKEN>`.
 

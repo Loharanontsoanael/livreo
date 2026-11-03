@@ -452,7 +452,13 @@ export function etat(ctx) {
   const live = liveActif(ctx);
   if (!live) return { live: null, article: null, gagnante: null, attente: [], doutes: [], paiements: [], compteurs: { jp: 0, payees: 0 } };
 
-  const article = un(ctx, "SELECT id, ref, nom, prix FROM articles WHERE live_id = ? AND ferme_le IS NULL ORDER BY ouvert_le DESC LIMIT 1", live.id);
+  // jp : une acheteuse compte une fois par article, quel que soit le sort de sa réservation.
+  const article = un(
+    ctx,
+    `SELECT a.id, a.ref, a.nom, a.prix, (SELECT COUNT(*) FROM reservations r WHERE r.article_id = a.id) AS jp
+     FROM articles a WHERE a.live_id = ? AND a.ferme_le IS NULL ORDER BY a.ouvert_le DESC LIMIT 1`,
+    live.id,
+  );
   const gagnante = article
     ? un(ctx, `SELECT id AS reservation_id, auteur_nom AS nom, statut, delai_le FROM reservations WHERE article_id = ? AND statut IN ${ACTIVES}`, article.id)
     : null;
