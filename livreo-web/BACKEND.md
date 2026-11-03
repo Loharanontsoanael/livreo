@@ -87,15 +87,31 @@ Meta à entraîner ses modèles sur les commentaires des clientes.
 
 ## Configurer l'app Meta
 
-1. Sur developers.facebook.com, dans l'app : ajouter les produits **Webhooks** et **Messenger**.
-2. URL de rappel : `https://<serveur>/api/meta/webhook`, jeton de vérification : `META_VERIFY_TOKEN`.
-3. Abonner la Page aux champs **feed** et **messages**
-   (`POST /{page-id}/subscribed_apps?subscribed_fields=feed,messages`).
-4. Jeton de Page avec `pages_show_list`, `pages_read_engagement`,
-   `pages_read_user_content`, `pages_manage_metadata`, `pages_messaging`.
-   En mode développement, les acheteuses de test doivent avoir un rôle dans l'app.
-5. Au démarrage d'un live, envoyer `objet_fb_id` (l'identifiant de la
-   publication du live) pour filtrer les commentaires et activer la relecture.
+`outils/configurer-meta.mjs` fait le travail fastidieux : il échange un jeton
+utilisateur contre un jeton de Page qui n'expire pas, remplit `.env.local`,
+abonne la Page aux webhooks et vérifie chaque permission.
+
+1. **App Meta** (developers.facebook.com) : créer l'app (type Entreprise),
+   ajouter les produits **Messenger** et **Webhooks**, puis recopier
+   l'identifiant et la clé secrète dans `META_APP_ID` et `META_APP_SECRET`.
+2. **Jeton** : dans l'explorateur Graph, choisir l'app, demander un jeton
+   utilisateur avec `pages_show_list`, `pages_read_engagement`,
+   `pages_read_user_content`, `pages_manage_metadata`, `pages_messaging`,
+   le coller dans `META_USER_TOKEN`, puis :
+   `node outils/configurer-meta.mjs jeton` et `node outils/configurer-meta.mjs abonner`.
+3. **Webhook** : exposer le serveur en HTTPS (en local :
+   `cloudflared tunnel --url http://localhost:3000`), puis dans l'app,
+   Webhooks > Page : URL `https://<adresse>/api/meta/webhook`, jeton de
+   vérification `META_VERIFY_TOKEN`, cocher **feed** et **messages**.
+4. **Meta Model API** (dev.meta.ai) : créer une clé dans `MODEL_API_KEY`.
+5. `node outils/configurer-meta.mjs verifier` doit finir sur « Tout est prêt ».
+
+En mode développement, seules les personnes ayant un rôle dans l'app
+(administratrice, testeuse) déclenchent les webhooks : les acheteuses de la
+démo doivent être ajoutées comme testeuses.
+
+Au démarrage d'un live, envoyer `objet_fb_id` (l'identifiant de la
+publication du live) pour filtrer les commentaires et activer la relecture.
 
 ## Déploiement
 
