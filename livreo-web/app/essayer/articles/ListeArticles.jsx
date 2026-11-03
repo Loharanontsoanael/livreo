@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { appeler, ecrireArticles, formatAr, lireArticles, lirePrix, refSuivante } from "@/lib/client/live";
+import { ecrireArticles, formatAr, lancerLive, lireArticles, lirePrix, refSuivante } from "@/lib/client/live";
 
 /* Les articles du soir, dans l'ordre du live. Pendant le live, « Article
    suivant » les fait passer un par un, sans rien taper. */
@@ -41,7 +41,7 @@ export default function ListeArticles() {
     setLancement(true);
     setErreur("");
     try {
-      await appeler("/api/live", { action: "demarrer" });
+      await lancerLive();
       router.push("/direct");
     } catch (e) {
       setErreur(e.message);

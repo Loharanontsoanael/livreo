@@ -19,7 +19,7 @@ export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false, pa
     ...(scenario.captures ?? []).map((c) => ({ ...c, genre: "capture" })),
   ].sort((a, b) => a.a - b.a);
 
-  const auteurId = (nom) => `rejeu-${nom.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-")}`;
+  const auteurId = (nom) => `rejeu-${String(nom ?? "anonyme").toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-")}`;
   let fin = 0;
 
   evenements.forEach((ev, i) => {

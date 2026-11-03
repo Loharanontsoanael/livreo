@@ -35,6 +35,7 @@ export function DELETE(requete) {
   const ctx = obtenirContexte();
   const qui = identifier(requete, ctx);
   if (qui instanceof Response) return qui;
+  if (!ctx.config.rejeuAutorise) return Response.json({ erreur: "Le rejeu est désactivé." }, { status: 403 });
   arreterRejeu(ctx);
   return Response.json({ arrete: true });
 }

@@ -272,7 +272,6 @@ function phrasePaiement(p) {
 function phraseGagnante(g) {
   if (!g) return "Pas encore de JP.";
   const qui = nomCourt(g.nom);
-  if (g.statut === "attente") return `${qui} gagne, envoi du récap…`;
   if (g.statut === "a_confirmer") return `${qui} a envoyé sa capture.`;
   if (g.statut === "payee") return `${qui} a payé.`;
   return `${qui} gagne, récap envoyé.`;

@@ -56,3 +56,12 @@ export async function appeler(chemin, corps) {
   if (!reponse.ok) throw new Error(json.erreur ?? "Le serveur ne répond pas. Réessayez.");
   return json;
 }
+
+// « Lancer le live » : un live déjà en cours est repris, jamais remplacé
+// (démarrer en fermerait les articles et la file d'attente).
+export async function lancerLive() {
+  const enCours = await fetch("/api/live")
+    .then((r) => (r.ok ? r.json() : null))
+    .catch(() => null);
+  if (!enCours?.live) await appeler("/api/live", { action: "demarrer" });
+}

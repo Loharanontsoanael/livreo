@@ -23,11 +23,13 @@ export function creerContexte({ config = lireConfig(), db, graph, muse, maintena
     if (graph) return graph;
     const ligne = pageId ? base.prepare("SELECT jeton FROM pages WHERE id = ?").get(pageId) : null;
     const jeton = ligne ? coffre.dechiffrer(ligne.jeton) ?? "" : pageId === config.pageId ? config.pageToken : "";
-    const cle = `${pageId}:${createHash("sha256").update(jeton).digest("hex")}`;
-    if (!cache.has(cle)) {
-      cache.set(cle, creerGraph({ version: config.graphVersion, pageId, pageToken: jeton, appSecret: config.appSecret }));
-    }
-    return cache.get(cle);
+    // Une entrée par Page, remplacée quand son jeton change (reconnexion).
+    const empreinte = createHash("sha256").update(jeton).digest("hex");
+    const connu = cache.get(pageId);
+    if (connu?.empreinte === empreinte) return connu.graph;
+    const client = creerGraph({ version: config.graphVersion, pageId, pageToken: jeton, appSecret: config.appSecret });
+    cache.set(pageId, { empreinte, graph: client });
+    return client;
   }
 
   return {

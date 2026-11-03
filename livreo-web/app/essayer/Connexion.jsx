@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { appeler, formatAr, lireArticles } from "@/lib/client/live";
+import { appeler, formatAr, lancerLive, lireArticles } from "@/lib/client/live";
 
 const REFUS = {
   annule: "Connexion annulée. Livreo a besoin de votre accord pour lire les commentaires de votre Page.",
@@ -45,7 +45,7 @@ export default function Connexion() {
     setLancement(true);
     setErreur("");
     try {
-      await appeler("/api/live", { action: "demarrer" });
+      await lancerLive();
       router.push("/direct");
     } catch (e) {
       setErreur(e.message);

@@ -288,3 +288,28 @@ test("IA lente : les lectures partent ensemble, la première JP gagne quand mêm
   assert.equal(e.gagnante.nom, "Mialy Rasoa");
   assert.deepEqual(e.attente.map((a) => a.nom), ["Faniry Rakoto", "Hanta Ravelo", "Rado Andria"]);
 });
+
+test("une capture lente à lire ne retarde pas les JP du même lot", async () => {
+  const { ctx, graph } = contexte();
+  ouvrirLive(ctx);
+  recevoir(ctx, [commentaire("c1", "Faniry Rakoto", "jp", 5)]);
+  await traiterEnAttente(ctx);
+  articleSuivant(ctx, { ref: "R13", nom: "Robe rouge", prix: 40000 });
+
+  ctx.muse.lireCapture = async () => {
+    await new Promise((r) => setTimeout(r, 300));
+    return { est_paiement: true, montant: 35000, reference: "X", heure: null, confiance: 0.9 };
+  };
+  // La capture arrive juste avant la JP : elle passe en premier dans le lot.
+  recevoir(ctx, [
+    { id: "m1", type: "message", cree_le: new Date(T0 + 10_000).toISOString(), donnees: { psid: "psid-c1", texte: "", image_url: "https://x/c.jpg" } },
+    commentaire("c2", "Hanta Ravelo", "jp", 11),
+  ]);
+  const envoisAvant = graph.envois.length;
+  const traitement = traiterEnAttente(ctx);
+  // La JP de Hanta est servie pendant que la capture est encore en lecture.
+  await new Promise((r) => setTimeout(r, 150));
+  assert.equal(graph.envois.length, envoisAvant + 1);
+  await traitement;
+  assert.equal(etat(ctx).paiements.length, 1);
+});

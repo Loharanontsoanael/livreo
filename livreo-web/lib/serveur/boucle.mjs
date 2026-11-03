@@ -51,8 +51,12 @@ function nomPage(ctx, pageId) {
 }
 
 export function numeroPaiement(ctx, pageId) {
-  const r = un(ctx, "SELECT numero_paiement FROM reglages WHERE page_id = ?", pageId ?? "");
-  return r?.numero_paiement || ctx.config.numeroPaiement || "";
+  const page = pageId ?? "";
+  const r = un(ctx, "SELECT numero_paiement FROM reglages WHERE page_id = ?", page);
+  if (r?.numero_paiement) return r.numero_paiement;
+  // Le numéro de l'environnement n'appartient qu'à la Page de secours : une
+  // boutique connectée sans numéro ne doit pas envoyer ses clientes payer ailleurs.
+  return page === (ctx.config.pageId ?? "") ? ctx.config.numeroPaiement || "" : "";
 }
 
 // « 034 12 345 67 », « +261 34 12 345 67 » : 9 à 13 chiffres, espaces permis.
@@ -107,16 +111,22 @@ export async function traiterEnAttente(ctx, limite = 100) {
       const preparations = new Map();
       const file = limiteur(PARALLELE_IA);
       for (const entrant of lot) {
-        if (entrant.type === "commentaire") {
-          const p = file(() => preparerCommentaire(ctx, entrant));
-          p.catch(() => {});
-          preparations.set(entrant.id, p);
-        }
+        const preparer =
+          entrant.type === "commentaire" ? () => preparerCommentaire(ctx, entrant)
+          : entrant.type === "message" && entrant.donnees?.image_url ? () => lireCaptureDe(ctx, entrant)
+          : null;
+        if (!preparer) continue;
+        const p = file(preparer);
+        p.catch(() => {});
+        preparations.set(entrant.id, p);
       }
-      for (const entrant of lot) {
+      // Les JP d'abord, dans leur ordre : une capture du même lot (qui ne dépend
+      // pas de ces JP) ne doit pas les retarder pendant sa lecture.
+      const ordre = [...lot.filter((e) => e.type !== "message"), ...lot.filter((e) => e.type === "message")];
+      for (const entrant of ordre) {
         try {
           if (entrant.type === "commentaire") await appliquerCommentaire(ctx, entrant, await preparations.get(entrant.id));
-          else if (entrant.type === "message") await traiterMessage(ctx, entrant);
+          else if (entrant.type === "message") await traiterMessage(ctx, entrant, preparations.get(entrant.id));
           executer(ctx, "UPDATE entrants SET traite_le = ?, erreur = NULL WHERE id = ?", iso(ctx.maintenant()), entrant.id);
           traites += 1;
         } catch (erreur) {
@@ -384,15 +394,32 @@ export async function entretenir(ctx) {
 
 /* ---------- Paiements ---------- */
 
-async function traiterMessage(ctx, entrant) {
-  const d = entrant.donnees;
-  if (!d.psid) return;
-  const resa = un(
+function commandeDe(ctx, entrant) {
+  return un(
     ctx,
     `SELECT r.*, a.prix FROM reservations r JOIN articles a ON a.id = r.article_id JOIN lives l ON l.id = a.live_id
      WHERE r.psid = ? AND l.page_id = ? AND r.statut IN ('contactee', 'a_confirmer') ORDER BY r.contactee_le DESC LIMIT 1`,
-    d.psid, entrant.page_id ?? "",
+    entrant.donnees?.psid, entrant.page_id ?? "",
   );
+}
+
+// Lecture de la capture par l'IA, sans écriture en base : lancée en avance,
+// en parallèle, pour ne pas retarder les JP du même lot.
+async function lireCaptureDe(ctx, entrant) {
+  const resa = entrant.donnees?.psid ? commandeDe(ctx, entrant) : null;
+  if (!resa || !ctx.muse?.actif) return null;
+  try {
+    return await ctx.muse.lireCapture({ imageUrl: entrant.donnees.image_url, prixAttendu: resa.prix });
+  } catch (erreur) {
+    journal(ctx, "muse_indisponible", { erreur: String(erreur?.message ?? erreur) });
+    return null;
+  }
+}
+
+async function traiterMessage(ctx, entrant, lectureAnticipee) {
+  const d = entrant.donnees;
+  if (!d.psid) return;
+  const resa = commandeDe(ctx, entrant);
   if (!resa) {
     journal(ctx, "message_sans_commande", { message: entrant.id });
     return;
@@ -403,14 +430,7 @@ async function traiterMessage(ctx, entrant) {
   }
   if (un(ctx, "SELECT 1 AS ok FROM paiements WHERE message_id = ?", entrant.id)) return;
 
-  let lecture = null;
-  if (ctx.muse?.actif) {
-    try {
-      lecture = await ctx.muse.lireCapture({ imageUrl: d.image_url, prixAttendu: resa.prix });
-    } catch (erreur) {
-      journal(ctx, "muse_indisponible", { erreur: String(erreur?.message ?? erreur) });
-    }
-  }
+  const lecture = await (lectureAnticipee ?? lireCaptureDe(ctx, entrant));
   let ecart = null;
   if (!lecture) ecart = "Lecture automatique indisponible : vérifiez la capture à l'œil.";
   else if (!lecture.est_paiement) ecart = "Ce n'est pas une confirmation de paiement.";
@@ -418,6 +438,13 @@ async function traiterMessage(ctx, entrant) {
   else if (lecture.montant !== resa.prix) ecart = `Montant ${formatAr(lecture.montant)} au lieu de ${formatAr(resa.prix)}.`;
 
   transaction(ctx.db, () => {
+    // La lecture de l'IA prend plusieurs secondes : le délai a pu expirer et
+    // l'article passer à la suivante entre-temps.
+    const statut = un(ctx, "SELECT statut FROM reservations WHERE id = ?", resa.id)?.statut;
+    if (statut !== "contactee" && statut !== "a_confirmer") {
+      journal(ctx, "message_sans_commande", { message: entrant.id, reservation: resa.id });
+      return;
+    }
     executer(
       ctx,
       "INSERT INTO paiements (reservation_id, message_id, image_url, montant, reference, heure, ecart) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -441,8 +468,24 @@ export async function deciderPaiement(ctx, paiementId, confirme, pageId) {
 
   transaction(ctx.db, () => {
     executer(ctx, "UPDATE paiements SET statut = ?, decide_le = ? WHERE id = ?", confirme ? "confirme" : "refuse", maintenant, p.id);
-    if (confirme) executer(ctx, "UPDATE reservations SET statut = 'payee', payee_le = ? WHERE id = ?", maintenant, p.reservation_id);
-    else executer(ctx, "UPDATE reservations SET statut = 'contactee' WHERE id = ? AND statut = 'a_confirmer'", p.reservation_id);
+    if (confirme) {
+      executer(ctx, "UPDATE reservations SET statut = 'payee', payee_le = ? WHERE id = ?", maintenant, p.reservation_id);
+      // Les autres captures de la même commande n'ont plus rien à valider.
+      executer(
+        ctx,
+        "UPDATE paiements SET statut = 'doublon', decide_le = ? WHERE reservation_id = ? AND statut = 'a_confirmer'",
+        maintenant, p.reservation_id,
+      );
+    } else {
+      // Tant qu'une autre capture attend la vendeuse, la commande reste à confirmer
+      // (sinon le délai pourrait expirer et l'article passer à la suivante).
+      executer(
+        ctx,
+        `UPDATE reservations SET statut = 'contactee' WHERE id = ? AND statut = 'a_confirmer'
+         AND NOT EXISTS (SELECT 1 FROM paiements WHERE reservation_id = ? AND statut = 'a_confirmer')`,
+        p.reservation_id, p.reservation_id,
+      );
+    }
   });
   journal(ctx, confirme ? "paiement_confirme" : "paiement_refuse", { paiement: p.id });
 
