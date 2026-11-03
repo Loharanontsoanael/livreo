@@ -1,0 +1,22 @@
+{
+  "description": "Live de démonstration : trois articles, des JP en malgache et en français, un doute, un doublon. Les temps sont en secondes depuis le début du live.",
+  "articles": [
+    { "a": 0, "ref": "R12", "nom": "Robe bleue wax", "prix": 35000 },
+    { "a": 40, "ref": "R13", "nom": "Robe rouge", "prix": 35000 },
+    { "a": 80, "ref": "R14", "nom": "Veste beige", "prix": 60000 }
+  ],
+  "commentaires": [
+    { "a": 2, "auteur": "Rado Andria", "texte": "salama !" },
+    { "a": 5, "auteur": "Faniry Rakoto", "texte": "jp" },
+    { "a": 6, "auteur": "Hanta Ravelo", "texte": "JP !!" },
+    { "a": 9, "auteur": "Mialy Rasoa", "texte": "izaho koa jp" },
+    { "a": 10, "auteur": "Faniry Rakoto", "texte": "jp jp" },
+    { "a": 14, "auteur": "Lova Randria", "texte": "ohatrinona ?" },
+    { "a": 43, "auteur": "Mialy Rasoa", "texte": "jp ve ?" },
+    { "a": 45, "auteur": "Tiana Rabe", "texte": "jp ilay mena M" },
+    { "a": 47, "auteur": "Hanta Ravelo", "texte": "jp R13" },
+    { "a": 83, "auteur": "Nirina Razafy", "texte": "alaiko" },
+    { "a": 85, "auteur": "Rado Andria", "texte": "tsara be io !" }
+  ],
+  "captures": []
+}
