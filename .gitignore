@@ -9,3 +9,8 @@ maquettes/captures/
 # Système
 .DS_Store
 *.log
+
+# Secrets et données locales du backend
+.env*.local
+.env
+livreo-web/donnees/
