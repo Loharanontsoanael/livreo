@@ -3,6 +3,7 @@
 //
 //   node outils/configurer-meta.mjs jeton     META_USER_TOKEN → jeton de Page qui n'expire pas
 //   node outils/configurer-meta.mjs abonner   abonne la Page aux webhooks feed et messages
+//   node outils/configurer-meta.mjs webhook https://<adresse>   déclare le webhook de l'app (feed, messages)
 //   node outils/configurer-meta.mjs verifier  vérifie chaque identifiant, sans rien modifier
 import { chmodSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { createHmac } from "node:crypto";
@@ -134,6 +135,31 @@ async function abonner() {
   console.log(`✓ Page abonnée · champs : ${(app?.subscribed_fields ?? []).join(", ") || "?"}`);
 }
 
+// Déclare (ou met à jour) le webhook de l'app : Meta appelle aussitôt
+// l'adresse pour la vérifier, le serveur doit donc tourner et être joignable.
+async function webhook() {
+  const env = lireEnv();
+  exiger(env, "META_APP_ID", "META_APP_SECRET", "META_VERIFY_TOKEN");
+  const adresse = (process.argv[3] || env.LIVREO_URL_PUBLIQUE || "").replace(/\/+$/, "");
+  if (!/^https:\/\//.test(adresse)) {
+    console.error("Donnez l'adresse publique en https : node outils/configurer-meta.mjs webhook https://<adresse>");
+    process.exit(1);
+  }
+  const jetonApp = `${env.META_APP_ID}|${env.META_APP_SECRET}`;
+  await graph(env, `${env.META_APP_ID}/subscriptions`, {
+    methode: "POST",
+    parametres: {
+      object: "page",
+      callback_url: `${adresse}/api/meta/webhook`,
+      verify_token: env.META_VERIFY_TOKEN,
+      fields: "feed,messages",
+      include_values: "true",
+    },
+    jeton: jetonApp,
+  });
+  console.log(`✓ webhook déclaré : ${adresse}/api/meta/webhook (feed, messages)`);
+}
+
 async function verifier() {
   const env = lireEnv();
   let echecs = 0;
@@ -177,6 +203,19 @@ async function verifier() {
     }
   }
 
+  if (env.META_APP_ID && env.META_APP_SECRET) {
+    try {
+      const { data = [] } = await graph(env, `${env.META_APP_ID}/subscriptions`, { jeton: `${env.META_APP_ID}|${env.META_APP_SECRET}` });
+      const page = data.find((s) => s.object === "page" && s.active);
+      const champs = (page?.fields ?? []).map((f) => f.name);
+      page && champs.includes("feed") && champs.includes("messages")
+        ? ok(`webhook déclaré : ${page.callback_url}`)
+        : ko("webhook non déclaré : lancez « webhook https://<adresse> »");
+    } catch (erreur) {
+      ko(`webhook illisible : ${erreur.message}`);
+    }
+  }
+
   if (env.MODEL_API_KEY) {
     try {
       const muse = creerMuse({ apiKey: env.MODEL_API_KEY, modele: env.MUSE_MODELE || "muse-spark-1.3", delaiMs: 20_000 });
@@ -193,10 +232,10 @@ async function verifier() {
   process.exit(echecs ? 1 : 0);
 }
 
-const commandes = { jeton, abonner, verifier };
+const commandes = { jeton, abonner, webhook, verifier };
 const commande = commandes[process.argv[2]];
 if (!commande) {
-  console.log("Usage : node outils/configurer-meta.mjs jeton | abonner | verifier");
+  console.log("Usage : node outils/configurer-meta.mjs jeton | abonner | webhook <https://adresse> | verifier");
   process.exit(1);
 }
 commande().catch((erreur) => {

@@ -144,9 +144,12 @@ abonne la Page aux webhooks et vérifie chaque permission.
    le coller dans `META_USER_TOKEN`, puis :
    `node outils/configurer-meta.mjs jeton` et `node outils/configurer-meta.mjs abonner`.
 3. **Webhook** : exposer le serveur en HTTPS (en local :
-   `cloudflared tunnel --url http://localhost:3000`), puis dans l'app,
-   Webhooks > Page : URL `https://<adresse>/api/meta/webhook`, jeton de
-   vérification `META_VERIFY_TOKEN`, cocher **feed** et **messages**.
+   `cloudflared tunnel --url http://localhost:3000`), puis
+   `node outils/configurer-meta.mjs webhook https://<adresse>` (ou, dans
+   l'app, Webhooks > Page : URL `https://<adresse>/api/meta/webhook`, jeton
+   de vérification `META_VERIFY_TOKEN`, cocher **feed** et **messages**).
+   L'adresse d'un tunnel rapide change à chaque relance : redéclarer alors le
+   webhook et l'URL de redirection de Facebook Login.
 4. **Meta Model API** (dev.meta.ai) : créer une clé dans `MODEL_API_KEY`.
 5. `node outils/configurer-meta.mjs verifier` doit finir sur « Tout est prêt ».
 
