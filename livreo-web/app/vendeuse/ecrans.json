@@ -1,0 +1,182 @@
+[
+  {
+    "route": "/vendeuse/connexion",
+    "num": "1",
+    "titre": "Connexion",
+    "parcours": "B"
+  },
+  {
+    "route": "/vendeuse/connexion/refusee",
+    "num": "1b",
+    "titre": "Connexion annulée ou refusée",
+    "parcours": "B"
+  },
+  {
+    "route": "/vendeuse/contact",
+    "num": "1c",
+    "titre": "Écrire à l'équipe Livreo",
+    "parcours": "B"
+  },
+  {
+    "route": "/vendeuse/connexion/facebook",
+    "num": "2",
+    "titre": "Fenêtre Facebook (écran de Facebook)",
+    "parcours": "B"
+  },
+  {
+    "route": "/vendeuse/page",
+    "num": "3",
+    "titre": "Quelle Page pour ce soir ?",
+    "parcours": "B"
+  },
+  {
+    "route": "/vendeuse/page/aucune",
+    "num": "3b",
+    "titre": "Pas de Page pour le live",
+    "parcours": "B"
+  },
+  {
+    "route": "/vendeuse/accueil",
+    "num": "4",
+    "titre": "Accueil",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/compte",
+    "num": "4b",
+    "titre": "Mon compte",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/avant-live",
+    "num": "5",
+    "titre": "Avant le live",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/avant-live/premier",
+    "num": "5b",
+    "titre": "Premier live : 3 conseils",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/test-camera",
+    "num": "5c",
+    "titre": "Test caméra et micro",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/camera-refusee",
+    "num": "5d",
+    "titre": "Caméra ou micro refusés",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/reseau-faible",
+    "num": "5e",
+    "titre": "Réseau trop faible",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/lancement",
+    "num": "6",
+    "titre": "Lancement du live",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct",
+    "num": "7",
+    "titre": "Direct : Livreo écoute",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/article",
+    "num": "7b",
+    "titre": "Direct : article en cours",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/diso",
+    "num": "7c",
+    "titre": "Direct : « diso », le prix change",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/image-paroles",
+    "num": "7d",
+    "titre": "Direct : image et paroles en désaccord",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/sans-jp",
+    "num": "7e",
+    "titre": "Direct : article sans JP",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/prix",
+    "num": "7f",
+    "titre": "Direct : prix jamais entendu",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/reseau",
+    "num": "7g",
+    "titre": "Direct : réseau coupé",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/facebook-coupe",
+    "num": "7h",
+    "titre": "Direct : Facebook arrête la diffusion",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/direct/terminer",
+    "num": "7i",
+    "titre": "Direct : terminer le live ?",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/confirmations",
+    "num": "8",
+    "titre": "Confirmations",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/confirmations/conversation",
+    "num": "8b",
+    "titre": "Conversation avec l'IA",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/confirmations/aucune",
+    "num": "8c",
+    "titre": "Aucune confirmation en attente",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/confirmations/ecart",
+    "num": "8d",
+    "titre": "Paiement d'avance : écart",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/fin",
+    "num": "9",
+    "titre": "Fin du live",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/fin/sans-vente",
+    "num": "9b",
+    "titre": "Fin du live sans vente",
+    "parcours": "C"
+  },
+  {
+    "route": "/vendeuse/feuille-de-route",
+    "num": "10",
+    "titre": "Feuille de route",
+    "parcours": "C"
+  }
+]

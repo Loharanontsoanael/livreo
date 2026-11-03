@@ -1,0 +1,15 @@
+import Link from "next/link";
+
+/* 1c · Écrire à l'équipe Livreo. Généré depuis la maquette E1c-Contacter-equipe.html du canevas. */
+export const metadata = { title: "Livreo · Écrire à l'équipe Livreo" };
+
+const css = ".lv-app .voile-feuille { position: absolute; inset: 0; background: rgb(3 8 25 / .7); z-index: 4; }\n.lv-app .feuille { position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--nuit-2); border-radius: 24px 24px 0 0; padding: 12px 20px 30px; display: grid; gap: 14px; }\n.lv-app .feuille .poignee { justify-self: center; width: 40px; height: 4px; border-radius: 2px; background: var(--nuit-trait); }\n.lv-app .canal { display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: 18px; background: rgb(255 255 255 / .06); }\n.lv-app .canal .ic { flex: none; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; }\n.lv-app .canal .ic svg { width: 24px; height: 24px; }\n.lv-app .canal div { flex: 1; }\n.lv-app .canal b { display: block; font: 650 16px/1.3 var(--titrage); }\n.lv-app .canal small { display: block; font-size: 12.5px; color: var(--brume-2); }\n.lv-app .canal .fl { color: var(--brume-2); font-size: 20px; }\n.lv-app .apercu-msg { margin: 0; padding: 12px 14px; border-radius: 16px; background: rgb(8 102 255 / .18); font-size: 13.5px; line-height: 1.5; color: #dbe6ff; }\n.lv-app .apercu-msg .mono { display: block; margin-bottom: 4px; }";
+
+export default function Ecran() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <main className="tel points lvc"><div className="statut"><span>18:02</span><span className="ic"><i /><i /><i /><span className="bat"><b style={{ width: "91%" }} /></span></span></div><p className="marque">Livreo</p><div className="bloc" style={{ bottom: "420px" }}><span className="alerte-pt" /><h1>La connexion n'a pas abouti.</h1></div><Link href="/vendeuse/connexion/refusee" className="voile-feuille" /><div className="feuille"><span className="poignee" /><h2>Écrire à l'équipe Livreo</h2><p className="chapo" style={{ marginTop: "-6px" }}>On répond en malgache ou en français, le jour même.</p><div className="canal"><span className="ic" style={{ background: "#0866ff" }}><svg viewBox="0 0 24 24"><path fill="none" stroke="#fff" strokeWidth="2" strokeLinejoin="round" d="M4 5h16v11H9l-5 4z" /></svg></span><div><b>Messenger</b><small>Page Facebook Livreo</small></div><span className="fl">›</span></div><div className="canal"><span className="ic" style={{ background: "#1f9d55" }}><svg viewBox="0 0 24 24"><path fill="none" stroke="#fff" strokeWidth="2" strokeLinejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z" /></svg></span><div><b>WhatsApp</b><small>+261 34 67 695 26</small></div><span className="fl">›</span></div><p className="apercu-msg"><span className="mono">MESSAGE DÉJÀ RÉDIGÉ</span>Bonjour, je n'arrive pas à connecter ma Page à Livreo. Code : FB-REFUS-0412</p></div></main>
+    </>
+  );
+}

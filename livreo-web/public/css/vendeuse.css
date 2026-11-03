@@ -1,0 +1,205 @@
+/* App vendeuse : styles des maquettes du canevas, préfixés par .lv-app.
+   Généré depuis ~/maquettes/livreo/partages/app.css. */
+@font-face { font-family: "DM Sans"; src: url("/fonts/dm-sans-latin-wght.woff2") format("woff2"); font-weight: 100 1000; }
+@font-face { font-family: "JetBrains Mono"; src: url("/fonts/jetbrains-mono-latin-700.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "Hanken Grotesk"; src: url("/fonts/hanken-grotesk-latin-wght.woff2") format("woff2"); font-weight: 100 900; }
+.lv-app {
+  --encre: #121a2e; --encre-500: #49536b; --encre-400: #67738f;
+  --accent: #0866ff; --accent-700: #0a4fc4;
+  --violet: #6d4aff;
+  --vers-violet: linear-gradient(140deg, #0866ff 0%, #2458fa 45%, #4b4af4 78%, #6d4aff 100%);
+  --direct: #c2183a; --direct-clair: #f0a9b8;
+  --bleu-pale: #eef3fe; --bleu-200: #d2e0fb;
+  --or: #e8a63d; --or-doux: #fdf0d8; --or-encre: #6b4300;
+  --nuit: #0b1430; --nuit-2: #121d42; --nuit-trait: #22305c;
+  --brume: #b9c7e6; --brume-2: #7f9ad1; --paye-nuit: #9cc0ff;
+  --sans: "DM Sans", system-ui, sans-serif;
+  --titrage: "Hanken Grotesk", "DM Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+.lv-app * { box-sizing: border-box; }
+.lv-app { margin: 0; background: var(--nuit); }
+.lv-app { font: 400 15px/1.5 var(--sans); color: #fff; -webkit-font-smoothing: antialiased; }
+.lv-app .tel { position: relative; width: 390px; height: 844px; overflow: hidden; background: var(--nuit); }
+.lv-app .tel.clair { background: #fff; color: var(--encre); }
+.lv-app .statut {
+  position: absolute; inset: 0 0 auto 0; z-index: 5; height: 44px;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 22px;
+  font: 700 13px/1 var(--mono); color: #fff;
+}
+.lv-app .clair .statut { color: var(--encre); }
+.lv-app .statut .ic { display: flex; gap: 5px; align-items: center; }
+.lv-app .statut .ic i { display: block; width: 4px; background: currentColor; border-radius: 1px; }
+.lv-app .statut .ic i:nth-child(1) { height: 5px; }
+.lv-app .statut .ic i:nth-child(2) { height: 8px; }
+.lv-app .statut .ic i:nth-child(3) { height: 11px; }
+.lv-app .statut .bat { width: 22px; height: 11px; border: 1.5px solid currentColor; border-radius: 3px; padding: 1px; margin-left: 4px; }
+.lv-app .statut .bat b { display: block; height: 100%; width: 78%; background: currentColor; border-radius: 1px; }
+.lv-app .points::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(#a9c5fa 1px, transparent 1.4px); background-size: 11px 11px; opacity: .12;
+  -webkit-mask: radial-gradient(26rem 28rem at 72% 16%, #000, transparent 75%);
+  mask: radial-gradient(26rem 28rem at 72% 16%, #000, transparent 75%);
+}
+.lv-app .marque { position: absolute; top: 58px; left: 24px; margin: 0; font: 700 19px/1 var(--titrage); letter-spacing: -0.02em; z-index: 3; }
+.lv-app .etape-n { position: absolute; top: 61px; right: 24px; margin: 0; font: 700 11px/1 var(--mono); color: var(--brume-2); z-index: 3; }
+.lv-app .clair .etape-n { color: var(--encre-400); }
+.lv-app .bloc { position: absolute; left: 24px; right: 24px; bottom: 34px; display: grid; gap: 16px; z-index: 3; }
+.lv-app .bloc.haut { top: 104px; bottom: auto; }
+.lv-app h1 { margin: 0; font: 700 31px/1.08 var(--titrage); letter-spacing: -0.025em; text-wrap: balance; }
+.lv-app h2 { margin: 0; font: 700 23px/1.15 var(--titrage); letter-spacing: -0.02em; }
+.lv-app .chapo { margin: 0; font-size: 15px; line-height: 1.6; color: var(--brume); }
+.lv-app .clair .chapo { color: var(--encre-500); }
+.lv-app .note { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--brume-2); }
+.lv-app .clair .note { color: var(--encre-400); }
+.lv-app .mono { font: 700 11px/1.3 var(--mono); color: var(--brume-2); }
+.lv-app .clair .mono { color: var(--encre-400); }
+.lv-app .btn {
+  height: 56px; border-radius: 99px; border: 0; width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--vers-violet); color: #fff; font: 650 17px/1 var(--titrage);
+}
+.lv-app .btn.fb { background: #1877f2; }
+.lv-app .btn.fb svg { width: 20px; height: 20px; }
+.lv-app .btn.discret { background: transparent; color: var(--paye-nuit); height: 40px; font: 600 14px/1 var(--sans); }
+.lv-app .clair .btn.discret { color: var(--accent); }
+.lv-app .liste { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+.lv-app .liste li { display: flex; gap: 12px; align-items: baseline; }
+.lv-app .liste .pt { flex: none; width: 9px; height: 9px; border-radius: 50%; background: #fff; align-self: center; }
+.lv-app .liste .pt.att { background: transparent; border: 1.5px solid var(--or); }
+.lv-app .liste .pt.non { background: transparent; border: 1.5px solid var(--brume-2); }
+.lv-app .liste div { flex: 1; min-width: 0; }
+.lv-app .liste b { display: block; font: 650 15.5px/1.3 var(--titrage); }
+.lv-app .liste small { display: block; font-size: 12.5px; line-height: 1.45; color: var(--brume-2); }
+.lv-app .liste a { align-self: center; font: 600 13px/1 var(--sans); color: var(--paye-nuit); text-decoration: none; }
+.lv-app .camera { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lv-app .voile-haut { position: absolute; inset: 0 0 auto 0; height: 190px; background: linear-gradient(180deg, rgb(0 0 0 / .6), transparent); z-index: 1; }
+.lv-app .voile-bas { position: absolute; inset: auto 0 0 0; height: 470px; background: linear-gradient(180deg, transparent, rgb(11 20 48 / .92) 34%); z-index: 1; }
+.lv-app .direct-haut { position: absolute; top: 52px; left: 16px; right: 16px; z-index: 3; display: flex; align-items: center; gap: 10px; }
+.lv-app .badge { display: inline-flex; align-items: center; gap: 6px; font: 700 11px/1 var(--mono); letter-spacing: .05em; background: var(--direct); border-radius: 99px; padding: 7px 10px; }
+.lv-app .badge i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+.lv-app .duree { font: 700 13px/1 var(--mono); font-variant-numeric: tabular-nums; }
+.lv-app .spect { margin-left: auto; font: 500 13px/1 var(--sans); color: #dbe6ff; }
+.lv-app .relais { position: absolute; top: 90px; left: 16px; z-index: 3; display: flex; gap: 8px; align-items: center; font: 700 10.5px/1 var(--mono); color: #dbe6ff; }
+.lv-app .relais i { width: 6px; height: 6px; border-radius: 50%; background: #5ee0a0; }
+.lv-app .direct-bas { position: absolute; left: 16px; right: 16px; bottom: 26px; z-index: 3; display: grid; gap: 9px; }
+.lv-app .ref { font: 700 11px/1 var(--mono); color: var(--brume); }
+.lv-app .article { margin: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.lv-app .article b { font: 650 24px/1.1 var(--titrage); letter-spacing: -0.015em; }
+.lv-app .article span { font: 300 24px/1 var(--sans); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lv-app .sur { font: 500 12.5px/1.4 var(--sans); color: var(--paye-nuit); margin: 0; }
+.lv-app .gagne { margin: 0; font: 500 15px/1.4 var(--sans); color: #dbe6ff; }
+.lv-app .attente { margin: 0; font: 500 13.5px/1.4 var(--sans); color: #8fa3cc; }
+.lv-app .entendu { margin: 0; font: 400 14px/1.5 var(--sans); color: #dbe6ff; }
+.lv-app .entendu q { quotes: "« " " »"; font-style: italic; }
+.lv-app .entendu em { font-style: normal; color: #fff; background: rgb(8 102 255 / .45); border-radius: 4px; padding: 0 4px; }
+.lv-app .onde { display: flex; gap: 3px; align-items: center; height: 22px; }
+.lv-app .onde i { width: 3px; border-radius: 2px; background: #9cc0ff; }
+.lv-app .fil { display: grid; gap: 6px; }
+.lv-app .jp { margin: 0; display: flex; gap: 8px; align-items: baseline; font-size: 13.5px; color: #dbe6ff; }
+.lv-app .jp .h { font: 700 10.5px/1 var(--mono); color: #8fa3cc; flex: none; width: 52px; }
+.lv-app .jp b { font-weight: 600; color: #fff; }
+.lv-app .jp .r { margin-left: auto; font: 700 10.5px/1 var(--mono); color: var(--paye-nuit); }
+.lv-app .doute { background: rgb(18 29 66 / .94); border: 1px solid var(--nuit-trait); border-radius: 20px; padding: 16px; display: grid; gap: 12px; }
+.lv-app .doute .q { margin: 0; font: 650 17px/1.3 var(--titrage); }
+.lv-app .doute .pourquoi { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--brume); }
+.lv-app .choix { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lv-app .choix button { height: 50px; border-radius: 99px; border: 0; font: 700 15px/1 var(--sans); background: #fff; color: var(--encre); }
+.lv-app .choix button.prem { background: var(--accent); color: #fff; }
+.lv-app .choix small { display: block; font: 500 11px/1.2 var(--sans); margin-top: 3px; opacity: .75; }
+.lv-app .compte { height: 3px; border-radius: 2px; background: var(--nuit-trait); overflow: hidden; }
+.lv-app .compte i { display: block; height: 100%; width: 62%; background: var(--paye-nuit); }
+.lv-app .liste-clair { margin: 0; padding: 0; list-style: none; }
+.lv-app .ligne { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 14px 0; border-bottom: 1px solid #e6ebf5; }
+.lv-app .ligne b { font: 650 15.5px/1.3 var(--titrage); }
+.lv-app .ligne .m { font: 300 18px/1.2 var(--sans); font-variant-numeric: tabular-nums; text-align: right; }
+.lv-app .ligne small { font-size: 12.5px; color: var(--encre-400); }
+.lv-app .ligne .etat { font: 700 10.5px/1 var(--mono); text-align: right; align-self: center; }
+.lv-app .etat.ok { color: var(--or-encre); background: var(--or-doux); padding: 5px 8px; border-radius: 6px; }
+.lv-app .etat.ecart { color: var(--direct); }
+.lv-app .etat.vu { color: var(--encre-400); }
+.lv-app .chiffres { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+.lv-app .chiffres div b { display: block; font: 200 44px/1 var(--sans); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.lv-app .chiffres div span { font-size: 13px; color: var(--encre-500); }
+.lv-app .chiffres div b i { font-style: normal; font-size: 18px; color: var(--accent); margin-left: 3px; font-weight: 400; }
+.lv-app .mini-btn { height: 46px; border-radius: 99px; border: 1.5px solid var(--bleu-200); background: #fff; color: var(--accent-700); font: 650 14.5px/1 var(--titrage); width: 100%; }
+.lv-app .pave { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.lv-app .pave button { height: 46px; border-radius: 14px; border: 0; background: rgb(255 255 255 / .1); color: #fff; font: 400 20px/1 var(--sans); }
+.lv-app .saisie { font: 200 40px/1 var(--sans); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.lv-app .saisie span { font-size: 18px; color: var(--brume-2); margin-left: 6px; font-weight: 400; }
+.lv-app .suggestions { display: flex; gap: 8px; flex-wrap: wrap; }
+.lv-app .suggestions button { height: 38px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--nuit-trait); background: transparent; color: #dbe6ff; font: 600 13.5px/1 var(--sans); }
+.lv-app .conseils { margin: 0; padding: 0; list-style: none; display: grid; gap: 22px; }
+.lv-app .conseils li { display: grid; grid-template-columns: 44px 1fr; gap: 2px 12px; }
+.lv-app .conseils i { grid-row: span 2; font: 200 40px/1 var(--sans); font-style: normal; background: var(--vers-violet); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lv-app .conseils b { font: 650 16px/1.3 var(--titrage); }
+.lv-app .conseils span { font-size: 13.5px; line-height: 1.5; color: var(--brume); }
+.lv-app .conseils q { quotes: "« " " »"; color: #fff; }
+.lv-app .alerte-pt { width: 12px; height: 12px; border-radius: 50%; background: var(--direct-clair); }
+.lv-app .alerte-pt.or { background: var(--or); }
+.lv-app .clair .alerte-pt { background: var(--direct); }
+.lv-app .chargement { height: 3px; border-radius: 2px; background: var(--nuit-trait); overflow: hidden; }
+.lv-app .chargement i { display: block; height: 100%; width: 55%; background: var(--vers-violet); }
+.lv-app .preuve { border-radius: 16px; background: #f4f6fb; padding: 14px; display: grid; gap: 8px; }
+.lv-app .preuve .ligne-p { display: flex; justify-content: space-between; font-size: 14px; }
+.lv-app .preuve .ligne-p span:first-child { color: var(--encre-400); }
+.lv-app .preuve .ligne-p b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.lv-app .preuve .ligne-p b.ecart { color: var(--direct); }
+.lv-app .btn.sec { background: #fff; color: var(--encre); border: 1.5px solid var(--bleu-200); }
+.lv-app .tel:not(.clair) .btn.sec { background: transparent; color: #fff; border-color: var(--nuit-trait); }
+.lv-app .tel.lvc {
+  --brume: var(--encre-500); --brume-2: var(--encre-400); --paye-nuit: var(--accent); --nuit-trait: #e3e8f2;
+  background: #fff; color: var(--encre);
+}
+.lv-app .lvc.points::before { opacity: .35; }
+.lv-app .lvc .statut { color: var(--encre); }
+.lv-app .lvc .tuile, .lv-app .lvc .canal, .lv-app .lvc .pages li { background: var(--bleu-pale); }
+.lv-app .lvc .pages li.choisie { background: #fff; border-color: var(--accent); }
+.lv-app .lvc .liste .pt { background: var(--accent); }
+.lv-app .lvc .liste .pt.non { background: transparent; border-color: var(--encre-400); }
+.lv-app .lvc .liste .pt.att { background: transparent; border: 1.5px solid var(--or); }
+.lv-app .lvc .alerte-pt { background: var(--direct); }
+.lv-app .lvc .conseils q { color: var(--encre); }
+.lv-app .lvc .acc-tete .av-p, .lv-app .lvc .pages .av-p { color: #fff; }
+.lv-app .lvc .btn.fb { background: #1877f2; }
+.lv-app .lvc .apercu-msg { background: var(--bleu-pale); color: var(--encre); }
+.lv-app .lvc .feuille { background: #fff; box-shadow: 0 -10px 40px rgb(11 20 48 / .15); }
+.lv-app .lvc .voile-feuille { background: rgb(11 20 48 / .35); }
+.lv-app .lvc .feuille .poignee { background: var(--bleu-200); }
+.lv-app .lvc .canal .ic svg path { stroke: #fff; }
+
+/* ---------- Cadre de l'app (hors maquettes) ---------- */
+
+.lv-app { min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; align-items: center; gap: 48px; padding: 32px; }
+.lv-app :where(a) { color: inherit; text-decoration: none; }
+.lv-app :where(a[role="button"]) { cursor: pointer; }
+.lv-ecran { flex: none; }
+.lv-app .tel { border-radius: 40px; box-shadow: 0 30px 80px rgb(0 0 0 / .45), 0 0 0 1px rgb(255 255 255 / .08); }
+
+.lv-plan { width: 280px; max-height: calc(100dvh - 64px); overflow: auto; font: 400 13.5px/1.4 var(--sans); color: var(--brume); }
+.lv-plan ol, .lv-sommaire ol { margin: 0 0 18px; padding: 0; list-style: none; }
+.lv-plan a, .lv-sommaire li a { display: flex; gap: 10px; padding: 6px 10px; border-radius: 10px; }
+.lv-plan a:hover, .lv-sommaire li a:hover { background: rgb(255 255 255 / .06); }
+.lv-plan a[aria-current="page"] { background: rgb(8 102 255 / .25); color: #fff; }
+.lv-plan li span, .lv-sommaire li span { flex: none; width: 28px; font: 700 11px/1.9 var(--mono); color: var(--brume-2); }
+.lv-plan-titre { display: block; margin: 0 0 14px; font: 700 19px/1 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.lv-plan-parcours { margin: 0 0 6px; font: 700 11px/1.3 var(--mono); text-transform: uppercase; color: var(--brume-2); }
+
+.lv-sommaire { width: 100%; max-width: 560px; align-self: flex-start; color: #fff; }
+.lv-sommaire h1 { margin: 0 0 12px; font: 700 34px/1.1 var(--titrage); letter-spacing: -0.025em; }
+.lv-sommaire h2 { margin: 28px 0 2px; font: 700 21px/1.2 var(--titrage); }
+.lv-sommaire .lv-chapo { margin: 0 0 22px; color: var(--brume); line-height: 1.6; }
+.lv-sommaire .lv-sous { margin: 0 0 10px; font-size: 13.5px; color: var(--brume-2); }
+.lv-sommaire li a { color: var(--brume); }
+.lv-commencer { display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 99px; background: var(--vers-violet); color: #fff; font: 650 16px/1 var(--titrage); }
+
+/* Sur téléphone : l'écran occupe toute la place, la vraie barre d'état remplace la fausse. */
+@media (max-width: 900px) {
+  .lv-plan { display: none; }
+}
+@media (max-width: 500px) {
+  .lv-app { padding: 0; display: block; }
+  .lv-app .lv-sommaire { padding: 28px 16px; }
+  .lv-app .tel { width: 100vw; height: 100dvh; min-height: 720px; border-radius: 0; box-shadow: none; }
+  .lv-app .statut { visibility: hidden; }
+}

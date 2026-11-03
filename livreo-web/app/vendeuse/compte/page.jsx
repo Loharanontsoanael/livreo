@@ -1,0 +1,16 @@
+import Link from "next/link";
+import Aller from "../Aller";
+
+/* 4b · Mon compte. Généré depuis la maquette E7b-Mon-compte.html du canevas. */
+export const metadata = { title: "Livreo · Mon compte" };
+
+const css = ".lv-app .reglages { display: grid; gap: 18px; }\n.lv-app .groupe { display: grid; gap: 0; border-radius: 18px; background: var(--bleu-pale); overflow: hidden; }\n.lv-app .reglage { display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-top: 1px solid #fff; }\n.lv-app .reglage:first-child { border-top: 0; }\n.lv-app .reglage div { flex: 1; min-width: 0; }\n.lv-app .reglage b { display: block; font: 600 15px/1.3 var(--titrage); }\n.lv-app .reglage small { display: block; font-size: 12.5px; color: var(--encre-400); }\n.lv-app .reglage .val { font: 600 13.5px/1 var(--sans); color: var(--accent); }\n.lv-app .reglage .fl { color: var(--encre-400); font-size: 20px; }\n.lv-app .choix-langue { display: flex; gap: 4px; background: #fff; border-radius: 99px; padding: 3px; }\n.lv-app .choix-langue span { padding: 6px 12px; border-radius: 99px; font: 600 13px/1 var(--sans); color: var(--encre-500); }\n.lv-app .choix-langue span.on { background: var(--accent); color: #fff; }\n.lv-app .deconnexion { color: var(--direct); }";
+
+export default function Ecran() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <main className="tel points lvc"><div className="statut"><span>17:46</span><span className="ic"><i /><i /><i /><span className="bat"><b style={{ width: "88%" }} /></span></span></div><p className="marque">Livreo</p><p className="etape-n">MON COMPTE</p><div className="bloc haut" style={{ gap: "18px" }}><h2>Mon compte</h2><div className="reglages"><div><p className="mono" style={{ margin: "0 0 8px" }}>FACEBOOK</p><div className="groupe"><div className="reglage"><div><b>Nirina R.</b><small>compte Facebook connecté</small></div></div><div className="reglage"><div><b>Chez Nirina</b><small>Page utilisée pour les lives</small></div><Link href="/vendeuse/page" className="val">changer de Page</Link></div></div></div><div><p className="mono" style={{ margin: "0 0 8px" }}>DANS LES MESSAGES</p><div className="groupe"><div className="reglage"><div><b>Mobile Money</b><small>MVola · 034 12 345 67 · pour payer avant</small></div><span className="fl">›</span></div><div className="reglage"><div><b>Nom affiché</b><small>Nirina R.</small></div><span className="fl">›</span></div><div className="reglage"><div><b>Délai pour confirmer</b><small>sans réponse, la suivante est contactée</small></div><span className="val">30 min</span></div></div></div><div><p className="mono" style={{ margin: "0 0 8px" }}>L'APP</p><div className="groupe"><div className="reglage"><div><b>Langue</b></div><span className="choix-langue"><span className="on">Français</span><span>Malagasy</span></span></div><Link href="/vendeuse/contact" className="reglage"><div><b>Écrire à l'équipe Livreo</b><small>Messenger ou WhatsApp</small></div><span className="fl">›</span></Link></div></div></div></div><div className="bloc" style={{ bottom: "30px" }}><Aller vers="/vendeuse/connexion" className="btn discret" style={{ color: "var(--direct)" }}>Se déconnecter de Facebook</Aller></div></main>
+    </>
+  );
+}

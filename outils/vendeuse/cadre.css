@@ -1,0 +1,35 @@
+/* ---------- Cadre de l'app (hors maquettes) ---------- */
+
+.lv-app { min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; align-items: center; gap: 48px; padding: 32px; }
+.lv-app :where(a) { color: inherit; text-decoration: none; }
+.lv-app :where(a[role="button"]) { cursor: pointer; }
+.lv-ecran { flex: none; }
+.lv-app .tel { border-radius: 40px; box-shadow: 0 30px 80px rgb(0 0 0 / .45), 0 0 0 1px rgb(255 255 255 / .08); }
+
+.lv-plan { width: 280px; max-height: calc(100dvh - 64px); overflow: auto; font: 400 13.5px/1.4 var(--sans); color: var(--brume); }
+.lv-plan ol, .lv-sommaire ol { margin: 0 0 18px; padding: 0; list-style: none; }
+.lv-plan a, .lv-sommaire li a { display: flex; gap: 10px; padding: 6px 10px; border-radius: 10px; }
+.lv-plan a:hover, .lv-sommaire li a:hover { background: rgb(255 255 255 / .06); }
+.lv-plan a[aria-current="page"] { background: rgb(8 102 255 / .25); color: #fff; }
+.lv-plan li span, .lv-sommaire li span { flex: none; width: 28px; font: 700 11px/1.9 var(--mono); color: var(--brume-2); }
+.lv-plan-titre { display: block; margin: 0 0 14px; font: 700 19px/1 var(--titrage); letter-spacing: -0.02em; color: #fff; }
+.lv-plan-parcours { margin: 0 0 6px; font: 700 11px/1.3 var(--mono); text-transform: uppercase; color: var(--brume-2); }
+
+.lv-sommaire { width: 100%; max-width: 560px; align-self: flex-start; color: #fff; }
+.lv-sommaire h1 { margin: 0 0 12px; font: 700 34px/1.1 var(--titrage); letter-spacing: -0.025em; }
+.lv-sommaire h2 { margin: 28px 0 2px; font: 700 21px/1.2 var(--titrage); }
+.lv-sommaire .lv-chapo { margin: 0 0 22px; color: var(--brume); line-height: 1.6; }
+.lv-sommaire .lv-sous { margin: 0 0 10px; font-size: 13.5px; color: var(--brume-2); }
+.lv-sommaire li a { color: var(--brume); }
+.lv-commencer { display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 99px; background: var(--vers-violet); color: #fff; font: 650 16px/1 var(--titrage); }
+
+/* Sur téléphone : l'écran occupe toute la place, la vraie barre d'état remplace la fausse. */
+@media (max-width: 900px) {
+  .lv-plan { display: none; }
+}
+@media (max-width: 500px) {
+  .lv-app { padding: 0; display: block; }
+  .lv-app .lv-sommaire { padding: 28px 16px; }
+  .lv-app .tel { width: 100vw; height: 100dvh; min-height: 720px; border-radius: 0; box-shadow: none; }
+  .lv-app .statut { visibility: hidden; }
+}
