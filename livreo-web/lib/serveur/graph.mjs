@@ -28,6 +28,7 @@ export function extraireEntrants(charge) {
       if (v.from?.id && v.from.id === entree.id) continue;
       sortie.push({
         id: v.comment_id,
+        page_id: entree.id ?? "",
         type: "commentaire",
         cree_le: isoDepuis(v.created_time),
         donnees: {
@@ -44,6 +45,7 @@ export function extraireEntrants(charge) {
       const image = (message.attachments ?? []).find((piece) => piece.type === "image");
       sortie.push({
         id: message.mid,
+        page_id: entree.id ?? "",
         type: "message",
         cree_le: isoDepuis(evenement.timestamp),
         donnees: {
@@ -101,6 +103,14 @@ export function creerGraph({ version, pageId, pageToken, appSecret, fetch = glob
       });
     },
 
+    // Abonne la Page au webhook de l'app : commentaires (feed) et Messenger.
+    abonner() {
+      return appel(`${pageId}/subscribed_apps`, {
+        methode: "POST",
+        parametres: { subscribed_fields: "feed,messages" },
+      });
+    },
+
     async lireCommentaires(objetId) {
       const json = await appel(`${objetId}/comments`, {
         parametres: {
@@ -114,6 +124,7 @@ export function creerGraph({ version, pageId, pageToken, appSecret, fetch = glob
         .filter((c) => c.from?.id !== pageId)
         .map((c) => ({
           id: c.id,
+          page_id: pageId,
           type: "commentaire",
           cree_le: isoDepuis(c.created_time),
           donnees: { objet_id: objetId, texte: c.message ?? "", auteur_id: c.from?.id ?? null, auteur_nom: c.from?.name ?? null },

@@ -102,13 +102,62 @@ CREATE TABLE IF NOT EXISTS journal (
   type TEXT NOT NULL,
   details TEXT
 );
+
+-- Chaque vendeuse se connecte avec Facebook et choisit une de ses Pages.
+CREATE TABLE IF NOT EXISTS vendeuses (
+  id INTEGER PRIMARY KEY,
+  fb_id TEXT NOT NULL UNIQUE,
+  nom TEXT,
+  cree_le TEXT NOT NULL
+);
+
+-- Le jeton de Page est chiffré (AES-256-GCM) : une copie de la base ne suffit
+-- pas à écrire au nom des boutiques.
+CREATE TABLE IF NOT EXISTS pages (
+  id TEXT PRIMARY KEY,
+  vendeuse_id INTEGER NOT NULL REFERENCES vendeuses(id),
+  nom TEXT NOT NULL,
+  categorie TEXT,
+  photo TEXT,
+  jeton TEXT NOT NULL,
+  abonnee_le TEXT,
+  maj_le TEXT NOT NULL
+);
+
+-- Réglages de chaque boutique (aussi pour la Page de secours, sans ligne dans pages).
+CREATE TABLE IF NOT EXISTS reglages (
+  page_id TEXT PRIMARY KEY,
+  numero_paiement TEXT,
+  maj_le TEXT NOT NULL
+);
+
+-- Seule l'empreinte SHA-256 de la clé de session est gardée.
+CREATE TABLE IF NOT EXISTS sessions (
+  cle TEXT PRIMARY KEY,
+  vendeuse_id INTEGER NOT NULL REFERENCES vendeuses(id),
+  page_id TEXT,
+  cree_le TEXT NOT NULL,
+  expire_le TEXT NOT NULL
+);
 `;
+
+// Colonnes ajoutées après la première version : une base existante les reçoit
+// au démarrage, sans perdre ses données.
+const MIGRATIONS = [
+  ["lives", "page_id", "TEXT NOT NULL DEFAULT ''"],
+  ["entrants", "page_id", "TEXT NOT NULL DEFAULT ''"],
+];
 
 export function ouvrirBase(chemin) {
   if (chemin !== ":memory:") mkdirSync(dirname(chemin), { recursive: true });
   const db = new DatabaseSync(chemin);
   db.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON; PRAGMA busy_timeout = 3000;");
   db.exec(SCHEMA);
+  for (const [table, colonne, definition] of MIGRATIONS) {
+    const existe = db.prepare(`PRAGMA table_info(${table})`).all().some((c) => c.name === colonne);
+    if (!existe) db.exec(`ALTER TABLE ${table} ADD COLUMN ${colonne} ${definition}`);
+  }
+  db.exec("CREATE INDEX IF NOT EXISTS lives_par_page ON lives(page_id, termine_le)");
   return db;
 }
 

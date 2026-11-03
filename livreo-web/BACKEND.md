@@ -36,6 +36,12 @@ Vérification de bout en bout sur un serveur lancé :
 
 | Route | Pour qui | Rôle |
 |---|---|---|
+| `GET /api/auth/facebook` | Vendeuse | « Continuer avec Facebook » : vers la fenêtre de Facebook |
+| `GET /api/auth/facebook/retour` | Facebook | Retour de connexion : Pages rangées, session ouverte |
+| `POST /api/auth/deconnexion` | Vendeuse | « Changer de compte » : la session est supprimée |
+| `GET /api/vendeuse` | App vendeuse | Qui est connectée, ses Pages, la Page choisie (sans jetons) |
+| `POST /api/vendeuse/page` | App vendeuse | `{"page_id"}` : abonne la Page au webhook et la choisit |
+| `POST /api/vendeuse/reglages` | App vendeuse | `{"numero"}` : numéro Mobile Money de la boutique, écrit dans chaque récap |
 | `GET /api/meta/webhook` | Meta | Vérification de l'abonnement (`hub.verify_token`) |
 | `POST /api/meta/webhook` | Meta | Commentaires de la Page et messages Messenger, signature vérifiée |
 | `GET /api/live` | App vendeuse | État du live : article, gagnante, file, doutes, paiements |
@@ -47,9 +53,29 @@ Vérification de bout en bout sur un serveur lancé :
 | `POST /api/rejeu` | Démo | Rejoue un live (désactivé en production sauf `LIVREO_REJEU=1`) |
 | `GET /api/sante` | Tous | Intégrations réelles ou simulées, sans aucun secret |
 
-Les routes de l'app vendeuse demandent `Authorization: Bearer <LIVREO_CLE_VENDEUSE>`
-(ou `?cle=` pour le flux, car `EventSource` n'envoie pas d'en-tête). C'est un
-accès provisoire, à remplacer par la session issue de Facebook Login.
+Les routes de l'app vendeuse reconnaissent la vendeuse par sa **session**
+(cookie `livreo_session`, HttpOnly, 30 jours) et travaillent sur **la Page
+qu'elle a choisie**. Sans session, un mode de secours sert la Page de
+`.env.local` : en développement sans rien, en production seulement avec
+`Authorization: Bearer <LIVREO_CLE_VENDEUSE>` (ou `?cle=` pour le flux).
+
+## Plusieurs boutiques
+
+Chaque vendeuse se connecte avec Facebook et choisit une de ses Pages :
+
+1. `/api/auth/facebook` l'envoie vers Facebook avec un `state` aléatoire
+   (cookie de 10 min, vérifié au retour contre la falsification).
+2. Au retour, le code est échangé contre un jeton utilisateur prolongé, puis
+   contre les jetons de ses Pages, qui n'expirent pas. Ils sont rangés
+   **chiffrés** (AES-256-GCM, `lib/serveur/coffre.mjs`) ; la session ne garde
+   que l'empreinte SHA-256 de sa clé.
+3. Elle choisit sa Page sur `/essayer/page` : la Page est abonnée au webhook
+   (`feed`, `messages`) et rattachée à la session.
+
+Un seul webhook sert toute l'app : Meta indique la Page de chaque événement
+(`entry.id`), le serveur le range dans le live ouvert de cette Page et répond
+avec le jeton de cette Page. Chaque Page a au plus un live ouvert ; deux
+boutiques peuvent être en live en même temps.
 
 Brancher l'écran Direct :
 
@@ -88,6 +114,12 @@ Sous `LIVREO_SEUIL_CONFIANCE` (0,7 par défaut), ou quand un « jp » est écrit
 mais pas compris comme un achat, un **doute** part à la vendeuse au lieu d'une
 réservation. Si l'API est en panne, `lib/serveur/regles.mjs` prend le relais.
 
+L'IA met quelques secondes par commentaire. Pour que le live ne prenne pas de
+retard : un « jp » sans ambiguïté est décidé tout de suite par les règles
+(voie rapide), et les lectures de l'IA d'un même lot partent en parallèle
+(8 à la fois). Les décisions sont toujours appliquées dans l'ordre des
+commentaires, pour que la première JP gagne.
+
 Le mode « Contributor » (moins cher) est volontairement écarté : il autorise
 Meta à entraîner ses modèles sur les commentaires des clientes.
 
@@ -98,8 +130,14 @@ utilisateur contre un jeton de Page qui n'expire pas, remplit `.env.local`,
 abonne la Page aux webhooks et vérifie chaque permission.
 
 1. **App Meta** (developers.facebook.com) : créer l'app (type Entreprise),
-   ajouter les produits **Messenger** et **Webhooks**, puis recopier
-   l'identifiant et la clé secrète dans `META_APP_ID` et `META_APP_SECRET`.
+   ajouter les produits **Messenger**, **Webhooks** et **Facebook Login for
+   Business**, puis recopier l'identifiant et la clé secrète dans
+   `META_APP_ID` et `META_APP_SECRET`.
+   - Facebook Login for Business > Paramètres : ajouter l'URL de redirection
+     `https://<adresse>/api/auth/facebook/retour`.
+   - Facebook Login for Business > Configurations : créer une configuration
+     « jeton d'accès utilisateur » avec les 5 permissions ci-dessous, et
+     recopier son identifiant dans `META_LOGIN_CONFIG_ID`.
 2. **Jeton** : dans l'explorateur Graph, choisir l'app, demander un jeton
    utilisateur avec `pages_show_list`, `pages_read_engagement`,
    `pages_read_user_content`, `pages_manage_metadata`, `pages_messaging`,
@@ -142,4 +180,7 @@ Node 22.13 ou plus est requis (`node:sqlite`, intégré à Node).
   et Livreo écoute ses commentaires.
 - Une acheteuse validée après un doute garde son heure de commentaire, mais ne
   remplace pas une gagnante déjà contactée.
-- L'accès vendeuse par clé partagée est provisoire (voir plus haut).
+- Tant que l'app Meta n'a pas passé la revue de Meta, seuls les comptes qui
+  ont un rôle dans l'app (administratrice, testeuse) peuvent se connecter.
+- La liste des articles du soir est gardée sur le téléphone de la vendeuse
+  (pas encore en base).

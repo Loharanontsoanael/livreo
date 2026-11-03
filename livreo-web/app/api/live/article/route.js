@@ -1,6 +1,6 @@
 import { obtenirContexte } from "@/lib/serveur/contexte.mjs";
 import { articleSuivant, etat } from "@/lib/serveur/boucle.mjs";
-import { lireJson, refuserSiNonVendeuse, repondreErreur } from "@/lib/serveur/http.mjs";
+import { exigerPage, identifier, lireJson, repondreErreur } from "@/lib/serveur/http.mjs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -9,11 +9,13 @@ export const dynamic = "force-dynamic";
 // Les JP arrivés avant ce moment restent sur l'article précédent.
 export async function POST(requete) {
   const ctx = obtenirContexte();
-  const refus = refuserSiNonVendeuse(requete, ctx.config);
-  if (refus) return refus;
+  const qui = identifier(requete, ctx);
+  if (qui instanceof Response) return qui;
   try {
-    articleSuivant(ctx, await lireJson(requete));
-    return Response.json(etat(ctx));
+    const pageId = exigerPage(qui);
+    const { ref, nom, prix } = await lireJson(requete);
+    articleSuivant(ctx, { ref, nom, prix, pageId });
+    return Response.json(etat(ctx, pageId));
   } catch (erreur) {
     return repondreErreur(erreur);
   }

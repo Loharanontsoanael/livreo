@@ -20,14 +20,29 @@ export default function EcranDirect() {
   useEffect(() => setListe(lireArticles()), []);
 
   useEffect(() => {
-    const flux = new EventSource("/api/live/flux");
-    flux.onmessage = (e) => {
-      setEtat(JSON.parse(e.data));
-      setEnLigne(true);
+    let flux = null;
+    let annule = false;
+    // Sans session ni Page choisie, le flux serait refusé en boucle : retour à l'accueil.
+    fetch("/api/live")
+      .then((r) => {
+        if (annule) return;
+        if (r.status === 401 || r.status === 409) {
+          router.replace("/essayer");
+          return;
+        }
+        flux = new EventSource("/api/live/flux");
+        flux.onmessage = (e) => {
+          setEtat(JSON.parse(e.data));
+          setEnLigne(true);
+        };
+        flux.onerror = () => setEnLigne(false);
+      })
+      .catch(() => setEnLigne(false));
+    return () => {
+      annule = true;
+      flux?.close();
     };
-    flux.onerror = () => setEnLigne(false);
-    return () => flux.close();
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     if (!erreur) return;

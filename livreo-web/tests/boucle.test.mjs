@@ -258,3 +258,33 @@ test("panne de la Graph API : le récap est retenté sans doublon", async () => 
   assert.equal(graph.envois.length, 1);
   assert.equal(etat(ctx).gagnante.statut, "contactee");
 });
+
+test("IA lente : les lectures partent ensemble, la première JP gagne quand même, un « jp » clair n'attend pas l'IA", async () => {
+  const appels = [];
+  const { ctx } = contexte();
+  ctx.muse = {
+    actif: true,
+    async comprendreCommentaire({ texte }) {
+      appels.push(texte);
+      // La première lecture est la plus lente : l'ordre d'arrivée des réponses est inversé.
+      await new Promise((r) => setTimeout(r, texte === "ilay mena dia ho anjaiko" ? 300 : 100));
+      return { intention: "achat", article_ref: null, taille: null, quantite: 1, confiance: 0.9, source: "muse" };
+    },
+  };
+  ouvrirLive(ctx);
+  recevoir(ctx, [
+    commentaire("c1", "Mialy Rasoa", "ilay mena dia ho anjaiko", 5),
+    commentaire("c2", "Faniry Rakoto", "tiako ity", 6),
+    commentaire("c3", "Hanta Ravelo", "misy taille L ve", 7),
+    commentaire("c4", "Rado Andria", "jp", 8),
+  ]);
+  const debut = Date.now();
+  await traiterEnAttente(ctx);
+  const duree = Date.now() - debut;
+
+  assert.ok(duree < 550, `lectures en parallèle attendues, ${duree} ms`);
+  assert.deepEqual(appels.sort(), ["ilay mena dia ho anjaiko", "misy taille L ve", "tiako ity"]);
+  const e = etat(ctx);
+  assert.equal(e.gagnante.nom, "Mialy Rasoa");
+  assert.deepEqual(e.attente.map((a) => a.nom), ["Faniry Rakoto", "Hanta Ravelo", "Rado Andria"]);
+});

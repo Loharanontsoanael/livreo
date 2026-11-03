@@ -13,9 +13,12 @@ export function GET() {
   } catch {
     base = "en panne";
   }
+  const pages = base === "ok" ? ctx.db.prepare("SELECT COUNT(*) AS n FROM pages WHERE abonnee_le IS NOT NULL").get().n : 0;
   return Response.json({
     base,
-    graph: ctx.graph.actif ? "actif" : "simulation",
+    connexion_facebook: ctx.config.appId && ctx.config.appSecret ? "prête" : "à configurer",
+    pages_connectees: pages,
+    page_de_secours: ctx.graph.actif ? "active" : "absente",
     muse: ctx.muse.actif ? `actif (${ctx.config.modele})` : "simulation",
     webhook: ctx.config.appSecret && ctx.config.verifyToken ? "configuré" : "à configurer",
   });

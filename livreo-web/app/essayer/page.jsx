@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Connexion from "./Connexion";
 
 export const metadata = {
@@ -11,7 +12,9 @@ export default function Essayer() {
       <figure className="acc-visuel" aria-hidden="true">
         <img src="/img/accueil-portant.png" alt="" />
       </figure>
-      <Connexion />
+      <Suspense fallback={<div className="acc-bloc" />}>
+        <Connexion />
+      </Suspense>
     </main>
   );
 }

@@ -6,12 +6,12 @@ import { declencher } from "./contexte.mjs";
 // les identifiants commencent par « rejeu- ».
 // garderLive : les commentaires arrivent dans le live déjà ouvert depuis l'app,
 // et c'est la vendeuse qui passe les articles (répétition de la démo à deux).
-export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false } = {}) {
+export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false, pageId = "" } = {}) {
   if (ctx.rejeuEnCours) throw new Error("Un rejeu est déjà en cours.");
   const id = Date.now().toString(36);
   const minuteurs = [];
   ctx.rejeuEnCours = { id, minuteurs };
-  if (!garderLive) demarrerLive(ctx, { objetFbId: null });
+  if (!garderLive) demarrerLive(ctx, { objetFbId: null, pageId });
 
   const evenements = [
     ...(scenario.articles ?? []).map((a) => ({ ...a, genre: "article" })),
@@ -30,7 +30,7 @@ export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false } =
         const cree = ctx.maintenant().toISOString();
         if (ev.genre === "article") {
           try {
-            articleSuivant(ctx, ev);
+            articleSuivant(ctx, { ...ev, pageId });
           } catch (erreur) {
             console.error("[livreo] rejeu, article :", erreur.message);
           }
@@ -39,6 +39,7 @@ export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false } =
         if (ev.genre === "commentaire") {
           recevoir(ctx, [{
             id: `rejeu-${id}-${i}`,
+            page_id: pageId,
             type: "commentaire",
             cree_le: cree,
             donnees: { objet_id: null, texte: ev.texte, auteur_id: auteurId(ev.auteur), auteur_nom: ev.auteur },
@@ -46,6 +47,7 @@ export function lancerRejeu(ctx, scenario, { vitesse = 1, garderLive = false } =
         } else {
           recevoir(ctx, [{
             id: `rejeu-${id}-${i}`,
+            page_id: pageId,
             type: "message",
             cree_le: cree,
             donnees: { psid: `simule-${auteurId(ev.auteur)}`, texte: "", image_url: ev.image_url },

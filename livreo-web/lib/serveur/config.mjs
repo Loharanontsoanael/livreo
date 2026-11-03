@@ -4,8 +4,18 @@
 export function lireConfig(env = process.env) {
   return {
     graphVersion: env.GRAPH_API_VERSION || "v26.0",
+    appId: env.META_APP_ID || "",
     appSecret: env.META_APP_SECRET || "",
+    // Facebook Login for Business (apps de type Entreprise) : identifiant de
+    // configuration. Vide : Facebook Login classique, permissions par « scope ».
+    loginConfigId: env.META_LOGIN_CONFIG_ID || "",
+    // Adresse publique (tunnel, hébergeur) pour l'URL de retour de Facebook.
+    // Vide : déduite de la requête.
+    urlPublique: (env.LIVREO_URL_PUBLIQUE || "").replace(/\/+$/, ""),
+    cleChiffrement: env.LIVREO_CLE_CHIFFREMENT || env.META_APP_SECRET || "",
     verifyToken: env.META_VERIFY_TOKEN || "",
+    // Page de secours, hors connexion Facebook (développement, démo de repli).
+    // En temps normal, chaque vendeuse connecte sa propre Page.
     pageId: env.META_PAGE_ID || "",
     pageToken: env.META_PAGE_ACCESS_TOKEN || "",
     nomPage: env.LIVREO_NOM_PAGE || "notre boutique",

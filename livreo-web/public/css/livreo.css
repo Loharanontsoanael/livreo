@@ -817,6 +817,52 @@ a { color: var(--accent); text-underline-offset: 2px; }
 .app-saisie input { background: rgb(255 255 255 / .12); }
 .app-saisie .app-non { height: 56px; }
 
+/* ---------- L'app vendeuse : choisir sa Page ---------- */
+
+a.acc-fb { text-decoration: none; }
+.acc-demo {
+  justify-self: start; padding: 0; border: 0; background: none; cursor: pointer;
+  font: 600 .82rem/1.4 var(--sans); color: #9cc0ff; text-decoration: underline; text-underline-offset: 3px;
+}
+.art-lien { padding: 0; border: 0; background: none; cursor: pointer; font: 600 .85rem/1 var(--sans); color: #9cc0ff; }
+
+.pg-liste { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid rgb(255 255 255 / .08); }
+.pg-liste li { border-top: 1px solid rgb(255 255 255 / .08); }
+.pg-ligne {
+  width: 100%; padding: 1rem 0; border: 0; background: none; cursor: pointer; text-align: left; color: #fff;
+  display: grid; grid-template-columns: 46px minmax(0, 1fr) auto; gap: .9rem; align-items: center;
+}
+.pg-ligne:disabled { cursor: default; }
+.pg-ligne:disabled:not(.est-choisie) { opacity: .5; }
+.pg-ligne img, .pg-av { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+.pg-av { display: grid; place-items: center; background: var(--vers-violet); font: 700 .95rem/1 var(--titrage); }
+.pg-ligne b { display: block; font: 650 1.05rem/1.3 var(--titrage); overflow-wrap: anywhere; }
+.pg-ligne small { display: block; font-size: .82rem; line-height: 1.4; color: #7f9ad1; }
+.pg-fleche { font: 400 1.3rem/1 var(--sans); color: #7f9ad1; }
+.pg-ligne.est-choisie .pg-fleche { font: 600 .82rem/1 var(--sans); color: #9cc0ff; }
+.pg-aide { margin: 1.2rem 0 0; max-width: 34ch; font-size: .82rem; line-height: 1.55; color: #7f9ad1; }
+.pg-alerte { margin: 0 0 1.2rem; font-size: .85rem; line-height: 1.5; color: #ffc2cc; }
+.pg-alerte a { color: #fff; font-weight: 600; }
+.pg-secondaire {
+  height: 54px; border-radius: 99px; display: grid; place-items: center; text-decoration: none;
+  background: rgb(255 255 255 / .1); color: #fff; font: 650 1rem/1 var(--titrage);
+}
+
+/* Check-list : le numéro Mobile Money se saisit sur place. */
+.acc-prets .est-attente { background: #9cc0ff; box-shadow: 0 0 0 4px rgb(156 192 255 / .2); }
+.acc-numero { flex: 1; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .5rem; align-items: center; }
+.acc-numero input {
+  height: 46px; min-width: 0; border: 0; border-radius: 12px; padding: 0 .85rem;
+  background: rgb(255 255 255 / .08); color: #fff; font: 500 16px/1 var(--sans);
+}
+.acc-numero input::placeholder { color: #7f9ad1; }
+.acc-numero input:focus-visible { outline: 2px solid #9cc0ff; outline-offset: 1px; }
+.acc-numero button {
+  height: 46px; padding: 0 1rem; border: 0; border-radius: 99px; cursor: pointer;
+  background: var(--accent); color: #fff; font: 700 .9rem/1 var(--sans);
+}
+.acc-numero .art-erreur { grid-column: 1 / -1; margin: 0; }
+
 /* Sur ordinateur, les écrans d'app restent un téléphone centré : cette règle
    vient en dernier pour passer devant le « inset: 0 » de chaque écran. */
 @media (min-width: 700px) {
