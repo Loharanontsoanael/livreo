@@ -1,38 +1,77 @@
-# Livreo · hackathon submission
+# Livreo : réponses du formulaire de soumission
 
-## Project name
+Formulaire : https://cerebralvalley.ai/e/meta-ai-developer-hackathon/hackathon/submit
+Deadline : jeudi 5 novembre, 05:00 heure de Madagascar.
+
+> À vérifier avant de soumettre : si un produit ou du code existait avant le
+> 26 octobre (« JP Live » ?), ajouter au début de la description :
+> « Before the hackathon, [ce qui existait]. Everything below was built during
+> the event. » Sinon, garder le texte tel quel : Git montre que tout le code
+> date du 29 octobre ou après.
+
+---
+
+## Team Name
+```
 Livreo
+```
 
-## Tagline (one line)
-Turn Facebook Live comments into paid orders, while the seller is still live.
+## Team Members
+Ajouter les 4 membres avec le bouton +, Idealy compris.
 
-## Track
-Startup Track
+## Which track are you submitting to?
+Startups Track
 
-## Short description
-In Madagascar, thousands of women sell clothes on Facebook Live. Buyers comment "jp" (j'prends, "I'll take it"), dozens within seconds, in French and Malagasy. After the live, sellers spend hours finding who was first, messaging each buyer and checking Mobile Money screenshots by hand. Livreo does it during the live: the first clear "jp" wins the item, the winner gets a private reply on Messenger with the price, the Mobile Money number and a deadline, Muse Spark reads her payment screenshot, and the seller confirms in one tap. If she doesn't pay in time, the item goes to the next buyer automatically.
+## Which problem statement did you build towards?
+Build for Your World
 
-## How we use Meta's AI and platform
-- **Muse Spark (Meta Model API, muse-spark-1.3)**: understands ambiguous comments in French, Malagasy and slang (strict JSON output: intention, item, size, confidence) and reads Mobile Money payment screenshots (amount, reference). Low-confidence comments become a Yes/No question for the seller instead of a guess.
-- **Graph API + Webhooks**: receives Page comments and Messenger messages (signature verified), answers the winning comment with a Private Reply.
-- **Messenger Platform**: recaps, payment confirmations.
-- **Facebook Login for Business**: each seller connects her own Page; tokens are encrypted at rest.
+## X post link (Most Viral Track)
+Laisser vide.
 
-## What makes it reliable
-- No comment lost: every webhook is stored before processing and counted once.
-- No item sold twice: the database itself refuses a second winner for the same item.
-- No order marked paid without proof: the AI reads, only the seller confirms.
-- A plain "jp" is decided instantly by rules; Muse Spark reads ambiguous comments in parallel, decisions stay in comment order.
+## Project Description
+```
+Livreo turns Facebook Live comments into paid orders, while the seller is still live.
 
-## Built with
-Muse Spark (Meta Model API), Facebook Graph API, Webhooks, Messenger Platform, Facebook Login for Business, Next.js 14, Node.js (node:sqlite), Server-Sent Events.
+In Madagascar, thousands of women sell clothes on Facebook Live. Buyers comment "jp" (j'prends, "I'll take it"), dozens within seconds, in French and Malagasy. After the live, sellers spend hours finding who commented first, messaging each buyer by hand and checking Mobile Money screenshots one by one. Every manual step loses sales.
 
-## Status
-Working MVP: full loop tested end to end with the real Model API and a real Facebook Page (39 automated tests). The Meta app is in development mode pending app review.
+Everything in this project was built during the hackathon (first commit Oct 29): the first clear "jp" wins the item and others queue in comment order; the winner gets a private reply on Messenger with the price, the shop's Mobile Money number and a deadline; Muse Spark reads her payment screenshot and flags mismatches; the seller confirms in one tap; unpaid items move to the next buyer automatically. Each seller connects her own Facebook Page. Details in the README under "Built during the hackathon".
+```
 
-## What's next
-Pilot with sellers in Antananarivo, Meta app review, delivery routes per neighbourhood, live video relay inside the app.
+## Public GitHub Repository
+```
+https://github.com/Loharanontsoanael/livreo
+```
 
-## Links
-- Code: https://github.com/Loharanontsoanael/livreo (README explains setup)
-- Demo video: https://youtu.be/Zc9yQ6dyk1M
+## 3-Minute Demo Video
+```
+https://youtu.be/Zc9yQ6dyk1M
+```
+
+## Describe your use of Meta products to build the submitted project
+```
+Muse Spark (muse-spark-1.3) through the Meta Model API, used for two tasks with strict JSON-schema outputs:
+1. Comment understanding: reads ambiguous live comments in French, Malagasy and slang ("izaho koa jp", "jp ilay mena M", "jp ve ?") into {intention, item_ref, size, quantity, confidence}. Below a confidence threshold, the seller gets a Yes/No question instead of a guess. Clear "jp" are decided instantly by rules; ambiguous ones are read in parallel, and decisions stay in comment order so the first buyer always wins.
+2. Multimodal payment check: reads Mobile Money screenshots into {is_payment, amount, reference}, compares the amount to the price and flags mismatches. Only the seller's tap marks an order as paid.
+Meta platform: Graph API webhooks (feed and messages, signature verified), Private Replies to the winning comment, Messenger Platform, Facebook Login for Business so each seller connects her own Page (tokens encrypted at rest).
+Architecture: Next.js 14 + Node server, SQLite with a unique index that refuses a second winner per item, idempotent sends, Server-Sent Events for the live screen, 39 automated tests. If the Model API is down, a rule-based parser takes over.
+```
+
+## Why are Meta's models important to your solution?
+```
+Live comments are short, noisy and multilingual: French, Malagasy, abbreviations, questions mixed with orders. Muse Spark understands them in context and tells us when it is unsure, which is exactly what a seller needs: speed on clear orders, a human decision on doubtful ones. The same model reads payment screenshots, so one Meta model covers both the text and the image side of the sale. Combined with Facebook Live, Messenger and the Graph API, the whole loop stays inside the tools sellers and buyers already use: nothing to install for the buyer.
+```
+
+## Partner technologies feedback
+Laisser vide (ni Baseten, ni Modal, ni Fireworks).
+
+## Questions de sondage
+Répondre selon votre vrai ressenti.
+
+## Consentement
+Cocher la case en bas, puis **Submit**.
+
+---
+
+## Avant 05:00
+- Chaque membre réclame **ses propres 150 $ de crédits Meta API**.
+- Tester le lien GitHub et la vidéo en navigation privée.
