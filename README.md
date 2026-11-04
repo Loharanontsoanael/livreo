@@ -15,6 +15,18 @@ team of four developers in Antananarivo.
 |---|---|---|---|
 | ![](docs/captures/1-choose-page.png) | ![](docs/captures/2-checklist.png) | ![](docs/captures/3-live-doubt.png) | ![](docs/captures/4-live-payment.png) |
 
+## Built during the hackathon
+
+All the code in this repository was written during the Meta Global AI
+Developer Hackathon (October 26 to November 4, 2026): the first commit is
+dated October 29, 2026 and every commit falls within the event
+([commit history](https://github.com/Loharanontsoanael/livreo/commits/main)).
+That includes the landing page, the seller app (`livreo-web/app/essayer/`,
+`livreo-web/app/direct/`), the backend loop with Muse Spark and the Graph API
+(`livreo-web/lib/serveur/`), Facebook Login with multiple shops, the tests
+and the setup tools (`outils/`). The mockup screens under
+`livreo-web/app/vendeuse/` were contributed by team member Idealy Mamin'ny Aina.
+
 ## The problem
 
 In Antananarivo, a live sale works like this: the seller shows a dress, and
