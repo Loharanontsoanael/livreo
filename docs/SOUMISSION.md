@@ -44,7 +44,7 @@ https://github.com/Loharanontsoanael/livreo
 
 ## 3-Minute Demo Video
 ```
-https://youtu.be/Zc9yQ6dyk1M
+https://youtu.be/LWg5XMDfBCY
 ```
 
 ## Describe your use of Meta products to build the submitted project

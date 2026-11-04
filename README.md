@@ -9,7 +9,7 @@ selling; Livreo does the bookkeeping.
 Built for the **Meta Global AI Developer Hackathon 2026, Startup Track**, by a
 team of four developers in Antananarivo.
 
-**Demo video (2 min): https://youtu.be/Zc9yQ6dyk1M**
+**Demo video (2 min): https://youtu.be/LWg5XMDfBCY**
 
 | Choose the Page | Before the live | During the live | Payment check |
 |---|---|---|---|
